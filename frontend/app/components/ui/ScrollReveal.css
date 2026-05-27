@@ -1,0 +1,10 @@
+.scroll-reveal {
+    margin: 20px 0;
+  }
+  .scroll-reveal-text {
+    line-height:  120%; /* Adjust this value as needed */
+  }
+  
+  .word {
+    display: inline-block;
+  }
