@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { aboutAPI } from "../../../../services/api";
+import OriDomiAccordion from "./OriDomiAccordion";
 
 const Bento = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -137,34 +138,9 @@ const Bento = () => {
           </p>
         </div>
 
-        {/* ABOUT */}
-        <div className="card reveal bg-white/10 border border-white/20 p-6 rounded-2xl backdrop-blur-lg">
-          <h2 className="text-2xl font-bold mb-3 text-pink-300">
-            {getSectionData("About Us").title}
-          </h2>
-          <p className="text-gray-200 text-sm leading-relaxed">
-            {getSectionData("About Us").body}
-          </p>
-        </div>
-
-        {/* MISSION */}
-        <div className="card reveal bg-white/10 border border-white/20 p-6 rounded-2xl backdrop-blur-lg">
-          <h2 className="text-2xl font-bold mb-3 text-yellow-300">
-            {getSectionData("Mission").title}
-          </h2>
-          <p className="text-gray-200 text-sm leading-relaxed">
-            {getSectionData("Mission").body}
-          </p>
-        </div>
-
-        {/* VISION */}
-        <div className="card reveal bg-white/10 border border-white/20 p-6 rounded-2xl backdrop-blur-lg">
-          <h2 className="text-2xl font-bold mb-3 text-green-300">
-            {getSectionData("Vision").title}
-          </h2>
-          <p className="text-gray-200 text-sm leading-relaxed">
-            {getSectionData("Vision").body}
-          </p>
+        {/* ORI-DOMI FOLDING ACCORDION */}
+        <div className="reveal">
+          <OriDomiAccordion slides={slides} />
         </div>
 
       </div>
