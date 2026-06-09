@@ -20,50 +20,10 @@ const projects = [
   {
     id: 3,
     title: "Biswajit Nayak",
-    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066110/20250307-DSC_6640_rtjc4f.jpg",
+    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781000990/20250307-DSC_6762.jpg_fyapdu.png",
     description:
       "To me, marketing is more than strategy – it’s finding that spark that makes people feel and connect. At Illusory, we don’t just promote; we create stories that linger. Let’s make your brand unforgettable, one bold idea at a time.",
     tags:'CMO'
-  },
-  {
-    id: 4,
-    title: "Sreetam Panda",
-    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066111/20250307-DSC_6676_fuateg.jpg",
-    description:
-      "Design is where logic meets imagination. I thrive on pushing the boundaries of what's possible, ensuring that every project we deliver is not only functional but also a visual masterpiece that resonates with the audience.",
-    tags: 'Lead Designer'
-  },
-  {
-    id: 5,
-    title: "Addy Dash",
-    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066113/20250307-DSC_6672_sawij3.jpg",
-    description:
-      "In the digital world, engagement is everything. My focus is on creating immersive experiences that bridge the gap between technology and emotion, making sure your brand's digital presence is as impactful as its vision.",
-    tags: 'Creative Director'
-  },
-  {
-    id: 6,
-    title: "Amrit Mohanty",
-    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066114/20250307-DSC_6791_1_m2aip4.jpg",
-    description:
-      "Excellence is in the details. I'm dedicated to refining every aspect of our visual production, from the first frame to the final cut, ensuring that every piece of content we produce is of the highest cinematic quality.",
-    tags: 'Visual Head'
-  },
-  {
-    id: 7,
-    title: "Soumya Ranjan",
-    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066112/20250307-DSC_6681_lldlmb.jpg",
-    description:
-      "Great brands are built on great communication. I work to ensure that your brand's voice is heard clearly and consistently across all channels, building lasting relationships and driving meaningful growth.",
-    tags: 'Brand Strategist'
-  },
-  {
-    id: 8,
-    title: "Subham Kumar",
-    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066108/20250307-DSC_6796_bfis9v.jpg",
-    description:
-      "Technology should empower creativity, not limit it. I bridge the gap between complex technical solutions and intuitive design, making sure that your brand's digital infrastructure is as robust as it is beautiful.",
-    tags: 'Tech Lead'
   }
 ];
 const Carousel = () => {
