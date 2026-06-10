@@ -4,9 +4,9 @@ import HorizontalScroll from "./HorizontalScroll";
 import ScrollReveal from "./ui/ScrollReveal";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import GrpOne from "../components/assets/images/GrpOne.png"
-import GrpTwo from "../components/assets/images/GrpTwo.png"
-import GrpThree from "../components/assets/images/GrpThree.png"
+import GrpOne from "../components/assets/images/grp-one.png"
+import GrpTwo from "../components/assets/images/grp-two.png"
+import GrpThree from "../components/assets/images/grp-three.png"
 const images = [
   GrpOne,
   GrpTwo,

@@ -7,7 +7,7 @@ import FAQ from "@/app/components/FAQ";
 import Footer from "@/app/components/Footer";
 import HorizontalScroll from "@/app/components/HorizontalScroll";
 
-import annscafeLogo from "@/app/components/assets/Ann_s Cafe.svg";
+import annscafeLogo from "@/app/components/assets/anns-cafe.svg";
 
 // ✅ CLOUDINARY IMAGES
 const images = [

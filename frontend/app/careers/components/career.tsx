@@ -1,6 +1,6 @@
 import React from 'react'
 import { CircleCheck, Plus } from 'lucide-react'
-import IllusoryLogo from "../../components/assets/Illusory Logo.svg"
+import IllusoryLogo from "../../components/assets/illusory-logo.svg"
 import Image from 'next/image'
 const CareerOpportunities = () => {
   return (
@@ -12,7 +12,7 @@ const CareerOpportunities = () => {
         <div className='max-w-5xl w-full mt-20 flex flex-col gap-10'>
                 <div className='w-full flex justify-between items-center '>
                     <div className='flex gap-4 items-center'>
-                        <div><Image src={IllusoryLogo} alt=''/></div>
+                        <div><Image src={IllusoryLogo} alt='' loading="lazy" /></div>
                         <div className='text-left flex flex-col gap-1'>
                             <h1 className='text-[18px]'>Frontend Developer</h1>
                             <h1 className='text-sm'>Illusory-India (Remote)</h1>
@@ -25,7 +25,7 @@ const CareerOpportunities = () => {
                 </div>
                 <div className='w-full flex justify-between items-center '>
                     <div className='flex gap-4 items-center'>
-                        <div><Image src={IllusoryLogo} alt=''/></div>
+                        <div><Image src={IllusoryLogo} alt='' loading="lazy" /></div>
                         <div className='text-left'>
                             <h1 className='text-[18px]'>Frontend Developer</h1>
                             <h1 className='text-sm'>Illusory-India</h1>
@@ -38,7 +38,7 @@ const CareerOpportunities = () => {
                 </div>
                 <div className='w-full flex justify-between items-center '>
                     <div className='flex gap-4 items-center'>
-                        <div ><Image src={IllusoryLogo} alt=''/></div>
+                        <div ><Image src={IllusoryLogo} alt='' loading="lazy" /></div>
                         <div className='text-left'>
                             <h1 className='text-[18px]'>Frontend Developer</h1>
                             <h1 className='text-sm'>Illusory-India</h1>
@@ -51,7 +51,7 @@ const CareerOpportunities = () => {
                 </div>
                 <div className='w-full flex justify-between items-center '>
                     <div className='flex gap-4 items-center'>
-                        <div ><Image src={IllusoryLogo} alt=''/></div>
+                        <div ><Image src={IllusoryLogo} alt='' loading="lazy" /></div>
                         <div className='text-left'>
                             <h1 className='text-[18px]'>Frontend Developer</h1>
                             <h1 className='text-sm'>Illusory-India</h1>
@@ -64,7 +64,7 @@ const CareerOpportunities = () => {
                 </div>
                 <div className='w-full flex justify-between items-center '>
                     <div className='flex gap-4 items-center'>
-                        <div ><Image src={IllusoryLogo} alt=''/></div>
+                        <div ><Image src={IllusoryLogo} alt='' loading="lazy" /></div>
                         <div className='text-left'>
                             <h1 className='text-[18px]'>Frontend Developer</h1>
                             <h1 className='text-sm'>Illusory-India</h1>
@@ -77,7 +77,7 @@ const CareerOpportunities = () => {
                 </div>
                 <div className='w-full flex justify-between items-center '>
                     <div className='flex gap-4 items-center'>
-                        <div ><Image src={IllusoryLogo} alt=''/></div>
+                        <div ><Image src={IllusoryLogo} alt='' loading="lazy" /></div>
                         <div className='text-left'>
                             <h1 className='text-[18px]'>Frontend Developer</h1>
                             <h1 className='text-sm'>Illusory-India</h1>
@@ -90,7 +90,7 @@ const CareerOpportunities = () => {
                 </div>
                 <div className='w-full flex justify-between items-center '>
                     <div className='flex gap-4 items-center'>
-                        <div ><Image src={IllusoryLogo} alt=''/></div>
+                        <div ><Image src={IllusoryLogo} alt='' loading="lazy" /></div>
                         <div className='text-left'>
                             <h1 className='text-[18px]'>Frontend Developer</h1>
                             <h1 className='text-sm'>Illusory-India</h1>

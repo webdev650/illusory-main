@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, X, Send, Phone, Mail, Globe, Moon, Sun, MoreHorizontal } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import Image from 'next/image';
+
 
 function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -273,10 +275,13 @@ const IllusoryChat = () => {
                             exit={{ scale: 0, opacity: 0 }}
                             className="w-full h-full"
                         >
-                            <img
-                                src="/kairo-bot.jpg"
+                            <Image
+                                src="/kairo-bot.webp"
                                 alt="Kairo AI Chat"
+                                width={64}
+                                height={64}
                                 className="w-full h-full object-cover"
+                                loading="lazy"
                             />
                         </motion.div>
                     )}
@@ -299,10 +304,13 @@ const IllusoryChat = () => {
                         <div className="p-4 bg-gradient-to-r from-[#5C6BC0]/60 to-[#FF4081]/30 flex items-center justify-between border-b border-white/10">
                             <div className="flex items-center gap-3">
                                 <div className="w-10 h-10 rounded-full overflow-hidden border border-white/20 bg-gradient-to-br from-[#5C6BC0] to-[#E91E63]">
-                                    <img
-                                        src="/kairo-bot.jpg"
+                                    <Image
+                                        src="/kairo-bot.webp"
                                         alt="KAIRO AI"
+                                        width={40}
+                                        height={40}
                                         className="w-full h-full object-cover"
+                                        loading="lazy"
                                     />
                                 </div>
                                 <div>
@@ -349,7 +357,7 @@ const IllusoryChat = () => {
                                 >
                                     {msg.role === 'ai' && (
                                         <div className="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-white/10 mt-1">
-                                            <img src="/kairo-bot.jpg" alt="Kairo AI" className="w-full h-full object-cover" />
+                                            <Image src="/kairo-bot.webp" alt="Kairo AI" width={32} height={32} className="w-full h-full object-cover" loading="lazy" />
                                         </div>
                                     )}
                                     <div className={cn(
@@ -378,7 +386,7 @@ const IllusoryChat = () => {
                                     className="flex gap-2 self-start"
                                 >
                                     <div className="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-white/10">
-                                        <img src="/kairo-bot.jpg" alt="Kairo AI" className="w-full h-full object-cover" />
+                                        <Image src="/kairo-bot.webp" alt="Kairo AI" width={32} height={32} className="w-full h-full object-cover" loading="lazy" />
                                     </div>
                                     <div className="bg-white/10 p-3 rounded-2xl border border-white/10">
                                         <div className="flex gap-1">

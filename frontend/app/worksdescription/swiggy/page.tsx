@@ -6,7 +6,7 @@ import Footer from "@/app/components/Footer";
 import { WorksDesLayout } from "@/app/components/WorksDesLayout";
 import HorizontalScroll from "@/app/components/HorizontalScroll";
 
-import SwiggyLogo from "../../components/assets/Swiggy.svg";
+import SwiggyLogo from "../../components/assets/swiggy.svg";
 
 const images = [
   "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066215/swiggy_1_nthhv5.png",

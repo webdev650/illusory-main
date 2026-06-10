@@ -4,7 +4,7 @@ import {
   styletrends2,
   styletrends3,
 } from "@/app/config/workdescription";
-import addyfitnessLogo from "../../components/assets/StyleTrends-01.svg";
+import addyfitnessLogo from "../../components/assets/styletrends-01.svg";
 import React from "react";
 import Link from "next/link";
 import FAQ from "@/app/components/FAQ";

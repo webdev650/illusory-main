@@ -6,7 +6,7 @@ import Footer from "@/app/components/Footer";
 import { WorksDesLayout } from "@/app/components/WorksDesLayout";
 import HorizontalScroll from "@/app/components/HorizontalScroll";
 
-import odisharealityLogo from "../../components/assets/OdishaRealty-01.svg";
+import odisharealityLogo from "../../components/assets/odisharealty-01.svg";
 
 // ✅ CLOUDINARY IMAGES
 const images = [

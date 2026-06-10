@@ -50,7 +50,7 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
 
   const demo: ChromaItem[] = [
     {
-      image: "/assets/testimonials/HARIHAR.png",
+      image: "/assets/testimonials/harihar.png",
       title: "Harihar Patra",
       subtitle: "Owner, Patra Tours & Travels",
       description: "Our social media was directionless until Illusory took over. They didn’t just manage pages — they gave our travel brand a voice, rhythm, and personality. What impressed me most was their consistency and control — even under tight deadlines, they delivered with excellence.",
@@ -58,7 +58,7 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
       gradient: "linear-gradient(145deg, #4F46E5, #000)",
     },
     {
-      image: "/assets/testimonials/ADNAN (ADDY).png",
+      image: "/assets/testimonials/adnan-addy.png",
       title: "Adnan Ali",
       subtitle: "Founder, Addy Meals & Addy Fitness",
       description: "What set Illusory apart was how deeply they understood the soul of my brand. They didn’t just deliver designs — they created a visual language that matched my energy and vision.",
@@ -66,7 +66,7 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
       gradient: "linear-gradient(210deg, #10B981, #000)",
     },
     {
-      image: "/assets/testimonials/NAGESH (MCO).png",
+      image: "/assets/testimonials/nagesh-mco.png",
       title: "Nagesh Ranjan Mohanty",
       subtitle: "Marketing Head, My City Odisha",
       description: "With Illusory, we don’t just outsource tasks — we gain a full-fledged marketing partner. From high-quality site shoots to strategic digital campaigns, they take complete ownership of our real estate projects. Illusory blends creative firepower with sharp sales strategy. Unlike most agencies, they don’t just push content — they focus on conversions. Every piece, from walkthrough videos to landing pages and lead-gen visuals, is clean, targeted, and aligned with buyer behavior. They know how to drive attention and build trust. Every phase, from awareness to deal closure, feels handled with business-minded clarity. Their work helps transform leads into buyers. That’s rare.",
@@ -74,7 +74,7 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
       gradient: "linear-gradient(165deg, #F59E0B, #000)",
     },
     {
-      image: "/assets/testimonials/SAILESH(CORPORATE CHEETAHS).png",
+      image: "/assets/testimonials/sailesh-corporate-cheetahs.png",
       title: "Shailesh Kumar Sinha",
       subtitle: "Co-Founder, Corporate Cheetahs",
       description: "Illusory treated our cricket team like a startup brand. The energy they brought into building our identity — from logo to jerseys to digital buzz — was unmatched. They made our team look premium and professional, yet rooted in team spirit. Their strength? Bringing emotion into branding. They understood the pride, competitiveness, and joy we wanted to show, and channeled it into every asset. It wasn’t just branding; it was culture-building.",
@@ -82,7 +82,7 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
       gradient: "linear-gradient(195deg, #EF4444, #000)",
     },
     {
-      image: "/assets/testimonials/SANSKAR(RAJ ELECTRONICS).png",
+      image: "/assets/testimonials/sanskar-raj-electronics.png",
       title: "Siddharth Sanskar",
       subtitle: "Owner, Raj Electronics",
       description: "I needed a team that got retail — fast-paced, visually noisy, and fiercely competitive. Illusory didn’t just understand it; they thrived in it. From day one, they captured the energy of our space and translated it into visuals that cut through the clutter. Their turnaround time is impressive, and what truly sets them apart is how consistently fresh and on-brand their ideas are. They keep reinventing without losing our voice. The balance between trend-savvy design and customer-centric messaging was spot-on. They brought visual discipline to our marketing and it paid off.",
@@ -90,7 +90,7 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
       gradient: "linear-gradient(225deg, #8B5CF6, #000)",
     },
     {
-      image: "/assets/testimonials/SASWAT.png",
+      image: "/assets/testimonials/saswat.png",
       title: "Saswat Panda",
       subtitle: "Founder, Puraane Sikke",
       description: "I came with a niche concept and left with a brand identity that people instantly connect with. Illusory embraced the uniqueness of Puraane Sikke and amplified it through timeless design. They didn’t overcomplicate it — they refined it. Their strength lies in minimalism with meaning. Every poster and visual they created held emotional and cultural relevance, making my brand instantly recognizable. They're storytellers disguised as designers.",

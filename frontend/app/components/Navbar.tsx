@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import Logo from "./assets/Illusory Logo.svg";
+import Logo from "./assets/illusory-logo.svg";
 import Image from "next/image";
 import gsap from "gsap";
 
@@ -47,7 +47,7 @@ const Navbar = () => {
       <nav id="nav" className="hidden lg:flex py-6 text-white w-full justify-center px-6 lg:px-20">
         <div className="flex justify-between w-full max-w-7xl">
           <div className="pointer-events-auto">
-            <Link href="/"><Image src={Logo} alt="" /></Link>
+            <Link href="/"><Image src={Logo} alt="" priority={true} /></Link>
           </div>
           <div>
             <ul className="flex gap-[32px]">
@@ -81,7 +81,7 @@ const Navbar = () => {
       {/* Mobile Navbar */}
       <nav className="lg:hidden flex justify-between items-center py-4 px-6 text-white absolute top-0 font-jakartaSans">
         <Link href="/" className="pointer-events-auto">
-          <Image src={Logo} alt="Illusory Logo Image" />
+          <Image src={Logo} alt="Illusory Logo Image" priority={true} />
         </Link>
         
         {/* Hamburger Button */}

@@ -27,7 +27,33 @@ export function cleanCloudinaryUrl(url: any): any {
   
   // Upgrade Cloudinary URLs to HTTPS to prevent mixed-content blocks
   if (replaced.startsWith("http://res.cloudinary.com/")) {
-    return replaced.replace("http://res.cloudinary.com/", "https://res.cloudinary.com/");
+    replaced = replaced.replace("http://res.cloudinary.com/", "https://res.cloudinary.com/");
+  }
+
+  // Automatically apply format, quality and sizing optimization to Cloudinary images
+  if (replaced.includes("res.cloudinary.com")) {
+    const uploadMarker = "/image/upload";
+    const index = replaced.indexOf(uploadMarker);
+    if (index !== -1) {
+      const insertPos = index + uploadMarker.length;
+      const remainingPath = replaced.substring(insertPos);
+      
+      const nextSegmentMatch = remainingPath.match(/^\/([^\/]+)/);
+      if (nextSegmentMatch) {
+        const nextSegment = nextSegmentMatch[1];
+        const isVersion = /^v\d+/.test(nextSegment);
+        if (
+          isVersion || 
+          (!nextSegment.includes("q_") && 
+           !nextSegment.includes("f_") && 
+           !nextSegment.includes("w_") && 
+           !nextSegment.includes("c_"))
+        ) {
+          // Add default optimizations: auto format, auto quality, and limit max width to 1200px (without upscaling)
+          replaced = replaced.replace(uploadMarker + "/", `${uploadMarker}/f_auto,q_auto,w_1200,c_limit/`);
+        }
+      }
+    }
   }
   
   return replaced;

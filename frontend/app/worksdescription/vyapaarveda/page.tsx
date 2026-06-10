@@ -6,7 +6,7 @@ import Footer from "@/app/components/Footer";
 import { WorksDesLayout } from "@/app/components/WorksDesLayout";
 import HorizontalScroll from "@/app/components/HorizontalScroll";
 
-import FallbackLogo from "../../components/assets/Company logo.svg";
+import FallbackLogo from "../../components/assets/company-logo.svg";
 
 const images = [
   "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066129/Copy_of_vyapaarveda_ls4hmx.png",

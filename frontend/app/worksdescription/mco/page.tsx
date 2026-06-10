@@ -6,7 +6,7 @@ import Footer from "@/app/components/Footer";
 import { WorksDesLayout } from "@/app/components/WorksDesLayout";
 import HorizontalScroll from "@/app/components/HorizontalScroll";
 
-import MCOLogo from "../../components/assets/MCO.svg";
+import MCOLogo from "../../components/assets/mco.svg";
 
 // ✅ CLOUDINARY IMAGES
 const images = [

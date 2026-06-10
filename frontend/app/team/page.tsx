@@ -1,8 +1,20 @@
+import { Metadata } from 'next';
 import React from "react";
 import { App } from "../components/App";
 import RightImage from "./components/right-image-card";
 import FAQ from "../components/FAQ";
 import Footer from "../components/Footer";
+
+export const metadata: Metadata = {
+  title: "Our Team | Illusory Design Studios",
+  description: "Meet the creative experts behind Illusory Design Studios.",
+  openGraph: {
+    title: "Our Team | Illusory Design Studios",
+    description: "Meet the creative experts behind Illusory Design Studios.",
+    url: "https://www.illusorydesignstudios.com/team",
+    type: "website",
+  }
+};
 const teamOne = "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066114/20250307-DSC_6791_1_m2aip4.jpg";
 const teamTwo = "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066107/team2-01_utxidr.jpg";
 const teamThree = "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066108/20250307-DSC_6796_bfis9v.jpg";

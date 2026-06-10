@@ -1,7 +1,7 @@
 import React from 'react';
 import { CircleCheck, Plus } from 'lucide-react';
 import Image from 'next/image';
-import IllusoryLogo from "../../components/assets/Illusory Logo.svg";
+import IllusoryLogo from "../../components/assets/illusory-logo.svg";
 
 interface JobCardProps {
   title: string;
@@ -24,7 +24,7 @@ const JobCard: React.FC<JobCardProps> = ({
     <div className={`w-full flex justify-between items-center group cursor-pointer border-l-4 transition-all p-4 bg-white ${isActive ? "border-blue-600 bg-blue-50/10 shadow-sm" : "border-transparent hover:border-gray-200"}`}>
       <div className="flex gap-4 items-center">
         <div className="flex-shrink-0">
-          <Image src={IllusoryLogo} alt="Illusory Logo" className="w-10 h-10 object-contain" />
+          <Image src={IllusoryLogo} alt="Illusory Logo" className="w-10 h-10 object-contain" loading="lazy" />
         </div>
         <div className="text-left flex flex-col gap-1">
           <h1 className={`text-[18px] font-semibold transition-colors ${isActive ? "text-blue-600" : "text-black group-hover:text-gray-600"}`}>

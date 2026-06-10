@@ -6,7 +6,7 @@ import {
   annapurna2,
   annapurna3,
 } from "@/app/config/workdescription";
-import annapurnaLogo from "../../components/assets/Annapurna-01.svg";
+import annapurnaLogo from "../../components/assets/annapurna-01.svg";
 import Link from "next/link";
 import React from "react";
 import HorizontalScroll from "@/app/components/HorizontalScroll";

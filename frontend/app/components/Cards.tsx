@@ -1,10 +1,10 @@
 'use client'
 import Image from "next/image";
-import annapurna from "./assets/images/Annapurna bakery.png";
+import annapurna from "./assets/images/annapurna-bakery-2.png";
 import salty from "./assets/images/salty.png";
-import desiFunkaar from "./assets/images/desi funkaar.png";
-import ADDY from "./assets/images/ADDY FITNESS.png";
-import MCO from "./assets/images/MCO.png";
+import desiFunkaar from "./assets/images/desi-funkaars.png";
+import ADDY from "./assets/images/addy-fitness-copy.png";
+import MCO from "./assets/images/my-city-odisha.png";
 import React from "react";
 // import { ArrowRight } from 'lucide-react';
 import Link from "next/link";
@@ -138,6 +138,7 @@ function Cards() {
                     src={card.image}
                     alt={card.title}
                     className="absolute inset-0 w-full h-full object-cover p-[24px]"
+                    loading="lazy"
                   />
                 </div>
               </div>

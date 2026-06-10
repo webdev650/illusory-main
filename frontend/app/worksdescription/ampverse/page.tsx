@@ -6,7 +6,7 @@ import Footer from "@/app/components/Footer";
 import { WorksDesLayout } from "@/app/components/WorksDesLayout";
 import HorizontalScroll from "@/app/components/HorizontalScroll";
 
-import AmpverseLogo from "../../components/assets/Ampverse.svg";
+import AmpverseLogo from "../../components/assets/ampverse.svg";
 
 const images = [
   "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066135/Copy_of_ampverse_edlivk.png",

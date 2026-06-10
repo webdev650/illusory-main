@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Logo from "./assets/Illusory Logo(2).svg";
+import Logo from "./assets/illusory-logo-2.svg";
 import Image from "next/image";
 import Aurora from "../components/ui/Aurora";
 import ShinyText from "./ui/ShinyText";
@@ -24,7 +24,7 @@ const Footer = () => {
         <div className="relative font-jakartaSans  text-white w-full max-w-7xl">
           {/* Main Content Area */}
           <main className="container mx-auto">
-            <Image src={Logo} alt="" />
+            <Image src={Logo} alt="" loading="lazy" />
             <h1 className="mt-20 text-5xl md:text-6xl lg:text-7xl font-bold max-w-xl lg:max-w-2xl  tracking-[-1.92px] lg:tracking-[-3.2px] leading-[108.333%] md:leading-[110%]">
               Have a project in mind? Let&apos;s talk!
             </h1>
@@ -163,7 +163,7 @@ const Footer = () => {
                     <li>
                       <Link
                         target="_blank"
-                        href="https://www.linkedin.com/company/73810696/admin/dashboard/"
+                        href="https://www.linkedin.com/company/illusorydesignstudios/"
                         className="hover:text-gray-300 transition-colors"
                       >
                         LinkedIn

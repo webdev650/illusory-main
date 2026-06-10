@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image, { ImageProps, StaticImageData } from "next/image";
 
-import { cleanCloudinaryUrl } from "../../lib/cloudinary";
+import { optimizeImageUrl } from "../../lib/imageOptimizer";
 
 const FALLBACK_IMAGE = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iIzE3MTcxNyIvPjxkZWZzPjxyYWRpYWxHcmFkaWVudCBpZD0iZ3JhZCIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNTAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMjYyNjI2Ii8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGEwYTBhIi8+PC9yYWRpYWxHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9InVybCgjZ3JhZCkiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNjgsIDEwOCkiIHN0cm9rZT0iIzQwNDA0MCIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiPjxyZWN0IHg9IjAiIHk9IjgiIHdpZHRoPSI2NCIgaGVpZ2h0PSI0OCIgcng9IjgiLz48Y2lyY2xlIGN4PSIyMiIgY3k9IjI0IiByPSI2Ii8+PHBhdGggZD0iTTQgNDYgbDE4LTE4IDE2IDE2IDgtOCAxMCAxMCIvPjwvZz48dGV4dCB4PSI1MCUiIHk9IjE5MCIgZmlsbD0iIzczNzM3MyIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgLWFwcGxlLXN5c3RlbSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjUwMCIgbGV0dGVyLXNwYWNpbmc9IjEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPklMTFVTT1JZIERFU0lHTiBTVFVESU9TPC90ZXh0Pjx0ZXh0IHg9IjUwJSIgeT0iMjEwIiBmaWxsPSIjNDA0MDQwIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCAtYXBwbGUtc3lzdGVtLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5JbWFnZSBVbmF2YWlsYWJsZTwvdGV4dD48L3N2Zz4=";
 
@@ -39,7 +39,7 @@ export const SafeImage: React.FC<SafeImageProps> = ({
       return;
     }
 
-    const sanitizedSrc = cleanCloudinaryUrl(src);
+    const sanitizedSrc = optimizeImageUrl(src);
     setImgSrc(sanitizedSrc);
     setIsLoading(true);
     setIsError(false);
@@ -69,6 +69,16 @@ export const SafeImage: React.FC<SafeImageProps> = ({
 
   // Check if it is a fill image or bounded
   const isFill = props.fill || !props.width || !props.height;
+  const loadingStrategy = props.priority ? undefined : (props.loading || "lazy");
+
+  let isSvg = false;
+  if (typeof imgSrc === "string") {
+    isSvg = imgSrc.toLowerCase().includes(".svg");
+  } else if (imgSrc && typeof imgSrc === "object" && "src" in imgSrc) {
+    isSvg = imgSrc.src.toLowerCase().includes(".svg");
+  }
+
+  const isCdnImage = typeof imgSrc === "string" && (imgSrc.includes("res.cloudinary.com") || imgSrc.includes("images.pexels.com"));
 
   return (
     <div className={`relative overflow-hidden group/safe-image ${containerClassName} ${isFill ? "w-full h-full" : ""}`}>
@@ -84,6 +94,8 @@ export const SafeImage: React.FC<SafeImageProps> = ({
       )}
 
       <Image
+        loading={loadingStrategy}
+        unoptimized={props.unoptimized || isSvg || isCdnImage}
         {...props}
         src={imgSrc}
         alt={alt}

@@ -6,7 +6,7 @@ import Footer from "@/app/components/Footer";
 import { WorksDesLayout } from "@/app/components/WorksDesLayout";
 import HorizontalScroll from "@/app/components/HorizontalScroll";
 
-import spectrumLogo from "@/app/components/assets/Spectrum-01.svg";
+import spectrumLogo from "@/app/components/assets/spectrum-01.svg";
 
 // ✅ CLOUDINARY IMAGES
 const images = [

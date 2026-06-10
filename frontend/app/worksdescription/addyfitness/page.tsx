@@ -7,7 +7,7 @@ import FAQ from "@/app/components/FAQ";
 import Footer from "@/app/components/Footer";
 import HorizontalScroll from "@/app/components/HorizontalScroll";
 
-import addyfitnessLogo from "@/app/components/assets/ADDY Fitness.svg";
+import addyfitnessLogo from "@/app/components/assets/addy-fitness.svg";
 
 // ✅ CLOUDINARY IMAGES
 const images = [

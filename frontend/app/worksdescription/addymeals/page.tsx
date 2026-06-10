@@ -7,7 +7,7 @@ import FAQ from "@/app/components/FAQ";
 import Footer from "@/app/components/Footer";
 import HorizontalScroll from "@/app/components/HorizontalScroll";
 
-import addymealsLogo from "@/app/components/assets/ADDY Meals.svg";
+import addymealsLogo from "@/app/components/assets/addy-meals.svg";
 
 // ✅ CLOUDINARY IMAGES
 const images = [

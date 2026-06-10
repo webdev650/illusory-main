@@ -6,7 +6,7 @@ import Footer from "@/app/components/Footer";
 import { WorksDesLayout } from "@/app/components/WorksDesLayout";
 import HorizontalScroll from "@/app/components/HorizontalScroll";
 
-import desifunkaarLogo from "@/app/components/assets/Desi Funkaar.svg";
+import desifunkaarLogo from "@/app/components/assets/desi-funkaar.svg";
 
 // ✅ CLOUDINARY IMAGES
 const images = [

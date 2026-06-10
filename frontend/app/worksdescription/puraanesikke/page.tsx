@@ -6,7 +6,7 @@ import Footer from "@/app/components/Footer";
 import { WorksDesLayout } from "@/app/components/WorksDesLayout";
 import HorizontalScroll from "@/app/components/HorizontalScroll";
 
-import PuraaneSikkeLogo from "../../components/assets/PuraaneSikke-01.svg";
+import PuraaneSikkeLogo from "../../components/assets/puraanesikke-01.svg";
 
 // ✅ CLOUDINARY IMAGES
 const images = [

@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react'
 import { Camera, Palette, Brush, Sparkles } from 'lucide-react';
-import One from "../assets/images/item 01.png"
+import One from "../assets/images/item-01.png"
 import Image from 'next/image';
 
 const StickyScroll = () => {
@@ -56,7 +56,7 @@ const StickyScroll = () => {
         <div className="sticky top-0 h-screen flex items-center justify-center space-x-10">
           {/* Image Section */}
           <div className="w-1/2 h-auto max-h-[600px] rounded-2xl overflow-hidden">
-            <Image src={One} alt='' layout="responsive" />
+            <Image src={One} alt='' layout="responsive" loading="lazy" />
           </div>
 
           {/* Content Section */}

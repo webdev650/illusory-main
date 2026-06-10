@@ -73,8 +73,8 @@ export default {
         '100%' : '100%',
       },
       fontFamily:{
-        'rethinkSans' : ["Rethink Sans", "serif"],
-        jakartaSans : ["Plus Jakarta Sans", "serif"],
+        'rethinkSans' : ["var(--font-rethink-sans)", "serif"],
+        jakartaSans : ["var(--font-plus-jakarta-sans)", "serif"],
         sans: ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
       },
       margin:{

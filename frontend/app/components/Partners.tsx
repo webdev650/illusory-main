@@ -1,30 +1,30 @@
 import React from "react";
 import Image from "next/image";
 import Marquee from "./Marquee";
-import ADDY_Fitness from "./assets/ADDY Fitness.svg";
-import ADDY_Meals from "./assets/ADDY Meals.svg";
-import AllenSolly from "./assets/Allen Solly.svg";
-import Ampverse from "./assets/Ampverse.svg";
-import AnnSCafe from "./assets/Ann_s Cafe.svg";
-import Robinson from "./assets/C.H. Robinson.svg";
-import JawedHabib from "./assets/Jawed Habib.svg";
+import ADDY_Fitness from "./assets/addy-fitness.svg";
+import ADDY_Meals from "./assets/addy-meals.svg";
+import AllenSolly from "./assets/allen-solly.svg";
+import Ampverse from "./assets/ampverse.svg";
+import AnnSCafe from "./assets/anns-cafe.svg";
+import Robinson from "./assets/ch-robinson.svg";
+import JawedHabib from "./assets/jawed-habib.svg";
 import zomaLand from "./assets/zomaland.svg";
-import Swiggy from "./assets/Swiggy.svg";
-import Agritech from "./assets/GNG Agritech.svg";
+import Swiggy from "./assets/swiggy.svg";
+import Agritech from "./assets/gng-agritech.svg";
 import Lakme from "./assets/lakme.svg";
-import MCO from "./assets/MCO.svg";
-import JJ_Food from "./assets/JJ Food.svg";
-import Desi_Funkaar from "./assets/Desi Funkaar.svg";
-import GoaGladiator from "./assets/Goa Gladiator.svg";
+import MCO from "./assets/mco.svg";
+import JJ_Food from "./assets/jj-food.svg";
+import Desi_Funkaar from "./assets/desi-funkaar.svg";
+import GoaGladiator from "./assets/goa-gladiator.svg";
 import Nvidia from "./assets/nvidia.svg";
-import Mughal_Kitchen from "./assets/Mughal Kitchen.svg";
+import Mughal_Kitchen from "./assets/mughal-kitchen.svg";
 import Salty from "./assets/salty.svg";
 import Visage from "./assets/visage.svg";
-import inSTREAMLY from "./assets/inSTREAMLY.svg";
-import Rare_Rabbit from "./assets/rare rabit.svg";
-import Patra from "./assets/Patra Tours and Travel.svg";
-import Dhani from "./assets/DHANI-01.svg";
-import Urbana from "./assets/Urbana.svg";
+import inSTREAMLY from "./assets/instreamly.svg";
+import Rare_Rabbit from "./assets/rare-rabbit.svg";
+import Patra from "./assets/patra-tours-travel.svg";
+import Dhani from "./assets/dhani-01.svg";
+import Urbana from "./assets/urbana.svg";
 import ClientMarquee from "react-fast-marquee";
 
 const Partners = () => {
@@ -60,7 +60,7 @@ const Partners = () => {
         <div className="flex flex-col justify-between w-full md:max-w-7xl">
           <div className="w-full flex justify-center">
           <p className="md:w-[400px] leading-[150%] font-[500] text-center">
-            Our partners - As a tight-knit of experts , we create memorable and
+            Our partners - As a tight-knit team of experts , we create memorable and
             emotional websites, digital experiences and native apps.
           </p>
           </div>
@@ -69,7 +69,7 @@ const Partners = () => {
 
           {clientsAndPartners.map((client, index) => (
         <div key={index} className="flex items-center justify-center ml-8">
-          <Image src={client.src} alt={client.alt} className="w-36" />
+          <Image src={client.src} alt={client.alt} className="w-36" loading="lazy" />
         </div>
       ))}
             </ClientMarquee>
@@ -78,7 +78,7 @@ const Partners = () => {
           <div className="mt-20 gap-14 grid grid-cols-5 lg:grid-cols-6 max-md:hidden">
           {clientsAndPartners.map((client, index) => (
         <div key={index} className="flex items-center justify-center">
-          <Image src={client.src} alt={client.alt} className="w-36 " />
+          <Image src={client.src} alt={client.alt} className="w-36 " loading="lazy" />
         </div>
       ))}
           </div>

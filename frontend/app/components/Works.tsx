@@ -128,7 +128,6 @@ const Works = () => {
                             fill
                             className="w-full h-full object-cover rounded-t-2xl"
                             alt={project.title}
-                            priority
                           />
                         )}
                       </div>

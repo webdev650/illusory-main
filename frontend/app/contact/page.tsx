@@ -1,9 +1,21 @@
+import { Metadata } from 'next';
 import React from 'react'
 import { App } from '../components/App'
 import ContactForm from './form/contact-form'
 import FAQ from '../components/FAQ'
 import Footer from '../components/Footer'
 import { Phone, Mail, MessageCircle } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: "Contact Us | Illusory Design Studios",
+  description: "Get in touch with Illusory Design Studios. Start a discussion about your next project.",
+  openGraph: {
+    title: "Contact Us | Illusory Design Studios",
+    description: "Get in touch with Illusory Design Studios. Start a discussion about your next project.",
+    url: "https://www.illusorydesignstudios.com/contact",
+    type: "website",
+  }
+};
 
 const Contact = () => {
   return (
