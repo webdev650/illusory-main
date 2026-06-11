@@ -32,43 +32,12 @@ export const fallbackProjects = [
     tags: "Culture | Talent Management | Experience Design"
   },
   {
-    _id: "ampverse",
-    navigation: "ampverse",
-    title: "Gaming and Lifestyle Redefined",
-    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066141/Copy_of_ampverse_hrhaud.png",
-    description: "Ampverse is leading the charge in gaming culture and lifestyle, creating immersive experiences for the next generation of gamers.",
-    tags: "Gaming | Lifestyle | Content Creation"
-  },
-  {
     _id: "addymeals",
     navigation: "addymeals",
     title: "Nutrition at Your Doorstep",
     image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158558/1_jtnwsz.png",
     description: "Addy Meals brings healthy, delicious, and customized nutrition plans straight to you, making fitness goals easier to achieve.",
     tags: "Healthy Eating | Meal Prep | Wellness"
-  },
-  {
-    _id: "vyapaarveda",
-    navigation: "vyapaarveda",
-    title: "Empowering Business Growth",
-    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066139/Copy_of_vyapaarveda_llnfig.png",
-    description: "Vyapaar Veda is dedicated to helping businesses scale through strategic planning, financial wisdom, and modern management techniques.",
-    tags: "Business Strategy | Financial Consulting | Growth"
-  },
-  {
-    _id: "zomaland",
-    navigation: "zomaland",
-    title: "The Ultimate Food Festival",
-    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066140/Copy_of_zomaland_ptnkjw.png",
-    gallery: [
-      "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066178/center_full_view_fuxyrn.png",
-      "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066177/box_office_tickets_aiqwpt.png",
-      "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066177/concert_branding_ivgubc.png",
-      "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066176/circle_rotation_wheel_uau98k.png",
-      "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066205/artist_on_stage_kergof.png"
-    ],
-    description: "Zomaland is a celebration of food, music, and fun. We brought the carnival to life with vibrant visuals and seamless digital integration.",
-    tags: "Event Management | Visual Branding | Experience Design"
   },
   {
     _id: "styletrends",
