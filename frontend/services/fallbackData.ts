@@ -3,7 +3,7 @@ export const fallbackProjects = [
     _id: "mco",
     navigation: "mco",
     title: "Sustainable Living in Odisha",
-    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066089/Copy_of_MCO_mockup_vmog9f.png",
+    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158567/MCO_gldekl.png",
     description: "My City Odisha (MCO) is a community-driven initiative focusing on sustainable urban development and heritage preservation.",
     tags: "Sustainability | Urban Development | Heritage"
   },
@@ -19,7 +19,7 @@ export const fallbackProjects = [
     _id: "annapurna",
     navigation: "annapurna",
     title: "The Art of Baking",
-    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066100/Copy_of_annapurna_bakery_mockup_ad93tu.png",
+    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158565/Annapurna_bakery_2_fnnped.png",
     description: "Annapurna Bakery is a heritage brand known for its artisanal breads and pastries. We updated their visual identity while preserving their traditional roots.",
     tags: "Food & Beverage | Brand Identity | Packaging"
   },
@@ -27,7 +27,7 @@ export const fallbackProjects = [
     _id: "desifunkaar",
     navigation: "desifunkaar",
     title: "Celebrating Cultural Narratives",
-    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066097/Copy_of_desi_funkaar_mockup_vwhzt8.png",
+    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158567/desi_funkaar_wzeloj.png",
     description: "Desi Funkaar is a platform for independent artists. We created a brand experience that is as vibrant and diverse as the artists it represents.",
     tags: "Culture | Talent Management | Experience Design"
   },
@@ -90,7 +90,7 @@ export const fallbackProjects = [
     _id: "puraanesikke",
     navigation: "puraanesikke",
     title: "Preserving Numismatic Heritage",
-    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066095/Copy_of_puraane_sikke_mockup_r5sxjk.png",
+    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158554/2_ox4slc.png",
     description: "Puraane Sikke is dedicated to collectors and enthusiasts of rare coins and currency, providing a platform to explore and trade history.",
     tags: "Numismatics | Rare Coins | Historical Collection"
   },

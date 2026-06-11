@@ -10,8 +10,9 @@ import odisharealityLogo from "../../components/assets/odisharealty-01.svg";
 
 // ✅ CLOUDINARY IMAGES
 const images = [
-  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066097/Copy_of_odisha_realty_mockup_bjkppv.png",
-  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066144/Copy_of_Odisha_Realty_z2eldq.png",
+  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158558/1_y0udhm.png",
+  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158557/2_rqff4j.png",
+  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158556/3_i4twps.png",
 ];
 
 const Odishareality = () => {

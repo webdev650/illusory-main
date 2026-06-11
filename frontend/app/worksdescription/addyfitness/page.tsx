@@ -11,9 +11,9 @@ import addyfitnessLogo from "@/app/components/assets/addy-fitness.svg";
 
 // ✅ CLOUDINARY IMAGES
 const images = [
-  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066107/Copy_of_addy_fitness_mockup_x3cdpx.png",
-  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066138/Copy_of_addy_fitness_bpyg09.png",
-  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066143/Copy_of_addy_fitness_on3oo0.png",
+  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158563/1_xqy3k5.png",
+  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158563/2_yf6nsf.png",
+  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158562/3_gudar3.png",
 ];
 
 const AddyFitness = () => {

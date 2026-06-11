@@ -13,9 +13,9 @@ import HorizontalScroll from "@/app/components/HorizontalScroll";
 
 const StyleTrends = () => {
   const images = [
-    "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066089/Copy_of_style_trends_mockup_xkq7sr.png",
-    "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066140/Copy_of_Style_Trends_odh6ee.png",
-    "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066128/Copy_of_Style_Trends_kcbtaj.png",
+    "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158553/1_gyrqug.png",
+    "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158553/2_ijnho7.png",
+    "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158553/3_y9mdvm.png",
   ];
 
   return (

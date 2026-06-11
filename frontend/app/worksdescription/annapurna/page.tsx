@@ -14,10 +14,9 @@ import HorizontalScroll from "@/app/components/HorizontalScroll";
 const Annapurna = () => {
   // ✅ CLOUDINARY IMAGES
   const images = [
-    "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066100/Copy_of_annapurna_bakery_mockup_ad93tu.png",
-    "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066168/Copy_of_Annapurna_bakery_2_pmbcrm.png",
-    "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066167/Copy_of_Annapurna_Bakery_black_whu8zn.png",
-    "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066145/Copy_of_annapurna_bakery_it5ua6.png",
+    "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158562/1_hvywdn.png",
+    "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158562/2_zuzk9i.png",
+    "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158561/3_ben9zn.png",
   ];
   return (
     <>

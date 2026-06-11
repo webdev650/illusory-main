@@ -11,9 +11,9 @@ import addymealsLogo from "@/app/components/assets/addy-meals.svg";
 
 // ✅ CLOUDINARY IMAGES
 const images = [
-  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066104/Copy_of_addy_meals_movkup_xpopa0.png",
-  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066133/Copy_of_addy_meals_avpnqq.png",
-  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066145/Copy_of_addy_meals_rzn3mv.png",
+  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158558/1_jtnwsz.png",
+  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158558/2_cia03r.png",
+  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158558/3_xaossu.png",
 ];
 
 const AddyMeals = () => {

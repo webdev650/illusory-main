@@ -6,9 +6,10 @@ import ImageMarquee from "react-fast-marquee";
 
 interface HorizontalScrollProps {
   images: (StaticImageData | string)[]; 
+  objectFit?: "cover" | "contain";
 }
 
-const HorizontalScroll: React.FC<HorizontalScrollProps> = ({ images }) => {
+const HorizontalScroll: React.FC<HorizontalScrollProps> = ({ images, objectFit }) => {
   const [isMounted, setIsMounted] = React.useState(false);
 
   React.useEffect(() => {
@@ -32,7 +33,7 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({ images }) => {
                 key={index}
                 className="transform transition-transform duration-500 hover:scale-[1.02]"
               >
-                <ImageContainer imageUrl={image} />
+                <ImageContainer imageUrl={image} objectFit={objectFit} />
               </div>
             ))}
           </div>
