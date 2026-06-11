@@ -9,10 +9,10 @@ import Footer from '../components/Footer'
 
 export const metadata: Metadata = {
   title: "Our Work & Portfolio | Illusory Design Studios",
-  description: "Explore our creative projects for brands like Swiggy, Nvidia, Allen Solly, Lakme, and more.",
+  description: "Explore our creative projects, branding, and digital design portfolio by Illusory Design Studios.",
   openGraph: {
     title: "Our Work & Portfolio | Illusory Design Studios",
-    description: "Explore our creative projects for brands like Swiggy, Nvidia, Allen Solly, Lakme, and more.",
+    description: "Explore our creative projects, branding, and digital design portfolio by Illusory Design Studios.",
     url: "https://www.illusorydesignstudios.com/works",
     type: "website",
   }
