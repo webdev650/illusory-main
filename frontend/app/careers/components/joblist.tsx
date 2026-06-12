@@ -4,11 +4,19 @@ import { Search, Filter, Briefcase, TrendingUp, ArrowRight } from 'lucide-react'
 import Link from 'next/link';
 import JobCard from './jobcard';
 import { JobDetailsContent } from './jobdetails';
-import { jobs } from '../data/jobs';
+import { jobs, Job } from '../data/jobs';
+import { ApplyModal } from './ApplyModal';
 
 const JobListings: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedJobId, setSelectedJobId] = useState<string>(jobs[0].id);
+  const [isApplyModalOpen, setIsApplyModalOpen] = useState(false);
+  const [applyingJob, setApplyingJob] = useState<Job | null>(null);
+
+  const handleApplyClick = (job: Job) => {
+    setApplyingJob(job);
+    setIsApplyModalOpen(true);
+  };
 
   const filteredJobs = jobs.filter(job =>
     job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -89,6 +97,7 @@ const JobListings: React.FC = () => {
                     isActivelyHiring={job.isActivelyHiring}
                     isRemote={job.isRemote}
                     isActive={selectedJobId === job.id}
+                    onApply={() => handleApplyClick(job)}
                   />
                 </div>
               ))
@@ -119,7 +128,7 @@ const JobListings: React.FC = () => {
                 </Link>
               </div>
               <div className="flex-1">
-                <JobDetailsContent job={selectedJob} />
+                <JobDetailsContent job={selectedJob} onApply={() => handleApplyClick(selectedJob)} />
               </div>
             </div>
           ) : (
@@ -130,6 +139,12 @@ const JobListings: React.FC = () => {
         </div>
 
       </div>
+
+      <ApplyModal
+        isOpen={isApplyModalOpen}
+        onClose={() => setIsApplyModalOpen(false)}
+        job={applyingJob}
+      />
 
       <style jsx global>{`
         .custom-scrollbar::-webkit-scrollbar {

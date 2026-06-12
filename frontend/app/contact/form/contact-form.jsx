@@ -7,13 +7,20 @@ import {
   ChevronRight,
   Loader2,
 } from "lucide-react";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import { contactAPI } from "../../../services/api";
 
 const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const formContainerRef = useRef(null);
+
+  useEffect(() => {
+    if (submitStatus === "error" && formContainerRef.current) {
+      formContainerRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [submitStatus]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -61,8 +68,28 @@ const ContactForm = () => {
     }
   };
 
+  if (submitStatus === "success") {
+    return (
+      <div className="max-w-2xl mx-auto bg-black/40 backdrop-blur-xl rounded-2xl shadow-2xl overflow-hidden border border-white/10 p-12 text-center space-y-6 animate-fade-in">
+        <div className="inline-flex p-4 bg-green-500/10 rounded-full text-green-400 mb-4 animate-bounce">
+          <CheckCircle className="w-16 h-16" />
+        </div>
+        <h3 className="text-3xl font-bold text-white animate-pulse">Message Received!</h3>
+        <p className="text-gray-300 max-w-md mx-auto text-lg leading-relaxed">
+          Your rebellion message has successfully pierced our defenses. Our creative crew will analyze your request and get back to you within 24 hours.
+        </p>
+        <button
+          onClick={() => setSubmitStatus(null)}
+          className="mt-6 bg-gradient-to-r from-[#FF1284] to-[#2407ff] text-white font-bold py-3.5 px-8 rounded-lg hover:scale-105 active:scale-95 transition-all text-sm uppercase tracking-wider shadow-[0_0_20px_rgba(255,18,132,0.3)]"
+        >
+          Send Another Message
+        </button>
+      </div>
+    );
+  }
+
   return (
-    <div className="max-w-2xl mx-auto bg-black/40 backdrop-blur-xl rounded-2xl shadow-2xl overflow-hidden border border-white/10">
+    <div ref={formContainerRef} className="max-w-2xl mx-auto bg-black/40 backdrop-blur-xl rounded-2xl shadow-2xl overflow-hidden border border-white/10">
       <div className="bg-gradient-to-r from-[#FF1284]/20 to-[#2407ff]/20 px-8 py-8 border-b border-white/10">
         <h2 className="text-3xl font-bold text-white tracking-tight">Get In Touch</h2>
         <p className="text-gray-400 mt-2 font-medium">
@@ -71,6 +98,13 @@ const ContactForm = () => {
       </div>
 
       <form onSubmit={handleSubmit} className="p-8 space-y-6">
+        {submitStatus === "error" && (
+          <div className="bg-red-500/20 border border-red-500 text-red-400 p-4 rounded-lg flex items-center gap-3 animate-pulse">
+            <AlertCircle className="w-5 h-5 shrink-0" />
+            <p className="text-sm">Something went wrong. Please try again or contact us directly.</p>
+          </div>
+        )}
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <label
@@ -278,20 +312,6 @@ const ContactForm = () => {
             placeholder="Tell us about your project, goals, timeline, and any specific requirements..."
           />
         </div>
-
-        {submitStatus === "success" && (
-          <div className="bg-green-500/20 border border-green-500 text-green-400 p-4 rounded-lg flex items-center gap-3">
-            <CheckCircle className="w-5 h-5" />
-            <p>Message sent successfully! We'll get back to you soon.</p>
-          </div>
-        )}
-
-        {submitStatus === "error" && (
-          <div className="bg-red-500/20 border border-red-500 text-red-400 p-4 rounded-lg flex items-center gap-3">
-            <AlertCircle className="w-5 h-5" />
-            <p>Something went wrong. Please try again or contact us directly.</p>
-          </div>
-        )}
 
         <div className="pt-4">
           <button

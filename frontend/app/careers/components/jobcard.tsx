@@ -10,6 +10,7 @@ interface JobCardProps {
   isRemote?: boolean;
   isActivelyHiring: boolean;
   isActive?: boolean;
+  onApply: (e: React.MouseEvent) => void;
 }
 
 const JobCard: React.FC<JobCardProps> = ({
@@ -19,6 +20,7 @@ const JobCard: React.FC<JobCardProps> = ({
   isRemote = false,
   isActivelyHiring,
   isActive = false,
+  onApply,
 }) => {
   return (
     <div className={`w-full flex justify-between items-center group cursor-pointer border-l-4 transition-all p-4 bg-white ${isActive ? "border-blue-600 bg-blue-50/10 shadow-sm" : "border-transparent hover:border-gray-200"}`}>
@@ -41,7 +43,13 @@ const JobCard: React.FC<JobCardProps> = ({
             <span className={`px-3 py-1 border text-[10px] font-bold uppercase tracking-wider transition-colors ${isActive ? "border-purple-200 bg-purple-100/50 text-purple-700" : "border-purple-100 bg-purple-50/50 text-purple-600"}`}>
               Full-time
             </span>
-            <button className={`px-3 py-1 border text-[10px] font-bold uppercase tracking-wider transition-all ${isActive ? "bg-blue-600 border-blue-600 text-white" : "border-black text-white bg-black hover:bg-white hover:text-black hover:border-black"}`}>
+            <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                onApply(e);
+              }}
+              className={`px-3 py-1 border text-[10px] font-bold uppercase tracking-wider transition-all ${isActive ? "bg-blue-600 border-blue-600 text-white" : "border-black text-white bg-black hover:bg-white hover:text-black hover:border-black"}`}
+            >
               Apply
             </button>
             <button className="px-3 py-1 border border-gray-200 text-[10px] font-bold uppercase tracking-wider text-gray-600 hover:border-orange-500 hover:text-orange-500 transition-all">

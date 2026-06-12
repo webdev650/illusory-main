@@ -8,10 +8,10 @@ import FAQ from '../components/FAQ'
 import Footer from '../components/Footer'
 
 export const metadata: Metadata = {
-  title: "Our Work & Portfolio | Illusory Design Studios",
+  title: "Our Work & Portfolio",
   description: "Explore our creative projects, branding, and digital design portfolio by Illusory Design Studios.",
   openGraph: {
-    title: "Our Work & Portfolio | Illusory Design Studios",
+    title: "Our Work & Portfolio",
     description: "Explore our creative projects, branding, and digital design portfolio by Illusory Design Studios.",
     url: "https://www.illusorydesignstudios.com/works",
     type: "website",

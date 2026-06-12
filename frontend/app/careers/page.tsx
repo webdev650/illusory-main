@@ -7,10 +7,10 @@ import FAQ from '../components/FAQ'
 import Footer from '../components/Footer'
 
 export const metadata: Metadata = {
-  title: "Careers | Illusory Design Studios",
+  title: "Careers",
   description: "Join the Illusory team. We're looking for creative designers, marketers, and developers.",
   openGraph: {
-    title: "Careers | Illusory Design Studios",
+    title: "Careers",
     description: "Join the Illusory team. We're looking for creative designers, marketers, and developers.",
     url: "https://www.illusorydesignstudios.com/careers",
     type: "website",

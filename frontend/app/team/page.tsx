@@ -6,10 +6,10 @@ import FAQ from "../components/FAQ";
 import Footer from "../components/Footer";
 
 export const metadata: Metadata = {
-  title: "Our Team | Illusory Design Studios",
+  title: "Our Team",
   description: "Meet the creative experts behind Illusory Design Studios.",
   openGraph: {
-    title: "Our Team | Illusory Design Studios",
+    title: "Our Team",
     description: "Meet the creative experts behind Illusory Design Studios.",
     url: "https://www.illusorydesignstudios.com/team",
     type: "website",

@@ -7,6 +7,7 @@ import seedRoutes from "./seed";
 import servicesRoutes from "./services";
 import uploadRoutes from "./upload";
 import packageRoutes from "./package";
+import careersRoutes from "./careers";
 
 const router = Router();
 
@@ -18,5 +19,6 @@ router.use("/seed", seedRoutes);
 router.use("/services", servicesRoutes);
 router.use("/upload", uploadRoutes);
 router.use("/package", packageRoutes);
+router.use("/careers", careersRoutes);
 
 export default router;

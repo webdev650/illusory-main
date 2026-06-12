@@ -2,7 +2,9 @@ import { Metadata } from 'next';
 import HomeClient from './HomeClient';
 
 export const metadata: Metadata = {
-  title: "Illusory Design Studios | Bespoke Design & Tech Solutions",
+  title: {
+    absolute: "Illusory Design Studios | Bespoke Design & Tech Solutions"
+  },
   description: "Premier creative agency in Bhubaneswar specializing in bespoke design, digital marketing, branding, and tech solutions.",
   openGraph: {
     title: "Illusory Design Studios | Bespoke Design & Tech Solutions",

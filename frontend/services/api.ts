@@ -215,7 +215,42 @@ export const projectsAPI = {
 
 export const contactAPI = {
   getAll: () => apiFetch("/contact"),
-  submit: (data: any) => apiFetch("/contact", { method: "POST", body: JSON.stringify(data) }),
+  submit: async (data: any) => {
+    return handleApiFallback(
+      () => apiFetch("/contact", { method: "POST", body: JSON.stringify(data) }),
+      () => {
+        const contacts = getOfflineData("illusory_offline_contacts", []);
+        const newContact = {
+          _id: `contact_${Date.now()}`,
+          ...data,
+          createdAt: new Date().toISOString()
+        };
+        contacts.push(newContact);
+        setOfflineData("illusory_offline_contacts", contacts);
+        return newContact;
+      }
+    );
+  },
+};
+
+export const careersAPI = {
+  apply: async (data: any) => {
+    return handleApiFallback(
+      () => apiFetch("/careers/apply", { method: "POST", body: JSON.stringify(data) }),
+      () => {
+        const apps = getOfflineData("illusory_offline_applications", []);
+        const newApp = {
+          _id: `app_${Date.now()}`,
+          ...data,
+          status: "New",
+          createdAt: new Date().toISOString()
+        };
+        apps.push(newApp);
+        setOfflineData("illusory_offline_applications", apps);
+        return newApp;
+      }
+    );
+  }
 };
 
 export const faqAPI = {
@@ -247,7 +282,11 @@ export const seedAPI = {
 export const packageAPI = {
   getStates: async () => {
     return handleApiFallback(
-      () => apiFetch("/package/states"),
+      async () => {
+        const res = await apiFetch("/package/states");
+        if (!res || res.length === 0) throw new Error("Empty states data");
+        return res;
+      },
       () => {
         const locations = getOfflineData("illusory_offline_locations", fallbackDistrictIndustries);
         const states = Array.from(new Set(locations.map((d: any) => d.state)));
@@ -257,7 +296,11 @@ export const packageAPI = {
   },
   getDistricts: async (state: string) => {
     return handleApiFallback(
-      () => apiFetch(`/package/districts/${encodeURIComponent(state)}`),
+      async () => {
+        const res = await apiFetch(`/package/districts/${encodeURIComponent(state)}`);
+        if (!res || res.length === 0) throw new Error("Empty districts data");
+        return res;
+      },
       () => {
         const locations = getOfflineData("illusory_offline_locations", fallbackDistrictIndustries);
         const filtered = locations.filter((d: any) => d.state === state);
@@ -268,7 +311,11 @@ export const packageAPI = {
   },
   getIndustries: async (state: string, district: string) => {
     return handleApiFallback(
-      () => apiFetch(`/package/industries/${encodeURIComponent(state)}/${encodeURIComponent(district)}`),
+      async () => {
+        const res = await apiFetch(`/package/industries/${encodeURIComponent(state)}/${encodeURIComponent(district)}`);
+        if (!res || res.length === 0) throw new Error("Empty industries data");
+        return res;
+      },
       () => {
         const locations = getOfflineData("illusory_offline_locations", fallbackDistrictIndustries);
         const record = locations.find((d: any) => d.state === state && d.district === district);
@@ -284,7 +331,11 @@ export const packageAPI = {
   },
   getIndustriesList: async () => {
     return handleApiFallback(
-      () => apiFetch("/package/industries-list"),
+      async () => {
+        const res = await apiFetch("/package/industries-list");
+        if (!res || res.length === 0) throw new Error("Empty industries list");
+        return res;
+      },
       () => {
         const pkgs = getOfflineData("illusory_offline_packages", fallbackServicePackages);
         const industries = Array.from(new Set(pkgs.map((p: any) => p.industry)));
@@ -294,7 +345,11 @@ export const packageAPI = {
   },
   getServicePackages: async () => {
     return handleApiFallback(
-      () => apiFetch("/package/service-packages"),
+      async () => {
+        const res = await apiFetch("/package/service-packages");
+        if (!res || res.length === 0) throw new Error("Empty service packages");
+        return res;
+      },
       () => {
         return getOfflineData("illusory_offline_packages", fallbackServicePackages);
       }
@@ -302,7 +357,11 @@ export const packageAPI = {
   },
   getCategories: async () => {
     return handleApiFallback(
-      () => apiFetch("/package/categories"),
+      async () => {
+        const res = await apiFetch("/package/categories");
+        if (!res || res.length === 0) throw new Error("Empty categories");
+        return res;
+      },
       () => {
         return getOfflineData("illusory_offline_categories", fallbackCategories);
       }
