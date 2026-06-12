@@ -1,10 +1,9 @@
-"use client";
-import React, { useState } from 'react';
+import React from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ChevronLeft, Mail, MapPin, Briefcase, GraduationCap, CheckCircle } from 'lucide-react';
 import { jobs } from '../data/jobs';
-import { ApplyModal } from '../components/ApplyModal';
+import { ApplyButton } from '../components/ApplyButton';
 
 interface PageProps {
   params: {
@@ -19,7 +18,6 @@ export async function generateStaticParams() {
 }
 
 export default function JobDetailPage({ params }: PageProps) {
-  const [isApplyModalOpen, setIsApplyModalOpen] = useState(false);
   const job = jobs.find((j) => j.id === params.jobId);
 
   if (!job) {
@@ -31,8 +29,8 @@ export default function JobDetailPage({ params }: PageProps) {
       {/* Top Navigation */}
       <nav className="border-b border-gray-100 sticky top-0 bg-white/80 backdrop-blur-md z-10">
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link 
-            href="/careers" 
+          <Link
+            href="/careers"
             className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors group"
           >
             <ChevronLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
@@ -57,7 +55,7 @@ export default function JobDetailPage({ params }: PageProps) {
               </span>
             ))}
           </h1>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-4">
               <div className="flex items-center gap-3 text-gray-600">
@@ -69,7 +67,7 @@ export default function JobDetailPage({ params }: PageProps) {
                   <p className="text-sm font-medium text-black">{job.location}</p>
                 </div>
               </div>
-              
+
               <div className="flex items-center gap-3 text-gray-600">
                 <div className="w-10 h-10 border border-purple-100 bg-purple-50/30 flex items-center justify-center text-purple-600">
                   <Briefcase size={18} />
@@ -171,22 +169,17 @@ export default function JobDetailPage({ params }: PageProps) {
             <p className="text-gray-400 mb-8 max-w-md mx-auto">
               If you&apos;re passionate about design and innovation, we&apos;d love to hear from you.
             </p>
-            
+
             <div className="flex flex-col md:flex-row justify-center items-center gap-8">
-              <button 
-                onClick={() => setIsApplyModalOpen(true)}
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-lg text-sm uppercase tracking-wider transition-all hover:scale-105 active:scale-95 shadow-lg shadow-blue-500/20 w-full md:w-auto"
-              >
-                Apply Online Now
-              </button>
-              
+              <ApplyButton job={{ id: job.id, title: job.title }} />
+
               <div className="text-left p-6 border border-gray-700 bg-gray-800 shadow-xl w-full md:w-auto">
                 <p className="text-xs uppercase text-gray-500 font-bold tracking-widest mb-4">Or Apply via Email</p>
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
                     <Mail size={16} className="text-blue-400" />
                     <p className="text-sm">
-                      Send CV & Portfolio to: <br />
+                      Send CV &amp; Portfolio to: <br />
                       <span className="font-bold text-white break-all">{job.applyEmail}</span>
                     </p>
                   </div>
@@ -203,12 +196,6 @@ export default function JobDetailPage({ params }: PageProps) {
           </section>
         </div>
       </main>
-
-      <ApplyModal 
-        isOpen={isApplyModalOpen} 
-        onClose={() => setIsApplyModalOpen(false)} 
-        job={job}
-      />
 
       {/* Footer Spacer */}
       <div className="h-20"></div>
