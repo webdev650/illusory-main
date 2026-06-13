@@ -5,6 +5,7 @@ import { ChevronLeft, Mail, MapPin, Briefcase, GraduationCap, CheckCircle } from
 import { ApplyButton } from '../components/ApplyButton';
 import { connectToDatabase } from '../../lib/mongodb';
 import Job from '../../lib/models/Job';
+import { jobs as staticJobs } from '../data/jobs';
 
 interface PageProps {
   params: {
@@ -48,6 +49,31 @@ export default async function JobDetailPage({ params }: PageProps) {
     }).lean();
   } catch (err) {
     console.error("Failed to fetch job from database:", err);
+  }
+
+  if (!jobDoc) {
+    // Fall back to static jobs array
+    const match = params.jobId.match(/(\d+)$/);
+    const extractRefId = match ? match[1] : params.jobId;
+    const fallbackRefId = parseInt(extractRefId, 10).toString();
+    const staticJob = staticJobs.find((j) => String(j.id) === fallbackRefId || String(j.id).padStart(3, '0') === extractRefId);
+    
+    if (staticJob) {
+      jobDoc = {
+        referenceId: String(staticJob.id).padStart(3, '0'),
+        title: staticJob.title,
+        company: staticJob.company || 'Illusory',
+        location: staticJob.location,
+        experience: staticJob.experience,
+        qualification: staticJob.qualification,
+        description: staticJob.overview,
+        responsibilities: staticJob.responsibilities || [],
+        requirements: staticJob.requirements || [],
+        lookingFor: staticJob.lookingFor || [],
+        isActivelyHiring: staticJob.isActivelyHiring,
+        isRemote: staticJob.isRemote,
+      };
+    }
   }
 
   if (!jobDoc) {

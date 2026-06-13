@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import { connectToDatabase } from '../lib/mongodb';
 import Job from '../lib/models/Job';
 import { seedJobsIfNeeded } from '../lib/seedJobs';
+import { jobs as staticJobs } from './data/jobs';
 
 export const dynamic = 'force-dynamic';
 
@@ -51,6 +52,22 @@ const Career = async () => {
     }));
   } catch (error) {
     console.error("Failed to load jobs from database, falling back to static:", error);
+    serializableJobs = staticJobs.map((job) => ({
+      id: String(job.id).padStart(3, '0'),
+      title: job.title,
+      company: job.company || 'Illusory',
+      location: job.location,
+      experience: job.experience,
+      qualification: job.qualification,
+      overview: job.overview,
+      responsibilities: job.responsibilities || [],
+      requirements: job.requirements || [],
+      lookingFor: job.lookingFor || [],
+      isActivelyHiring: job.isActivelyHiring,
+      isRemote: job.isRemote,
+      applyEmail: 'operations@illusorydesignstudios.com',
+      applySubject: `Application – ${job.title} (#${String(job.id).padStart(3, '0')})`,
+    }));
   }
 
   return (
