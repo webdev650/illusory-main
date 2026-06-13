@@ -40,9 +40,9 @@ const Carousel:  React.FC<CarouselProps> = ({title,body,cards}) => {
   return (
     <section  className="section-class">
       <div className="w-full max-w-7xl">
-        <div className="flex flex-col gap-6">
-          <h1 className="font-jakartaSans text-[52px] md:text-[56px] tracking-[-1.12px] font-[700] leading-[56px]">{title}</h1>
-          <p className="w-full text-[18px] md:w-[40%]  text-[#9F9F9F]">
+        <div className="flex flex-col gap-4 md:gap-6">
+          <h1 className="font-jakartaSans text-[34px] md:text-[52px] lg:text-[56px] tracking-[-1px] md:tracking-[-1.12px] font-[700] leading-[110%] md:leading-[56px]">{title}</h1>
+          <p className="w-full text-[15px] md:text-[18px] md:w-[40%] text-[#9F9F9F]">
             {body}
           </p>
         </div>
@@ -59,7 +59,7 @@ const Carousel:  React.FC<CarouselProps> = ({title,body,cards}) => {
                 >
                   <div className="relative overflow-hidden">
                     <div className="w-full md:w-[560px] border-[1px] border-[#D9D9D9] rounded-2xl flex flex-col justify-end">
-                        <SafeImage src={card.logo} width={400} height={400} className="w-full h-[400px] object-cover rounded-t-[inherit]" alt=""/>
+                        <SafeImage src={card.logo} width={400} height={400} className="w-full h-[280px] md:h-[400px] object-cover rounded-t-[inherit]" alt=""/>
                       <div className="flex flex-col gap-6 p-6 md:p-10 ">
                       <h3 onMouseEnter={(e) => showTooltip(e, card.title)}
                     onMouseLeave={hideTooltip}
@@ -69,7 +69,7 @@ const Carousel:  React.FC<CarouselProps> = ({title,body,cards}) => {
                         x: e.clientX + 10,
                         y: e.clientY + 10,
                       }));
-                    }}  className="text-[40px] leading-[120%] font-[700] font-jakartaSans line-clamp-1">
+                    }}  className="text-2xl md:text-[40px] leading-[120%] font-[700] font-jakartaSans line-clamp-1">
                         {card.title}
                       </h3>
                       <p onMouseEnter={(e) => showTooltip(e, card.description)}

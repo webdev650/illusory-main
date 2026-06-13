@@ -296,7 +296,7 @@ const IllusoryChat = () => {
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.8, y: 20 }}
                         className={cn(
-                            "absolute bottom-20 right-0 w-[350px] sm:w-[400px] h-[500px] sm:h-[600px] rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-white/20 backdrop-blur-xl",
+                            "absolute bottom-20 right-0 w-[calc(100vw-3rem)] sm:w-[380px] md:w-[420px] h-[480px] sm:h-[560px] rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-white/20 backdrop-blur-xl",
                             theme === 'dark' ? "bg-black/80 text-white" : "bg-white/80 text-black"
                         )}
                     >

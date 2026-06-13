@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Loader2, CheckCircle, AlertCircle } from "lucide-react";
-import { careersAPI } from "../../../services/api";
+import { Loader2, CheckCircle, AlertCircle, Upload } from "lucide-react";
 
 interface ApplyModalProps {
   isOpen: boolean;
@@ -17,12 +16,13 @@ export const ApplyModal: React.FC<ApplyModalProps> = ({ isOpen, onClose, job }) 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(null);
   const [errorMessage, setErrorMessage] = useState("");
+  const [resumeFile, setResumeFile] = useState<File | null>(null);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     phone: "",
-    portfolioUrl: "",
-    coverLetter: "",
+    portfolioLink: "",
+    coverNote: "",
   });
 
   if (!isOpen || !job) return null;
@@ -34,22 +34,52 @@ export const ApplyModal: React.FC<ApplyModalProps> = ({ isOpen, onClose, job }) 
     setErrorMessage("");
 
     try {
-      const payload = {
-        ...formData,
-        jobId: job.id,
-        jobTitle: job.title,
-      };
+      if (!resumeFile) {
+        throw new Error("Please upload a resume file.");
+      }
 
-      await careersAPI.apply(payload);
+      // Check file size (5MB limit)
+      if (resumeFile.size > 5 * 1024 * 1024) {
+        throw new Error("File size exceeds the 5MB limit.");
+      }
+
+      // Check file extension
+      const extension = resumeFile.name.split('.').pop()?.toLowerCase();
+      if (extension !== 'pdf' && extension !== 'doc' && extension !== 'docx') {
+        throw new Error("Only PDF, DOC, or DOCX files are allowed.");
+      }
+
+      // Build FormData for multipart upload
+      const formDataToSend = new FormData();
+      formDataToSend.append("fullName", formData.fullName);
+      formDataToSend.append("email", formData.email);
+      formDataToSend.append("phone", formData.phone);
+      formDataToSend.append("portfolioLink", formData.portfolioLink);
+      formDataToSend.append("coverNote", formData.coverNote);
+      formDataToSend.append("jobId", job.id);
+      formDataToSend.append("jobTitle", job.title);
+      formDataToSend.append("resume", resumeFile);
+
+      const response = await fetch("/api/applications", {
+        method: "POST",
+        body: formDataToSend,
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || `Failed to submit application (Status ${response.status})`);
+      }
+
       setSubmitStatus("success");
       setFormData({
         fullName: "",
         email: "",
         phone: "",
-        portfolioUrl: "",
-        coverLetter: "",
+        portfolioLink: "",
+        coverNote: "",
       });
-      
+      setResumeFile(null);
+
       // Auto close after 3 seconds
       setTimeout(() => {
         onClose();
@@ -69,19 +99,25 @@ export const ApplyModal: React.FC<ApplyModalProps> = ({ isOpen, onClose, job }) 
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setResumeFile(e.target.files[0]);
+    }
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Backdrop */}
-      <div 
+      <div
         className="absolute inset-0 bg-black/85 backdrop-blur-md transition-opacity duration-300"
         onClick={() => {
           if (!isSubmitting) {
             onClose();
             setSubmitStatus(null);
           }
-        }} 
+        }}
       />
-      
+
       {/* Modal Container */}
       <div className="relative w-full max-w-lg bg-zinc-950 border border-white/10 rounded-3xl p-8 shadow-[0_0_50px_rgba(0,102,255,0.15)] z-10 overflow-y-auto max-h-[90vh] text-white font-jakartaSans transition-all duration-300 animate-fade-in">
         <button
@@ -90,7 +126,7 @@ export const ApplyModal: React.FC<ApplyModalProps> = ({ isOpen, onClose, job }) 
             setSubmitStatus(null);
           }}
           disabled={isSubmitting}
-          className="absolute top-5 right-5 text-gray-400 hover:text-white transition-colors text-xl disabled:opacity-50"
+          className="absolute top-5 right-5 text-gray-400 hover:text-white transition-colors text-xl disabled:opacity-50 font-bold"
         >
           ✕
         </button>
@@ -110,11 +146,11 @@ export const ApplyModal: React.FC<ApplyModalProps> = ({ isOpen, onClose, job }) 
             <div>
               <span className="text-[10px] uppercase font-extrabold tracking-widest text-blue-500">Apply Online</span>
               <h3 className="text-2xl font-bold mt-1 text-white tracking-tight">{job.title}</h3>
-              <p className="text-gray-400 text-xs mt-1">Ref Reference: #{job.id.padStart(3, '0')}</p>
+              <p className="text-gray-400 text-xs mt-1">Ref Reference: #{job.id.padStart(3, "0")}</p>
             </div>
 
             {submitStatus === "error" && (
-              <div className="mt-6 p-4 bg-red-500/20 border border-red-500/50 rounded-xl text-red-300 text-xs flex items-center gap-2.5 animate-pulse">
+              <div className="mt-6 p-4 bg-red-500/20 border border-red-500/50 rounded-xl text-red-300 text-xs flex items-center gap-2.5">
                 <AlertCircle className="w-5 h-5 shrink-0" />
                 <p>{errorMessage}</p>
               </div>
@@ -165,25 +201,49 @@ export const ApplyModal: React.FC<ApplyModalProps> = ({ isOpen, onClose, job }) 
               </div>
 
               <div>
-                <label className="block text-xs uppercase tracking-wider text-gray-400 mb-1.5 font-bold">Resume & Portfolio URL *</label>
+                <label className="block text-xs uppercase tracking-wider text-gray-400 mb-1.5 font-bold">Resume / CV (PDF, DOC, DOCX - Max 5MB) *</label>
+                <div className="relative flex items-center justify-center w-full">
+                  <label className="flex flex-col items-center justify-center w-full min-h-[100px] border border-dashed border-white/20 hover:border-blue-500 bg-black/40 hover:bg-black/60 rounded-xl cursor-pointer transition-all p-4">
+                    <div className="flex flex-col items-center justify-center text-center">
+                      <Upload className="w-6 h-6 mb-2 text-gray-400" />
+                      <p className="text-xs text-gray-300 font-semibold mb-1">
+                        {resumeFile ? resumeFile.name : "Click to select file"}
+                      </p>
+                      <p className="text-[10px] text-gray-500">
+                        {resumeFile ? `${(resumeFile.size / (1024 * 1024)).toFixed(2)} MB` : "PDF, DOC, DOCX"}
+                      </p>
+                    </div>
+                    <input
+                      type="file"
+                      name="resume"
+                      accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                      onChange={handleFileChange}
+                      className="hidden"
+                      disabled={isSubmitting}
+                    />
+                  </label>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs uppercase tracking-wider text-gray-400 mb-1.5 font-bold">Portfolio Link (Optional)</label>
                 <input
                   type="url"
-                  name="portfolioUrl"
-                  required
-                  value={formData.portfolioUrl}
+                  name="portfolioLink"
+                  value={formData.portfolioLink}
                   onChange={handleInputChange}
                   className="w-full bg-black/60 border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-all text-sm"
-                  placeholder="https://behance.net/john or Google Drive Link"
+                  placeholder="https://behance.net/john or portfolio link"
                   disabled={isSubmitting}
                 />
               </div>
 
               <div>
-                <label className="block text-xs uppercase tracking-wider text-gray-400 mb-1.5 font-bold">Cover Letter / Note</label>
+                <label className="block text-xs uppercase tracking-wider text-gray-400 mb-1.5 font-bold">Cover Note (Optional)</label>
                 <textarea
-                  name="coverLetter"
-                  rows={4}
-                  value={formData.coverLetter}
+                  name="coverNote"
+                  rows={3}
+                  value={formData.coverNote}
                   onChange={handleInputChange}
                   className="w-full bg-black/60 border border-white/20 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-blue-500 transition-all text-xs resize-none"
                   placeholder="Tell us why you want to join our design rebellion..."

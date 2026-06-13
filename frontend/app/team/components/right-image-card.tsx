@@ -22,7 +22,7 @@ const RightImage: React.FC<Slide> = ({
           <div className="hidden lg:flex text-sm text-[#9F9F9F] tracking-wider">
             {categories}
           </div>
-          <h1 className="text-left font-jakartaSans text-[40px] md:text-5xl lg:text-[48px] font-bold leading-[120%] md:leading-[56px] tracking-[-1.6px] md:tracking-[-1.92px]">
+          <h1 className="text-left font-jakartaSans text-[32px] md:text-5xl lg:text-[48px] font-bold leading-[120%] md:leading-[56px] tracking-[-1px] md:tracking-[-1.92px]">
             {title}
           </h1>
           <p className="text-left text-[#9F9F9F] text-lg w-full ">

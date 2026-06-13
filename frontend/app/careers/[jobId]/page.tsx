@@ -2,8 +2,9 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ChevronLeft, Mail, MapPin, Briefcase, GraduationCap, CheckCircle } from 'lucide-react';
-import { jobs } from '../data/jobs';
 import { ApplyButton } from '../components/ApplyButton';
+import { connectToDatabase } from '../../lib/mongodb';
+import Job from '../../lib/models/Job';
 
 interface PageProps {
   params: {
@@ -11,21 +12,109 @@ interface PageProps {
   };
 }
 
+export const dynamic = 'force-dynamic';
+
 export async function generateStaticParams() {
-  return jobs.map((job) => ({
-    jobId: job.id,
-  }));
+  try {
+    await connectToDatabase();
+    const jobs = await Job.find({}).lean();
+    return jobs.map((job: any) => ({
+      jobId: job.referenceId,
+    }));
+  } catch (error) {
+    console.error("Failed to generate static params:", error);
+    return [];
+  }
 }
 
-export default function JobDetailPage({ params }: PageProps) {
-  const job = jobs.find((j) => j.id === params.jobId);
+export default async function JobDetailPage({ params }: PageProps) {
+  let jobDoc: any = null;
 
-  if (!job) {
+  try {
+    await connectToDatabase();
+    
+    // Parse reference ID from parameter (e.g. "graphic-designer-001" -> "001" or "1" -> "1")
+    const match = params.jobId.match(/(\d+)$/);
+    const extractRefId = match ? match[1] : params.jobId;
+    const normalizedRefId = extractRefId.padStart(3, '0');
+    const fallbackRefId = parseInt(extractRefId, 10).toString();
+
+    jobDoc = await Job.findOne({
+      $or: [
+        { referenceId: normalizedRefId },
+        { referenceId: fallbackRefId },
+        { referenceId: params.jobId }
+      ]
+    }).lean();
+  } catch (err) {
+    console.error("Failed to fetch job from database:", err);
+  }
+
+  if (!jobDoc) {
     notFound();
   }
 
+  // Map database document to matching UI interface
+  const job = {
+    id: jobDoc.referenceId,
+    title: jobDoc.title,
+    company: jobDoc.company || 'Illusory',
+    location: jobDoc.location,
+    experience: jobDoc.experience,
+    qualification: jobDoc.qualification,
+    overview: jobDoc.description,
+    responsibilities: jobDoc.responsibilities || [],
+    requirements: jobDoc.requirements || [],
+    lookingFor: jobDoc.lookingFor || [],
+    isActivelyHiring: jobDoc.isActivelyHiring,
+    isRemote: jobDoc.isRemote,
+    applyEmail: 'operations@illusorydesignstudios.com',
+    applySubject: `Application – ${jobDoc.title} (#${jobDoc.referenceId})`,
+  };
+
+  // Structured Data Schema for Google for Jobs
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'JobPosting',
+    title: job.title,
+    description: `
+      <p>${job.overview}</p>
+      <h3>Key Responsibilities</h3>
+      <ul>
+        ${job.responsibilities.map((r: string) => `<li>${r}</li>`).join('')}
+      </ul>
+      <h3>Requirements</h3>
+      <ul>
+        ${job.requirements.map((r: string) => `<li>${r}</li>`).join('')}
+      </ul>
+    `,
+    datePosted: jobDoc.datePosted ? new Date(jobDoc.datePosted).toISOString() : new Date().toISOString(),
+    validThrough: jobDoc.validThrough ? new Date(jobDoc.validThrough).toISOString() : new Date(Date.now() + 180 * 24 * 60 * 60 * 1000).toISOString(),
+    employmentType: 'FULL_TIME',
+    hiringOrganization: {
+      '@type': 'Organization',
+      name: 'Illusory Design Studios',
+      sameAs: 'https://www.illusorydesignstudios.com',
+    },
+    jobLocation: {
+      '@type': 'Place',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Bhubaneswar',
+        addressRegion: 'Odisha',
+        addressCountry: 'IN',
+      },
+    },
+  };
+
   return (
     <div className="min-h-screen bg-white text-black font-jakartaSans">
+      {/* Inject Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* Top Navigation */}
       <nav className="border-b border-gray-100 sticky top-0 bg-white/80 backdrop-blur-md z-10">
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -49,7 +138,7 @@ export default function JobDetailPage({ params }: PageProps) {
         {/* Header Section */}
         <header className="mb-12 border-b border-gray-100 pb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
-            {job.title.split(' ').map((word, i) => (
+            {job.title.split(' ').map((word: string, i: number) => (
               <span key={i} className={i === 0 ? "text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600" : ""}>
                 {word}{" "}
               </span>
@@ -123,7 +212,7 @@ export default function JobDetailPage({ params }: PageProps) {
               Key Responsibilities
             </h2>
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {job.responsibilities.map((item, index) => (
+              {job.responsibilities.map((item: string, index: number) => (
                 <li key={index} className="flex gap-4 p-4 border border-gray-100 hover:border-gray-300 transition-colors">
                   <span className="text-gray-300 font-mono text-sm">{String(index + 1).padStart(2, '0')}</span>
                   <span className="text-gray-700 text-sm leading-relaxed">{item}</span>
@@ -139,7 +228,7 @@ export default function JobDetailPage({ params }: PageProps) {
               Requirements
             </h2>
             <div className="space-y-3">
-              {job.requirements.map((item, index) => (
+              {job.requirements.map((item: string, index: number) => (
                 <div key={index} className="flex items-start gap-3 group">
                   <div className="mt-1.5 w-1.5 h-1.5 bg-black shrink-0 transition-transform group-hover:scale-150"></div>
                   <p className="text-gray-700 leading-relaxed">{item}</p>
@@ -154,7 +243,7 @@ export default function JobDetailPage({ params }: PageProps) {
               What We&apos;re Looking For
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {job.lookingFor.map((item, index) => (
+              {job.lookingFor.map((item: string, index: number) => (
                 <div key={index} className="flex items-center gap-3">
                   <div className="w-2 h-2 border border-blue-600 rotate-45 shrink-0 bg-blue-50"></div>
                   <p className="text-gray-900 font-medium">{item}</p>

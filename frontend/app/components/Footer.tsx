@@ -25,7 +25,7 @@ const Footer = () => {
           {/* Main Content Area */}
           <main className="container mx-auto">
             <Image src={Logo} alt="" loading="lazy" />
-            <h1 className="mt-20 text-5xl md:text-6xl lg:text-7xl font-bold max-w-xl lg:max-w-2xl  tracking-[-1.92px] lg:tracking-[-3.2px] leading-[108.333%] md:leading-[110%]">
+            <h1 className="mt-12 md:mt-20 text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold max-w-xl lg:max-w-2xl tracking-[-1px] md:tracking-[-1.92px] lg:tracking-[-3.2px] leading-[110%] md:leading-[110%]">
               Have a project in mind? Let&apos;s talk!
             </h1>
             <p className=" mt-10 leading-[150%] font-[500] max-w-[400px] text-gray-300">
@@ -40,7 +40,7 @@ const Footer = () => {
                   text="Start a discussion"
                   disabled={false}
                   speed={3}
-                  className="relative flex items-center justify-between w-full md:gap-4  rounded-[72px] py-5 pl-7 pr-5 text-[24px] m-[2px] transition-all duration-300 group-hover:!bg-[#FF1284] group-hover:text-white pointer-events-auto "
+                  className="relative flex items-center justify-between w-full md:gap-4  rounded-[72px] py-3.5 md:py-5 pl-5 md:pl-7 pr-4 md:pr-5 text-base md:text-[24px] m-[2px] transition-all duration-300 group-hover:!bg-[#FF1284] group-hover:text-white pointer-events-auto "
                 />
 
               </div>

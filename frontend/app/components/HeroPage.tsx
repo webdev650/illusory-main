@@ -94,20 +94,20 @@ const HeroPage: React.FC<HeroProps> = ({ head1, head2, head3, head4 }) => {
             </div>
           </div>
           <div className="mt-10  h-full md:h-fit flex flex-col justify-between">
-            <p className="para w-[300px] md:w-[400px]">
+            <p className="para w-full max-w-[300px] sm:max-w-[400px] text-sm sm:text-base">
               Your one-stop creative powerhouse, redefining what’s possible for
               brands across different industries.
             </p>
             <button
               ref={buttonRef}
-              className="md:fixed bottom-6 right-24 lg:bottom-20 lg:right-20 group pointer-events-auto  md:flex items-center gap-4 rounded-[72px] cursor-pointer transition-all duration-300"
+              className="md:fixed bottom-6 right-24 lg:bottom-20 lg:right-20 group pointer-events-auto md:flex items-center gap-4 rounded-[72px] cursor-pointer transition-all duration-300 mt-6 md:mt-0"
             >
               <div className="bg-[#3B3B3B] rounded-[72px]">
                 <ShinyText
                   text="Start a discussion"
                   disabled={false}
                   speed={3}
-                  className="relative flex items-center justify-between w-full md:gap-4 rounded-[72px] py-5 pl-7 pr-5 text-[24px]  transition-all duration-300 group-hover:!bg-[#FF1284] group-hover:text-white pointer-events-auto "
+                  className="relative flex items-center justify-between w-full md:gap-4 rounded-[72px] py-3.5 md:py-5 pl-5 md:pl-7 pr-4 md:pr-5 text-base md:text-[24px] transition-all duration-300 group-hover:!bg-[#FF1284] group-hover:text-white pointer-events-auto"
                 />
               </div>
             </button>

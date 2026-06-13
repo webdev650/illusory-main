@@ -78,11 +78,11 @@ const FAQ: React.FC = () => {
             <div  key={_id} onClick={() => toggleQuestion(_id)} className=" py-6 cursor-pointer border-b-[1px] border-[#D3D3D3]">
               <div className=" font-jakartaSans ">
                 <div className="flex justify-between font-rethinkSans ">
-                  <h1 className="text-2xl md:text-3xl w-full md:w-[640px] leading-[150%] md:leading-[44px] font-[600] tracking-[-0.64px]">
+                  <h1 className="text-xl sm:text-2xl md:text-3xl w-full md:w-[640px] leading-[140%] md:leading-[44px] font-[600] tracking-[-0.4px] md:tracking-[-0.64px] pr-4">
                     {question}
                   </h1>
                   <svg
-                    className={`w-[24px] h-[24px] transition-transform duration-300 hidden md:flex  ${
+                    className={`w-[20px] h-[20px] shrink-0 transition-transform duration-300 flex ${
                       openId === _id ? 'rotate-45' : ''
                     }`}
                     xmlns="http://www.w3.org/2000/svg"

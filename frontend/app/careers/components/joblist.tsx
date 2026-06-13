@@ -4,14 +4,26 @@ import { Search, Filter, Briefcase, TrendingUp, ArrowRight } from 'lucide-react'
 import Link from 'next/link';
 import JobCard from './jobcard';
 import { JobDetailsContent } from './jobdetails';
-import { jobs, Job } from '../data/jobs';
+import { Job } from '../data/jobs';
 import { ApplyModal } from './ApplyModal';
 
-const JobListings: React.FC = () => {
+interface JobListingsProps {
+  initialJobs: Job[];
+}
+
+const JobListings: React.FC<JobListingsProps> = ({ initialJobs }) => {
+  const jobs = initialJobs;
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedJobId, setSelectedJobId] = useState<string>(jobs[0].id);
+  const [selectedJobId, setSelectedJobId] = useState<string>('');
   const [isApplyModalOpen, setIsApplyModalOpen] = useState(false);
   const [applyingJob, setApplyingJob] = useState<Job | null>(null);
+
+  // On desktop (lg+) auto-select first job; on mobile leave list visible
+  useEffect(() => {
+    if (window.innerWidth >= 1024 && jobs.length > 0) {
+      setSelectedJobId(jobs[0].id);
+    }
+  }, [jobs]);
 
   const handleApplyClick = (job: Job) => {
     setApplyingJob(job);
@@ -76,8 +88,8 @@ const JobListings: React.FC = () => {
       {/* Main Content Area - Split Pane */}
       <div className="max-w-[1600px] mx-auto flex h-[calc(100vh-108px)] overflow-hidden">
         
-        {/* Left Pane - Job List (Scrollable) */}
-        <div className="w-full lg:w-[450px] border-r border-gray-100 overflow-y-auto custom-scrollbar bg-gray-50/30">
+        {/* Left Pane - Job List (Scrollable) - hidden on mobile when detail is viewed */}
+        <div className={`w-full lg:w-[450px] border-r border-gray-100 overflow-y-auto custom-scrollbar bg-gray-50/30 ${selectedJobId ? 'hidden lg:block' : 'block'}`}>
           <div className="flex flex-col divide-y divide-gray-100">
             {filteredJobs.length === 0 ? (
               <div className="text-center py-20 px-6">
@@ -113,12 +125,20 @@ const JobListings: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Pane - Job Details (Sticky/Scrollable) */}
-        <div className="hidden lg:block flex-1 overflow-y-auto bg-white custom-scrollbar relative">
+        {/* Right Pane - Job Details - visible on mobile when a job is selected */}
+        <div className={`flex-1 overflow-y-auto bg-white custom-scrollbar relative ${selectedJobId ? 'block' : 'hidden lg:block'}`}>
           {selectedJob ? (
             <div className="h-full flex flex-col">
               {/* Sticky Top Action Bar for Detail View */}
-              <div className="sticky top-0 z-10 bg-white/90 backdrop-blur-sm border-b border-gray-50 px-8 py-4 flex justify-end">
+              <div className="sticky top-0 z-10 bg-white/90 backdrop-blur-sm border-b border-gray-50 px-4 sm:px-8 py-3 sm:py-4 flex justify-between items-center">
+                {/* Back button - mobile only */}
+                <button
+                  onClick={() => setSelectedJobId('')}
+                  className="lg:hidden flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-gray-600 hover:text-blue-600 transition-colors"
+                >
+                  ← Back
+                </button>
+                <div className="hidden lg:block" />
                 <Link 
                   href={`/careers/${selectedJob.id}`}
                   className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-blue-600 hover:text-blue-700 transition-colors group"
@@ -139,6 +159,7 @@ const JobListings: React.FC = () => {
         </div>
 
       </div>
+
 
       <ApplyModal
         isOpen={isApplyModalOpen}
