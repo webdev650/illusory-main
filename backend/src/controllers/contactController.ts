@@ -17,7 +17,7 @@ export const createContact = async (req: Request, res: Response) => {
 
     // Send Email Notification
     const mailOptions = {
-      from: process.env.EMAIL_USER,
+      from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
       to: process.env.EMAIL_TO || "official@illusory.design",
       subject: `New Project Inquiry from ${contact.name}`,
       html: `

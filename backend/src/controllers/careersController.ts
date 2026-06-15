@@ -8,7 +8,7 @@ export const applyToJob = async (req: Request, res: Response) => {
 
     // Send Email Notification to Studio
     const mailOptions = {
-      from: process.env.EMAIL_USER,
+      from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
       to: process.env.EMAIL_TO || "official@illusory.design",
       subject: `New Job Application: ${application.jobTitle} - ${application.fullName}`,
       html: `

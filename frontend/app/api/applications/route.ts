@@ -62,7 +62,7 @@ async function sendEmail({ to, subject, html }: { to: string; subject: string; h
         };
 
     const transporter = nodemailer.createTransport(mailConfig);
-    const sender = process.env.EMAIL_USER || fromEmail;
+    const sender = process.env.EMAIL_USER && process.env.EMAIL_USER.includes('@') ? process.env.EMAIL_USER : fromEmail;
     
     return transporter.sendMail({
       from: `"Illusory Design Studios" <${sender}>`,

@@ -206,7 +206,7 @@ async function sendLeadEmailNotification(lead: any) {
       return;
     }
     const mailOptions = {
-      from: process.env.EMAIL_USER,
+      from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
       to: lead.email,
       subject: `Your Project Estimate confirmation - ${lead.businessName}`,
       html: `
@@ -487,7 +487,7 @@ async function sendOtpEmailNotification(email: string, otp: string) {
       return;
     }
     const mailOptions = {
-      from: process.env.EMAIL_USER,
+      from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
       to: email,
       subject: "Your Illusory Portal Password Reset OTP",
       html: `
