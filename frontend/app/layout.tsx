@@ -37,6 +37,7 @@ const youngSerif = Young_Serif({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-young-serif",
+  adjustFontFallback: false,
 });
 
 const hostGrotesk = localFont({
