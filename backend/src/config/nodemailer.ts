@@ -1,7 +1,5 @@
+import "./env"; // Load environment variables first!
 import nodemailer from "nodemailer";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 const mailConfig: any = process.env.EMAIL_HOST
   ? {
