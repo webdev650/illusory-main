@@ -145,8 +145,8 @@ export async function POST(req: NextRequest) {
       source: 'website',
     });
 
-    // Email content for the operations team
-    const operationsEmail = process.env.EMAIL_TO || 'operations@illusorydesignstudios.com';
+     // Email content for the operations team
+    const operationsEmail = process.env.EMAIL_TO || 'business@illusorydesignstudios.com';
     const adminHtml = `
       <div style="font-family: sans-serif; max-width: 600px; margin: auto; border: 1px solid #eaeaea; padding: 25px; border-radius: 12px; background-color: #ffffff; color: #333333;">
         <h2 style="color: #2563eb; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px; margin-top: 0;">New Job Application</h2>
@@ -221,21 +221,11 @@ export async function POST(req: NextRequest) {
       </div>
     `;
 
-    // Send emails
-    sendEmail({
+    // Send admin email notification (must succeed)
+    await sendEmail({
       to: operationsEmail,
       subject: `New Job Application: ${jobTitle} - ${fullName}`,
       html: adminHtml,
-    }).catch((err) => {
-      console.error('Error sending admin notification email:', err);
-    });
-
-    sendEmail({
-      to: email,
-      subject: `We've received your application for ${jobTitle} — Illusory Design Studios`,
-      html: applicantHtml,
-    }).catch((err) => {
-      console.error('Error sending applicant confirmation email:', err);
     });
 
     return NextResponse.json({

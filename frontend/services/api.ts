@@ -173,9 +173,25 @@ const handleApiFallback = async <T>(
 ): Promise<T> => {
   try {
     return await apiCall();
-  } catch (error) {
-    console.warn("API call failed, falling back to local simulation mode:", error);
-    return await fallbackCall();
+  } catch (error: any) {
+    const errMessage = error?.message || "";
+    // Only fall back to local simulation if it's a connection/network offline error.
+    const isNetworkError = 
+      errMessage.includes("fetch failed") || 
+      errMessage.includes("Failed to fetch") || 
+      errMessage.includes("NetworkError") ||
+      errMessage.includes("API error: 502") || 
+      errMessage.includes("API error: 503") || 
+      errMessage.includes("API error: 504");
+
+    if (isNetworkError) {
+      console.warn("API call failed (server offline), falling back to local simulation mode:", error);
+      return await fallbackCall();
+    }
+    
+    // Otherwise it's a real server error (e.g. database save or email sending failed).
+    // Propagate it so that the frontend shows an error message.
+    throw error;
   }
 };
 
