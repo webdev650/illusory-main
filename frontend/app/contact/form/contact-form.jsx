@@ -147,12 +147,13 @@ const ContactForm = () => {
               htmlFor="phone"
               className="block text-sm font-semibold text-gray-400 mb-2"
             >
-              Phone Number
+              Phone Number *
             </label>
             <input
               type="tel"
               id="phone"
               name="phone"
+              required
               className="w-full px-4 py-3 bg-white/5 border-2 border-white/10 rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#FF1284]/20 focus:border-[#FF1284] hover:border-white/20 text-white placeholder-gray-600"
               placeholder="(555) 123-4567"
             />
@@ -163,12 +164,13 @@ const ContactForm = () => {
               htmlFor="company"
               className="block text-sm font-semibold text-gray-400 mb-2"
             >
-              Company/Organization
+              Company/Organization *
             </label>
             <input
               type="text"
               id="company"
               name="company"
+              required
               className="w-full px-4 py-3 bg-white/5 border-2 border-white/10 rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#26E9FF]/20 focus:border-[#26E9FF] hover:border-white/20 text-white placeholder-gray-600"
               placeholder="Your company name"
             />
@@ -218,7 +220,7 @@ const ContactForm = () => {
               htmlFor="currency-amount"
               className="block text-sm font-semibold text-gray-400 mb-2"
             >
-              Estimated Budget
+              Estimated Budget *
             </label>
             <div className="relative flex items-center">
               <select
@@ -235,6 +237,7 @@ const ContactForm = () => {
                 id="currency-amount"
                 name="amount"
                 type="number"
+                required
                 placeholder="0.00"
                 className="w-full pl-16 px-4 py-3 bg-white/5 border-2 border-white/10 rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#26E9FF]/20 focus:border-[#26E9FF] hover:border-white/20 text-white placeholder-gray-600"
               />
@@ -248,12 +251,13 @@ const ContactForm = () => {
               htmlFor="hearaboutus"
               className="block text-sm font-semibold text-gray-400 mb-2"
             >
-              How Did You Hear About Us?
+              How Did You Hear About Us? *
             </label>
             <div className="relative">
               <select
                 id="hearaboutus"
                 name="hearaboutus"
+                required
                 className="w-full px-4 py-3 bg-white/5 border-2 border-white/10 rounded-lg appearance-none transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#FF1284]/20 focus:border-[#FF1284] hover:border-white/20 text-white"
               >
                 <option value="" className="bg-black">Select an option</option>
@@ -275,12 +279,13 @@ const ContactForm = () => {
               htmlFor="contactmethod"
               className="block text-sm font-semibold text-gray-400 mb-2"
             >
-              Preferred Contact Method
+              Preferred Contact Method *
             </label>
             <div className="relative">
               <select
                 id="contactmethod"
                 name="contactmethod"
+                required
                 className="w-full px-4 py-3 bg-white/5 border-2 appearance-none border-white/10 rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#26E9FF]/20 focus:border-[#26E9FF] hover:border-white/20 text-white"
               >
                 <option value="" className="bg-black">Select contact method</option>
