@@ -13,12 +13,15 @@ export const getContacts = async (req: Request, res: Response) => {
 
 export const createContact = async (req: Request, res: Response) => {
   try {
+    // 1. Save contact message to database
     const contact = await Contact.create(req.body);
 
-    // Send Email Notification
-    const mailOptions = {
-      from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
-      to: process.env.EMAIL_TO || "official@illusory.design",
+    const fromEmail = process.env.EMAIL_FROM || process.env.EMAIL_USER;
+
+    // 2. Send Email Notification to Studio (Admin)
+    const adminMailOptions = {
+      from: fromEmail,
+      to: process.env.EMAIL_TO || "business@illusorydesignstudios.com",
       subject: `New Project Inquiry from ${contact.name}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: auto; border: 1px solid #eee; padding: 20px; border-radius: 10px;">
@@ -38,16 +41,14 @@ export const createContact = async (req: Request, res: Response) => {
       `,
     };
 
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.error("Error sending email:", error);
-      } else {
-        console.log("Email sent:", info.response);
-      }
-    });
+    console.log("Saving contact inquiry to database...");
+    console.log("Sending admin email notification...");
+    await transporter.sendMail(adminMailOptions);
 
+    console.log("All contact operations completed successfully!");
     res.status(201).json(contact);
   } catch (error: any) {
-    res.status(400).json({ error: error.message });
+    console.error("Detailed server error in contact creation process:", error);
+    res.status(500).json({ error: error.message || "Failed to submit inquiry. All operations must succeed." });
   }
 };

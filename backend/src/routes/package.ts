@@ -205,28 +205,32 @@ async function sendLeadEmailNotification(lead: any) {
       console.log(`  Name: ${lead.name}, Email: ${lead.email}, Selected: ${lead.selectedPackage}, Budget: ${lead.estimatedBudget}`);
       return;
     }
-    const mailOptions = {
-      from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
-      to: lead.email,
-      subject: `Your Project Estimate confirmation - ${lead.businessName}`,
+    const fromEmail = process.env.EMAIL_FROM || process.env.EMAIL_USER;
+
+    // 1. Send Admin Notification (must succeed)
+    const adminMailOptions = {
+      from: fromEmail,
+      to: process.env.EMAIL_TO || "business@illusorydesignstudios.com",
+      subject: `New Lead Estimate Submitted by ${lead.name}`,
       html: `
-        <h2>Hi ${lead.name},</h2>
-        <p>Thanks for choosing Illusory Design Studios. We have received your project estimate request!</p>
-        <p><strong>Here are your details:</strong></p>
+        <h2>New Lead Estimate</h2>
         <ul>
+          <li><strong>Name:</strong> ${lead.name}</li>
+          <li><strong>Email:</strong> ${lead.email}</li>
+          <li><strong>Phone:</strong> ${lead.phone}</li>
           <li><strong>Business Name:</strong> ${lead.businessName}</li>
-          <li><strong>Industry Category:</strong> ${lead.industry}</li>
+          <li><strong>Industry:</strong> ${lead.industry}</li>
           <li><strong>Location:</strong> ${lead.district}, ${lead.state}</li>
           <li><strong>Selected Package:</strong> ${lead.selectedPackage}</li>
           <li><strong>Estimated Budget:</strong> ${lead.estimatedBudget}</li>
         </ul>
-        <p>Our team will reach out to you shortly to finalize details!</p>
       `,
     };
-    await transporter.sendMail(mailOptions);
-    console.log("✉️ Nodemailer: Confirmation email sent.");
+    await transporter.sendMail(adminMailOptions);
+    console.log("✉️ Nodemailer: Admin notification email sent.");
   } catch (error) {
-    console.error("❌ Email notification failed:", error);
+    console.error("❌ Lead email notification failed:", error);
+    throw new Error(`Failed to send email notifications: ${error instanceof Error ? error.message : String(error)}`);
   }
 }
 

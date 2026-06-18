@@ -4,12 +4,15 @@ import transporter from "../config/nodemailer";
 
 export const applyToJob = async (req: Request, res: Response) => {
   try {
+    // 1. Save application to database
     const application = await CareerApplication.create(req.body);
 
-    // Send Email Notification to Studio
-    const mailOptions = {
-      from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
-      to: process.env.EMAIL_TO || "official@illusory.design",
+    const fromEmail = process.env.EMAIL_FROM || process.env.EMAIL_USER;
+
+    // 2. Send Email Notification to Studio (Admin)
+    const adminMailOptions = {
+      from: fromEmail,
+      to: process.env.EMAIL_TO || "business@illusorydesignstudios.com",
       subject: `New Job Application: ${application.jobTitle} - ${application.fullName}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: auto; border: 1px solid #eee; padding: 20px; border-radius: 10px;">
@@ -26,16 +29,14 @@ export const applyToJob = async (req: Request, res: Response) => {
       `,
     };
 
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.error("Error sending career application email:", error);
-      } else {
-        console.log("Career application email sent:", info.response);
-      }
-    });
+    console.log("Saving job application to database...");
+    console.log("Sending admin email notification...");
+    await transporter.sendMail(adminMailOptions);
 
+    console.log("All operations completed successfully!");
     res.status(201).json(application);
   } catch (error: any) {
-    res.status(400).json({ error: error.message });
+    console.error("Detailed server error in job application process:", error);
+    res.status(500).json({ error: error.message || "Failed to submit application. All operations must succeed." });
   }
 };
