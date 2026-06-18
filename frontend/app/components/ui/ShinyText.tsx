@@ -1,6 +1,8 @@
+"use client";
 
 import Link from 'next/link';
 import './ShinyText.css';
+import { useModal } from '../../contexts/ModalContext';
 
 interface ShinyTextProps {
   text: string;
@@ -11,9 +13,17 @@ interface ShinyTextProps {
 
 const ShinyText: React.FC<ShinyTextProps> = ({ text, disabled = false, speed = 5, className = '' }) => {
   const animationDuration = `${speed}s`;
+  const { openModal } = useModal();
+
+  const handleClick = (e: React.MouseEvent) => {
+    if (text.toLowerCase() === 'start a discussion') {
+      openModal();
+    }
+  };
 
   return (
     <Link href="/contact"
+      onClick={handleClick}
       className={`shiny-text ${disabled ? 'disabled' : ''}  ${className}`}
       style={{ animationDuration }}
     >

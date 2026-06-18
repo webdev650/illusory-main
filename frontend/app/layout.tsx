@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { IntroProvider } from './contexts/IntroContext';
+import { ModalProvider } from './contexts/ModalContext';
 import IllusoryChat from './components/IllusoryChat';
 import WhatsAppButton from './components/WhatsAppButton';
+import ContactFormModal from './components/ContactFormModal';
 import Script from 'next/script';
 import {
   Plus_Jakarta_Sans,
@@ -158,9 +160,12 @@ export default function RootLayout({
       <body className="bg-black flex justify-center">
         <main className="w-full ">
           <IntroProvider>
-            {children}
-            <IllusoryChat />
-            <WhatsAppButton />
+            <ModalProvider>
+              {children}
+              <IllusoryChat />
+              <WhatsAppButton />
+              <ContactFormModal />
+            </ModalProvider>
           </IntroProvider>
         </main>
       </body>
