@@ -4,7 +4,7 @@ import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { projectsAPI } from "../../services/api";
-import ImageMarquee from "react-fast-marquee";
+import EnhancedMarquee from "./EnhancedMarquee";
 import { cleanCloudinaryUrl } from "../lib/cloudinary";
 
 const Works = () => {
@@ -99,7 +99,7 @@ const Works = () => {
           style={{ scrollbarWidth: "none" }}
           className="w-full font-jakartaSans mt-20"
         >
-          <ImageMarquee 
+          <EnhancedMarquee 
             speed={40} 
             pauseOnHover={true} 
             gradient={false}
@@ -154,7 +154,7 @@ const Works = () => {
                 </div>
               ))}
             </div>
-          </ImageMarquee>
+          </EnhancedMarquee>
         </div>
          {/* Tooltip */}
          {tooltip.show && (

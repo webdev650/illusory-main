@@ -25,7 +25,7 @@ import Rare_Rabbit from "./assets/rare-rabbit.svg";
 import Patra from "./assets/patra-tours-travel.svg";
 import Dhani from "./assets/dhani-01.svg";
 import Urbana from "./assets/urbana.svg";
-import ClientMarquee from "react-fast-marquee";
+import EnhancedMarquee from "./EnhancedMarquee";
 
 const Partners = () => {
   const clientsAndPartners = [
@@ -65,14 +65,14 @@ const Partners = () => {
           </p>
           </div>
           <div className="mt-20  gap-14 md:hidden">
-            <ClientMarquee>
+            <EnhancedMarquee autoFill={true}>
 
           {clientsAndPartners.map((client, index) => (
         <div key={index} className="flex items-center justify-center ml-8">
           <Image src={client.src} alt={client.alt} className="w-36" loading="lazy" />
         </div>
       ))}
-            </ClientMarquee>
+            </EnhancedMarquee>
           </div>
 
           <div className="mt-20 gap-14 grid grid-cols-5 lg:grid-cols-6 max-md:hidden">

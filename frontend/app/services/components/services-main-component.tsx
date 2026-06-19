@@ -18,6 +18,28 @@ interface CarouselProps {
 
 const Carousel:  React.FC<CarouselProps> = ({title,body,cards}) => {
   const carouselRef = useRef<HTMLDivElement>(null);
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const scrollLeftStart = useRef(0);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!carouselRef.current) return;
+    isDragging.current = true;
+    startX.current = e.clientX;
+    scrollLeftStart.current = carouselRef.current.scrollLeft;
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging.current || !carouselRef.current) return;
+    e.preventDefault();
+    const deltaX = e.clientX - startX.current;
+    carouselRef.current.scrollLeft = scrollLeftStart.current - deltaX;
+  };
+
+  const handleMouseUpOrLeave = () => {
+    isDragging.current = false;
+  };
+
   const [tooltip, setTooltip] = useState({
     show: false,
     content: "",
@@ -50,7 +72,14 @@ const Carousel:  React.FC<CarouselProps> = ({title,body,cards}) => {
           <div className="max-w-7xl mx-auto ">
             <div
               ref={carouselRef}
-              className="flex flex-col md:flex-row overflow-x-auto gap-6 scroll-smooth  snap-x snap-mandatory scrollbar-hide"
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUpOrLeave}
+              onMouseLeave={handleMouseUpOrLeave}
+              style={{ scrollBehavior: isDragging.current ? "auto" : "smooth" }}
+              className={`flex flex-col md:flex-row overflow-x-auto gap-6 snap-x snap-mandatory scrollbar-hide select-none ${
+                isDragging.current ? "cursor-grabbing" : "cursor-grab"
+              }`}
             >
               {cards.map((card, index) => (
                 <div

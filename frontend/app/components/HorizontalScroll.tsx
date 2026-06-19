@@ -2,7 +2,7 @@
 import React from 'react';
 import ImageContainer from './ImageContainer';
 import { StaticImageData } from 'next/image';
-import ImageMarquee from "react-fast-marquee";
+import EnhancedMarquee from "./EnhancedMarquee";
 
 interface HorizontalScrollProps {
   images: (StaticImageData | string)[]; 
@@ -21,7 +21,7 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({ images, objectFit }
   return (
     <section className="relative w-full overflow-hidden">
       <div className="mt-24 lg:mt-32 w-full flex items-center">
-        <ImageMarquee 
+        <EnhancedMarquee 
           gradient={false} 
           speed={60} 
           pauseOnHover={true}
@@ -37,7 +37,7 @@ const HorizontalScroll: React.FC<HorizontalScrollProps> = ({ images, objectFit }
               </div>
             ))}
           </div>
-        </ImageMarquee>
+        </EnhancedMarquee>
       </div>
     </section>
   );

@@ -1,4 +1,4 @@
-"use client";
+import React, { useRef } from "react";
 import SafeImage from "../../../components/ui/SafeImage";
 const projects = [
   {
@@ -27,10 +27,31 @@ const projects = [
   }
 ];
 const Carousel = () => {
-  
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const scrollLeftStart = useRef(0);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!containerRef.current) return;
+    isDragging.current = true;
+    startX.current = e.clientX;
+    scrollLeftStart.current = containerRef.current.scrollLeft;
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging.current || !containerRef.current) return;
+    e.preventDefault();
+    const deltaX = e.clientX - startX.current;
+    containerRef.current.scrollLeft = scrollLeftStart.current - deltaX;
+  };
+
+  const handleMouseUpOrLeave = () => {
+    isDragging.current = false;
+  };
+
   return (
     <section
-    
       
       className="min-h-screen py-[120px] w-full px-6 lg:px-20 flex justify-center"
     >
@@ -42,8 +63,15 @@ const Carousel = () => {
           </p>
         </div>
         <div
+          ref={containerRef}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUpOrLeave}
+          onMouseLeave={handleMouseUpOrLeave}
           style={{ scrollbarWidth: "none" }}
-          className="flex flex-col md:flex-row overflow-x-auto gap-11 font-jakartaSans mt-20"
+          className={`flex flex-col md:flex-row overflow-x-auto gap-11 font-jakartaSans mt-20 select-none ${
+            isDragging.current ? "cursor-grabbing" : "cursor-grab"
+          }`}
         >
           {projects.map((project) => (
             <div
