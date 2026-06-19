@@ -79,6 +79,7 @@ export const ApplyModal: React.FC<ApplyModalProps> = ({ isOpen, onClose, job }) 
         phone: "",
         portfolioLink: "",
         coverNote: "",
+        website: "",
       });
       setResumeFile(null);
 
