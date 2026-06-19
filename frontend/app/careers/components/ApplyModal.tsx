@@ -23,6 +23,7 @@ export const ApplyModal: React.FC<ApplyModalProps> = ({ isOpen, onClose, job }) 
     phone: "",
     portfolioLink: "",
     coverNote: "",
+    website: "", // honeypot
   });
 
   if (!isOpen || !job) return null;
@@ -59,6 +60,7 @@ export const ApplyModal: React.FC<ApplyModalProps> = ({ isOpen, onClose, job }) 
       formDataToSend.append("jobId", job.id);
       formDataToSend.append("jobTitle", job.title);
       formDataToSend.append("resume", resumeFile);
+      formDataToSend.append("website", formData.website); // Honeypot field
 
       const response = await fetch("/api/applications", {
         method: "POST",
@@ -157,6 +159,18 @@ export const ApplyModal: React.FC<ApplyModalProps> = ({ isOpen, onClose, job }) 
             )}
 
             <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+              {/* Honeypot field for spam prevention */}
+              <div className="hidden" aria-hidden="true">
+                <input
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={formData.website}
+                  onChange={handleInputChange}
+                />
+              </div>
+
               <div>
                 <label className="block text-xs uppercase tracking-wider text-gray-400 mb-1.5 font-bold">Full Name *</label>
                 <input

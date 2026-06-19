@@ -14,6 +14,7 @@ import { contactAPI } from "../../../services/api";
 const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
   const formContainerRef = useRef(null);
 
   useEffect(() => {
@@ -26,6 +27,7 @@ const ContactForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus(null);
+    setErrorMessage(null);
 
     const target = e.target;
     const formData = {
@@ -38,6 +40,8 @@ const ContactForm = () => {
       message: target.message.value,
       hearAboutUs: target.hearaboutus.value,
       contactMethod: target.contactmethod.value,
+      website: target.website.value, // Honeypot field
+      formType: typeof window !== "undefined" && window.location.pathname.includes("/contact") ? "contact" : "discussion",
     };
 
     try {
@@ -63,6 +67,7 @@ const ContactForm = () => {
     } catch (error) {
       console.error("Submission error:", error);
       setSubmitStatus("error");
+      setErrorMessage(error.message || "Something went wrong. Please try again or contact us directly.");
     } finally {
       setIsSubmitting(false);
     }
@@ -98,10 +103,21 @@ const ContactForm = () => {
       </div>
 
       <form onSubmit={handleSubmit} className="p-8 space-y-6">
+        {/* Honeypot field for spam prevention */}
+        <div className="hidden" aria-hidden="true">
+          <input
+            type="text"
+            name="website"
+            id="website"
+            tabIndex={-1}
+            autoComplete="off"
+          />
+        </div>
+
         {submitStatus === "error" && (
           <div className="bg-red-500/20 border border-red-500 text-red-400 p-4 rounded-lg flex items-center gap-3 animate-pulse">
             <AlertCircle className="w-5 h-5 shrink-0" />
-            <p className="text-sm">Something went wrong. Please try again or contact us directly.</p>
+            <p className="text-sm">{errorMessage || "Something went wrong. Please try again or contact us directly."}</p>
           </div>
         )}
 
@@ -313,8 +329,9 @@ const ContactForm = () => {
             name="message"
             rows={5}
             required
+            minLength={10}
             className="w-full px-4 py-3 bg-white/5 border-2 border-white/10 rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#FF1284]/20 focus:border-[#FF1284] hover:border-white/20 text-white placeholder-gray-600 resize-none"
-            placeholder="Tell us about your project, goals, timeline, and any specific requirements..."
+            placeholder="Tell us about your project, goals, timeline, and any specific requirements (minimum 10 characters)..."
           />
         </div>
 

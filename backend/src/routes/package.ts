@@ -7,6 +7,18 @@ import ServicePackage from "../models/ServicePackage";
 import CustomerLead from "../models/CustomerLead";
 import Employee, { hashPassword } from "../models/Employee";
 import transporter from "../config/nodemailer";
+import { z } from "zod";
+import FormSubmission from "../models/FormSubmission";
+import { sanitizeObject } from "../utils/sanitize";
+import rateLimit from "express-rate-limit";
+
+const leadLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 10, // Limit each IP to 10 submissions per 15 minutes
+  message: { error: "Too many requests from this IP, please try again after 15 minutes" },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
 
 const router = Router();
 const JWT_SECRET = process.env.JWT_SECRET || "illusory-secret-key-123456";
@@ -198,39 +210,82 @@ function calculateDynamicPricing(
 }
 
 // Notification helpers
-async function sendLeadEmailNotification(lead: any) {
+async function sendLeadEmailNotification(lead: any): Promise<{ success: boolean; error?: string }> {
   try {
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
       console.log("✉️ [Email Notification Stub] Auth missing. Lead Summary:");
       console.log(`  Name: ${lead.name}, Email: ${lead.email}, Selected: ${lead.selectedPackage}, Budget: ${lead.estimatedBudget}`);
-      return;
+      return { success: true };
     }
-    const fromEmail = process.env.EMAIL_FROM || process.env.EMAIL_USER;
+    const fromEmail = process.env.EMAIL_FROM || process.env.EMAIL_USER || "noreply@illusorydesignstudios.com";
 
     // 1. Send Admin Notification (must succeed)
     const adminMailOptions = {
-      from: fromEmail,
+      from: `"Illusory Lead Desk" <${fromEmail}>`,
       to: process.env.EMAIL_TO || "business@illusorydesignstudios.com",
-      subject: `New Lead Estimate Submitted by ${lead.name}`,
+      replyTo: lead.email,
+      subject: `New Lead Estimate - ${lead.name}`,
       html: `
-        <h2>New Lead Estimate</h2>
-        <ul>
-          <li><strong>Name:</strong> ${lead.name}</li>
-          <li><strong>Email:</strong> ${lead.email}</li>
-          <li><strong>Phone:</strong> ${lead.phone}</li>
-          <li><strong>Business Name:</strong> ${lead.businessName}</li>
-          <li><strong>Industry:</strong> ${lead.industry}</li>
-          <li><strong>Location:</strong> ${lead.district}, ${lead.state}</li>
-          <li><strong>Selected Package:</strong> ${lead.selectedPackage}</li>
-          <li><strong>Estimated Budget:</strong> ${lead.estimatedBudget}</li>
-        </ul>
+        <div style="font-family: sans-serif; max-width: 600px; margin: auto; border: 1px solid #eee; padding: 25px; border-radius: 12px; background-color: #ffffff; color: #333333;">
+          <h2 style="color: #FF1284; border-bottom: 2px solid #FF1284; padding-bottom: 10px; margin-top: 0;">New Lead Estimate</h2>
+          <ul>
+            <li><strong>Name:</strong> ${lead.name}</li>
+            <li><strong>Email:</strong> ${lead.email}</li>
+            <li><strong>Phone:</strong> ${lead.phone}</li>
+            <li><strong>Business Name:</strong> ${lead.businessName}</li>
+            <li><strong>Industry:</strong> ${lead.industry}</li>
+            <li><strong>Location:</strong> ${lead.district}, ${lead.state}</li>
+            <li><strong>Selected Package:</strong> ${lead.selectedPackage}</li>
+            <li><strong>Estimated Budget:</strong> ${lead.estimatedBudget}</li>
+          </ul>
+          ${lead.message ? `
+          <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;" />
+          <p><strong>Custom Requirements:</strong></p>
+          <p style="background: #f9f9f9; padding: 15px; border-radius: 8px; line-height: 1.5; white-space: pre-wrap;">${lead.message}</p>
+          ` : ''}
+        </div>
       `,
     };
     await transporter.sendMail(adminMailOptions);
     console.log("✉️ Nodemailer: Admin notification email sent.");
-  } catch (error) {
+
+    // 2. Send Visitor Auto-Reply
+    const customerMailOptions = {
+      from: `"Illusory Design Studios" <${fromEmail}>`,
+      to: lead.email,
+      subject: "We've received your request! - Illusory Design Studios",
+      html: `
+        <div style="font-family: sans-serif; max-width: 600px; margin: auto; border: 1px solid #eee; padding: 30px; border-radius: 12px; background-color: #ffffff; color: #333333; line-height: 1.6;">
+          <div style="text-align: center; margin-bottom: 25px;">
+            <h1 style="color: #111827; font-size: 24px; font-weight: bold; margin: 10px 0 5px 0; letter-spacing: 2px;">ILLUSORY</h1>
+            <p style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; color: #6b7280; margin: 0;">Design Studios</p>
+          </div>
+          <h3 style="color: #FF1284; margin-top: 0; font-size: 18px;">Estimate Proposal Requested</h3>
+          <p>Hi ${lead.name},</p>
+          <p>Thank you for requesting an estimate quote for <strong>${lead.businessName}</strong>. We have received your package inquiry and our team is on it!</p>
+          <div style="background-color: #f9fafb; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #FF1284; font-size: 13px;">
+            <strong>Request Details:</strong><br />
+            • Selected Package: ${lead.selectedPackage}<br />
+            • Estimated Budget: ${lead.estimatedBudget}<br />
+            • Industry segment: ${lead.industry}
+          </div>
+          <p>One of our creative producers will get back to you within 24 hours to discuss your proposal.</p>
+          <p>Best regards,</p>
+          <p><strong>The Creative Team</strong><br />Illusory Design Studios</p>
+          <hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0 20px 0;" />
+          <p style="font-size: 11px; color: #9ca3af; text-align: center; margin: 0;">Please do not reply directly to this automated email.</p>
+        </div>
+      `,
+    };
+
+    transporter.sendMail(customerMailOptions).catch(err => {
+      console.error("❌ Failed to send customer auto-reply email:", err);
+    });
+
+    return { success: true };
+  } catch (error: any) {
     console.error("❌ Lead email notification failed:", error);
-    throw new Error(`Failed to send email notifications: ${error instanceof Error ? error.message : String(error)}`);
+    return { success: false, error: error.message || String(error) };
   }
 }
 
@@ -388,23 +443,80 @@ router.get("/estimate/:industry", async (req: Request, res: Response) => {
   }
 });
 
-// POST /api/package/lead
-router.post("/lead", async (req: Request, res: Response) => {
-  try {
-    const leadData = req.body;
-    const lead = await CustomerLead.create(leadData);
+const packageLeadSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters").max(100),
+  email: z.string().email("Invalid email format"),
+  phone: z.string().min(6, "Phone number is too short").max(20),
+  businessName: z.string().min(1, "Business name is required").max(150),
+  state: z.string().min(1, "State is required"),
+  district: z.string().min(1, "District is required"),
+  industry: z.string().min(1, "Industry is required"),
+  selectedPackage: z.string().min(1, "Selected package is required"),
+  estimatedBudget: z.string().min(1, "Estimated budget is required"),
+  message: z.string().optional().default(""),
+  website: z.string().optional(), // honeypot
+});
 
-    // Trigger Notification Hub
-    await sendLeadEmailNotification(lead);
+// POST /api/package/lead
+router.post("/lead", leadLimiter, async (req: Request, res: Response): Promise<any> => {
+  try {
+    // 1. Zod payload validation
+    const parsedData = packageLeadSchema.parse(req.body);
+
+    // 2. Honeypot check
+    if (parsedData.website && parsedData.website.trim() !== "") {
+      console.warn("⚠️ Spam submission detected via honeypot. Silently dropping payload.");
+      return res.json({
+        message: "Our team will contact you shortly.",
+        lead: {
+          name: parsedData.name,
+          email: parsedData.email,
+          businessName: parsedData.businessName,
+          status: "New",
+        }
+      });
+    }
+
+    // 3. Sanitization
+    const validatedData = sanitizeObject(parsedData);
+    delete validatedData.website;
+
+    // 4. Save to FormSubmission first
+    const submission = await FormSubmission.create({
+      formType: "package",
+      emailStatus: "pending",
+      emailError: null,
+      ...validatedData
+    });
+
+    // 5. Save to legacy CustomerLead collection for dashboard compatibility
+    const lead = await CustomerLead.create(validatedData);
+
+    // 6. Trigger Notification Hub (does not block client response)
+    sendLeadEmailNotification(lead).then(async (emailRes) => {
+      if (emailRes.success) {
+        submission.emailStatus = "sent";
+      } else {
+        submission.emailStatus = "failed";
+        submission.emailError = emailRes.error || "Unknown email error";
+      }
+      await submission.save();
+    });
+
     triggerWhatsAppNotification(lead);
     triggerCRMLeadSync(lead);
 
-    res.json({
+    return res.json({
       message: "Our team will contact you shortly.",
       lead,
     });
   } catch (error: any) {
-    res.status(500).json({ error: error.message });
+    if (error instanceof z.ZodError) {
+      console.warn("⚠️ Zod validation failure in lead route:", error.issues);
+      return res.status(400).json({ error: error.issues[0]?.message || "Validation failed" });
+    }
+    console.error("❌ Lead processing failed:", error);
+    return res.status(500).json({ error: error.message || "Failed to process lead request" });
   }
 });
 

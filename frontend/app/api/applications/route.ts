@@ -1,8 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { v2 as cloudinary } from 'cloudinary';
 import nodemailer from 'nodemailer';
+import { z } from 'zod';
 import { connectToDatabase } from '../../lib/mongodb';
 import JobApplication from '../../lib/models/JobApplication';
+import FormSubmission from '../../lib/models/FormSubmission';
+import { sanitizeObject } from '../../lib/utils/sanitize';
+import { isRateLimited } from '../../lib/utils/rateLimiter';
 
 // Configure Cloudinary
 cloudinary.config({
@@ -13,11 +17,20 @@ cloudinary.config({
 });
 
 // Helper function to send email via Resend API or Nodemailer SMTP
-async function sendEmail({ to, subject, html }: { to: string; subject: string; html: string }) {
+async function sendEmail({ 
+  to, 
+  subject, 
+  html, 
+  replyTo 
+}: { 
+  to: string; 
+  subject: string; 
+  html: string; 
+  replyTo?: string; 
+}) {
   const resendApiKey = process.env.RESEND_API_KEY;
-  // If using Resend, a verified sender email is required. Default to onboarding@resend.dev for testing,
-  // or a verified domain email like careers@illusorydesignstudios.com
-  const fromEmail = process.env.EMAIL_FROM || 'careers@illusorydesignstudios.com';
+  // Enforce EMAIL_FROM verified domain sender
+  const fromEmail = process.env.EMAIL_FROM || 'noreply@illusorydesignstudios.com';
 
   if (resendApiKey) {
     console.log(`Sending email to ${to} via Resend REST API...`);
@@ -32,6 +45,7 @@ async function sendEmail({ to, subject, html }: { to: string; subject: string; h
         to,
         subject,
         html,
+        reply_to: replyTo, // Resend API uses reply_to
       }),
     });
 
@@ -69,12 +83,34 @@ async function sendEmail({ to, subject, html }: { to: string; subject: string; h
       to,
       subject,
       html,
+      replyTo, // Nodemailer uses replyTo
     });
   }
 }
 
+// Zod validation schema for form text fields
+const careerValidationSchema = z.object({
+  fullName: z.string().min(2, 'Full name must be at least 2 characters').max(100),
+  email: z.string().email('Invalid email address'),
+  phone: z.string().min(6, 'Phone number is too short').max(20),
+  jobId: z.string().min(1, 'Job ID is required'),
+  jobTitle: z.string().min(1, 'Job Title is required'),
+  portfolioLink: z.string().url('Invalid portfolio URL').or(z.literal('')),
+  coverNote: z.string().max(2000, 'Cover note cannot exceed 2000 characters').optional().default(''),
+  website: z.string().optional(), // honeypot
+});
+
 export async function POST(req: NextRequest) {
   try {
+    // 1. IP Rate Limiting (Limit to 5 applications per 1 minute window)
+    if (isRateLimited(req, 5, 60 * 1000)) {
+      console.warn("⚠️ Rate limit exceeded for careers endpoint.");
+      return NextResponse.json(
+        { error: 'Too many application submissions from this IP. Please try again in a minute.' }, 
+        { status: 429 }
+      );
+    }
+
     const formData = await req.formData();
     
     // Parse form fields
@@ -85,20 +121,36 @@ export async function POST(req: NextRequest) {
     const jobTitle = formData.get('jobTitle') as string;
     const portfolioLink = formData.get('portfolioLink') as string || '';
     const coverNote = formData.get('coverNote') as string || '';
+    const website = formData.get('website') as string || ''; // Honeypot
+
+    // 2. Validate payload using Zod
+    const parsedData = careerValidationSchema.parse({
+      fullName,
+      email,
+      phone,
+      jobId,
+      jobTitle,
+      portfolioLink,
+      coverNote,
+      website
+    });
+
+    // 3. Honeypot check
+    if (parsedData.website && parsedData.website.trim() !== '') {
+      console.warn('Spam application detected via honeypot. Silently dropping payload.');
+      return NextResponse.json({
+        success: true,
+        message: 'Application submitted successfully',
+        applicationId: 'fake-id-' + Date.now(),
+      }, { status: 201 });
+    }
+
+    // 4. Sanitize inputs
+    const validatedData = sanitizeObject(parsedData);
+    delete validatedData.website; // Remove honeypot field
+
+    // Validate resume file presence
     const resumeFile = formData.get('resume') as File | null;
-
-    // Validate required fields
-    if (!fullName || !email || !phone || !jobId || !jobTitle) {
-      return NextResponse.json({ error: 'All marked fields are required' }, { status: 400 });
-    }
-
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return NextResponse.json({ error: 'Please provide a valid email address' }, { status: 400 });
-    }
-
-    // Validate resume file
     if (!resumeFile) {
       return NextResponse.json({ error: 'Resume file is required' }, { status: 400 });
     }
@@ -131,46 +183,62 @@ export async function POST(req: NextRequest) {
 
     const resumeUrl = uploadResult.secure_url;
 
-    // Save application to MongoDB
-    const application = await JobApplication.create({
-      jobId,
-      jobTitle,
-      fullName,
-      email,
-      phone,
+    // 5. Save to consolidated FormSubmission collection
+    const submission = await FormSubmission.create({
+      formType: 'career',
+      emailStatus: 'pending',
+      emailError: null,
+      name: validatedData.fullName,
+      fullName: validatedData.fullName,
+      email: validatedData.email,
+      phone: validatedData.phone,
+      portfolioLink: validatedData.portfolioLink,
+      coverNote: validatedData.coverNote,
+      jobId: validatedData.jobId,
+      jobTitle: validatedData.jobTitle,
       resumeUrl,
-      portfolioLink,
-      coverNote,
+    });
+
+    // 6. Save to legacy JobApplication collection for dashboard compatibility
+    const application = await JobApplication.create({
+      jobId: validatedData.jobId,
+      jobTitle: validatedData.jobTitle,
+      fullName: validatedData.fullName,
+      email: validatedData.email,
+      phone: validatedData.phone,
+      resumeUrl,
+      portfolioLink: validatedData.portfolioLink,
+      coverNote: validatedData.coverNote,
       status: 'new',
       source: 'website',
     });
 
-     // Email content for the operations team
+    // 7. Trigger Notification emails (does not block client response)
     const operationsEmail = process.env.EMAIL_TO || 'business@illusorydesignstudios.com';
     const adminHtml = `
       <div style="font-family: sans-serif; max-width: 600px; margin: auto; border: 1px solid #eaeaea; padding: 25px; border-radius: 12px; background-color: #ffffff; color: #333333;">
         <h2 style="color: #2563eb; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px; margin-top: 0;">New Job Application</h2>
-        <p style="font-size: 16px; margin: 15px 0;"><strong>Position:</strong> ${jobTitle} (Ref ID: #${jobId})</p>
+        <p style="font-size: 16px; margin: 15px 0;"><strong>Position:</strong> ${validatedData.jobTitle} (Ref ID: #${validatedData.jobId})</p>
         
         <div style="background-color: #f9fafb; padding: 15px; border-radius: 8px; margin: 20px 0;">
           <h3 style="margin-top: 0; font-size: 14px; text-transform: uppercase; color: #4b5563; letter-spacing: 0.05em;">Applicant Details</h3>
           <table style="width: 100%; border-collapse: collapse;">
             <tr>
               <td style="padding: 6px 0; font-weight: bold; width: 120px; font-size: 14px;">Full Name:</td>
-              <td style="padding: 6px 0; font-size: 14px;">${fullName}</td>
+              <td style="padding: 6px 0; font-size: 14px;">${validatedData.fullName}</td>
             </tr>
             <tr>
               <td style="padding: 6px 0; font-weight: bold; font-size: 14px;">Email:</td>
-              <td style="padding: 6px 0; font-size: 14px;"><a href="mailto:${email}" style="color: #2563eb; text-decoration: none;">${email}</a></td>
+              <td style="padding: 6px 0; font-size: 14px;"><a href="mailto:${validatedData.email}" style="color: #2563eb; text-decoration: none;">${validatedData.email}</a></td>
             </tr>
             <tr>
               <td style="padding: 6px 0; font-weight: bold; font-size: 14px;">Phone:</td>
-              <td style="padding: 6px 0; font-size: 14px;">${phone}</td>
+              <td style="padding: 6px 0; font-size: 14px;">${validatedData.phone}</td>
             </tr>
-            ${portfolioLink ? `
+            ${validatedData.portfolioLink ? `
             <tr>
               <td style="padding: 6px 0; font-weight: bold; font-size: 14px;">Portfolio:</td>
-              <td style="padding: 6px 0; font-size: 14px;"><a href="${portfolioLink}" target="_blank" style="color: #2563eb; text-decoration: none;">${portfolioLink}</a></td>
+              <td style="padding: 6px 0; font-size: 14px;"><a href="${validatedData.portfolioLink}" target="_blank" style="color: #2563eb; text-decoration: none;">${validatedData.portfolioLink}</a></td>
             </tr>
             ` : ''}
           </table>
@@ -180,10 +248,10 @@ export async function POST(req: NextRequest) {
           <a href="${resumeUrl}" target="_blank" style="display: inline-block; background-color: #2563eb; color: #ffffff; font-weight: bold; text-decoration: none; padding: 12px 30px; border-radius: 6px; font-size: 14px;">Download Resume / CV</a>
         </div>
 
-        ${coverNote ? `
+        ${validatedData.coverNote ? `
         <div style="margin-top: 25px;">
           <p style="font-weight: bold; margin-bottom: 5px; font-size: 14px;">Cover Note:</p>
-          <div style="background-color: #f3f4f6; padding: 15px; border-radius: 8px; white-space: pre-wrap; font-style: italic; font-size: 13px; line-height: 1.5; color: #4b5563;">${coverNote}</div>
+          <div style="background-color: #f3f4f6; padding: 15px; border-radius: 8px; white-space: pre-wrap; font-style: italic; font-size: 13px; line-height: 1.5; color: #4b5563;">${validatedData.coverNote}</div>
         </div>
         ` : ''}
         
@@ -192,7 +260,6 @@ export async function POST(req: NextRequest) {
       </div>
     `;
 
-    // Email content for the applicant
     const applicantHtml = `
       <div style="font-family: sans-serif; max-width: 600px; margin: auto; border: 1px solid #eaeaea; padding: 30px; border-radius: 12px; background-color: #ffffff; color: #333333; line-height: 1.6;">
         <div style="text-align: center; margin-bottom: 25px;">
@@ -201,13 +268,13 @@ export async function POST(req: NextRequest) {
         </div>
 
         <h3 style="color: #2563eb; margin-top: 0; font-size: 18px;">Application Received</h3>
-        <p style="font-size: 14px;">Dear ${fullName},</p>
-        <p style="font-size: 14px;">We have successfully received your application for the <strong>${jobTitle}</strong> position at Illusory Design Studios.</p>
+        <p style="font-size: 14px;">Dear ${validatedData.fullName},</p>
+        <p style="font-size: 14px;">We have successfully received your application for the <strong>${validatedData.jobTitle}</strong> position at Illusory Design Studios.</p>
         <p style="font-size: 14px;">Our operations and creative team will review your qualifications and portfolio. If your profile aligns with our vision, we will contact you to discuss the next steps.</p>
         
         <div style="background-color: #f9fafb; padding: 20px; border-radius: 8px; margin: 25px 0; border-left: 4px solid #2563eb;">
           <h4 style="margin-top: 0; margin-bottom: 10px; font-size: 14px; color: #374151;">Application Details:</h4>
-          <p style="margin: 5px 0; font-size: 13px;"><strong>Position:</strong> ${jobTitle}</p>
+          <p style="margin: 5px 0; font-size: 13px;"><strong>Position:</strong> ${validatedData.jobTitle}</p>
           <p style="margin: 5px 0; font-size: 13px;"><strong>Applied On:</strong> ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
           <p style="margin: 5px 0; font-size: 13px;"><strong>Status:</strong> Under Review</p>
         </div>
@@ -221,11 +288,30 @@ export async function POST(req: NextRequest) {
       </div>
     `;
 
-    // Send admin email notification (must succeed)
-    await sendEmail({
+    // Trigger Admin Email notification
+    sendEmail({
       to: operationsEmail,
-      subject: `New Job Application: ${jobTitle} - ${fullName}`,
+      subject: `New Job Application: ${validatedData.jobTitle} - ${validatedData.fullName}`,
       html: adminHtml,
+      replyTo: validatedData.email,
+    }).then(async () => {
+      submission.emailStatus = 'sent';
+      await submission.save();
+      console.log('✉️ Email sent successfully (Operations Desk).');
+    }).catch(async (emailErr) => {
+      console.error('❌ Failed to send operations application email:', emailErr);
+      submission.emailStatus = 'failed';
+      submission.emailError = emailErr.message || String(emailErr);
+      await submission.save();
+    });
+
+    // Trigger Applicant Auto-Reply Email
+    sendEmail({
+      to: validatedData.email,
+      subject: `Application Received - ${validatedData.jobTitle} - Illusory Design Studios`,
+      html: applicantHtml,
+    }).catch((applicantEmailErr) => {
+      console.error('❌ Failed to send applicant confirmation email:', applicantEmailErr);
     });
 
     return NextResponse.json({
@@ -235,6 +321,10 @@ export async function POST(req: NextRequest) {
     }, { status: 201 });
 
   } catch (error: any) {
+    if (error instanceof z.ZodError) {
+      console.warn("⚠️ Zod validation failure in Next.js careers route:", error.issues);
+      return NextResponse.json({ error: error.issues[0]?.message || 'Validation failed' }, { status: 400 });
+    }
     console.error('Application API error:', error);
     return NextResponse.json({ error: error.message || 'Something went wrong' }, { status: 500 });
   }
