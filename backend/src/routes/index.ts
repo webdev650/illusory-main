@@ -9,6 +9,7 @@ import uploadRoutes from "./upload";
 import packageRoutes from "./package";
 import careersRoutes from "./careers";
 import debugRoutes from "./debug";
+import submissionRoutes from "./submission";
 
 const router = Router();
 
@@ -22,5 +23,6 @@ router.use("/upload", uploadRoutes);
 router.use("/package", packageRoutes);
 router.use("/careers", careersRoutes);
 router.use("/debug", debugRoutes);
+router.use("/submissions", submissionRoutes);
 
 export default router;
