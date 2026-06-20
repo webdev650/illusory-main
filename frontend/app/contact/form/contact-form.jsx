@@ -40,7 +40,6 @@ const ContactForm = () => {
       message: target.message.value,
       hearAboutUs: target.hearaboutus.value,
       contactMethod: target.contactmethod.value,
-      website: target.website.value, // Honeypot field
       formType: typeof window !== "undefined" && window.location.pathname.includes("/contact") ? "contact" : "discussion",
     };
 
@@ -103,17 +102,6 @@ const ContactForm = () => {
       </div>
 
       <form onSubmit={handleSubmit} className="p-8 space-y-6">
-        {/* Honeypot field for spam prevention */}
-        <div className="hidden" aria-hidden="true">
-          <input
-            type="text"
-            name="website"
-            id="website"
-            tabIndex={-1}
-            autoComplete="off"
-          />
-        </div>
-
         {submitStatus === "error" && (
           <div className="bg-red-500/20 border border-red-500 text-red-400 p-4 rounded-lg flex items-center gap-3 animate-pulse">
             <AlertCircle className="w-5 h-5 shrink-0" />

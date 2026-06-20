@@ -32,7 +32,6 @@ export default function PackagesPage() {
     email: "",
     phone: "",
     message: "",
-    website: "", // honeypot
   });
   const [submittingLead, setSubmittingLead] = useState(false);
   const [leadSuccessMsg, setLeadSuccessMsg] = useState("");
@@ -163,12 +162,11 @@ export default function PackagesPage() {
         estimatedBudget: selectedPkgInfo?.priceRange || "Custom Quote",
         message: leadForm.message || `Request for ${expandedIndustry} - ${selectedPackageTier.toUpperCase()} package.`,
         status: "New",
-        website: leadForm.website, // Honeypot field
       };
 
       await packageAPI.submitLead(leadPayload);
       setLeadSuccessMsg("Request submitted! Our team will send confirmation shortly.");
-      setLeadForm({ name: "", email: "", phone: "", message: "", website: "" });
+      setLeadForm({ name: "", email: "", phone: "", message: "" });
       
       setTimeout(() => {
         setIsModalOpen(false);
@@ -587,18 +585,6 @@ export default function PackagesPage() {
 
             {/* User Details Entry */}
             <form onSubmit={handleLeadSubmit} className="mt-6 space-y-4 font-jakartaSans">
-              {/* Honeypot field for spam prevention */}
-              <div className="hidden" aria-hidden="true">
-                <input
-                  type="text"
-                  name="website"
-                  tabIndex={-1}
-                  autoComplete="off"
-                  value={leadForm.website}
-                  onChange={(e) => setLeadForm(prev => ({ ...prev, website: e.target.value }))}
-                />
-              </div>
-              
               <div>
                 <label className="block text-xs uppercase tracking-wider text-gray-400 mb-1.5 font-bold">Your Full Name *</label>
                 <input

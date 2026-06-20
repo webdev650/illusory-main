@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { Loader2, CheckCircle, AlertCircle, Upload } from "lucide-react";
+import { careersAPI } from "../../../services/api";
 
 interface ApplyModalProps {
   isOpen: boolean;
@@ -23,7 +24,6 @@ export const ApplyModal: React.FC<ApplyModalProps> = ({ isOpen, onClose, job }) 
     phone: "",
     portfolioLink: "",
     coverNote: "",
-    website: "", // honeypot
   });
 
   if (!isOpen || !job) return null;
@@ -52,6 +52,7 @@ export const ApplyModal: React.FC<ApplyModalProps> = ({ isOpen, onClose, job }) 
 
       // Build FormData for multipart upload
       const formDataToSend = new FormData();
+      formDataToSend.append("formType", "career");
       formDataToSend.append("fullName", formData.fullName);
       formDataToSend.append("email", formData.email);
       formDataToSend.append("phone", formData.phone);
@@ -60,17 +61,8 @@ export const ApplyModal: React.FC<ApplyModalProps> = ({ isOpen, onClose, job }) 
       formDataToSend.append("jobId", job.id);
       formDataToSend.append("jobTitle", job.title);
       formDataToSend.append("resume", resumeFile);
-      formDataToSend.append("website", formData.website); // Honeypot field
 
-      const response = await fetch("/api/applications", {
-        method: "POST",
-        body: formDataToSend,
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.error || `Failed to submit application (Status ${response.status})`);
-      }
+      await careersAPI.apply(formDataToSend);
 
       setSubmitStatus("success");
       setFormData({
@@ -79,7 +71,6 @@ export const ApplyModal: React.FC<ApplyModalProps> = ({ isOpen, onClose, job }) 
         phone: "",
         portfolioLink: "",
         coverNote: "",
-        website: "",
       });
       setResumeFile(null);
 
@@ -160,18 +151,6 @@ export const ApplyModal: React.FC<ApplyModalProps> = ({ isOpen, onClose, job }) 
             )}
 
             <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-              {/* Honeypot field for spam prevention */}
-              <div className="hidden" aria-hidden="true">
-                <input
-                  type="text"
-                  name="website"
-                  tabIndex={-1}
-                  autoComplete="off"
-                  value={formData.website}
-                  onChange={handleInputChange}
-                />
-              </div>
-
               <div>
                 <label className="block text-xs uppercase tracking-wider text-gray-400 mb-1.5 font-bold">Full Name *</label>
                 <input

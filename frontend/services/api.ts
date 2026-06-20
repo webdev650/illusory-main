@@ -11,12 +11,19 @@ import {
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
 
 export const apiFetch = async (endpoint: string, options: RequestInit = {}) => {
+  const isFormData = typeof window !== "undefined" && options.body instanceof FormData;
+  
+  const headers: HeadersInit = {
+    ...options.headers,
+  };
+
+  if (!isFormData && !("Content-Type" in (options.headers || {}))) {
+    (headers as any)["Content-Type"] = "application/json";
+  }
+
   const response = await fetch(`${API_URL}${endpoint}`, {
     ...options,
-    headers: {
-      "Content-Type": "application/json",
-      ...options.headers,
-    },
+    headers,
   });
 
   if (!response.ok) {
@@ -232,40 +239,22 @@ export const projectsAPI = {
 export const contactAPI = {
   getAll: () => apiFetch("/contact"),
   submit: async (data: any) => {
-    return handleApiFallback(
-      () => apiFetch("/contact", { method: "POST", body: JSON.stringify(data) }),
-      () => {
-        const contacts = getOfflineData("illusory_offline_contacts", []);
-        const newContact = {
-          _id: `contact_${Date.now()}`,
-          ...data,
-          createdAt: new Date().toISOString()
-        };
-        contacts.push(newContact);
-        setOfflineData("illusory_offline_contacts", contacts);
-        return newContact;
-      }
-    );
+    return apiFetch("/submissions", {
+      method: "POST",
+      body: JSON.stringify({
+        ...data,
+        formType: data.formType || "contact",
+      }),
+    });
   },
 };
 
 export const careersAPI = {
-  apply: async (data: any) => {
-    return handleApiFallback(
-      () => apiFetch("/careers/apply", { method: "POST", body: JSON.stringify(data) }),
-      () => {
-        const apps = getOfflineData("illusory_offline_applications", []);
-        const newApp = {
-          _id: `app_${Date.now()}`,
-          ...data,
-          status: "New",
-          createdAt: new Date().toISOString()
-        };
-        apps.push(newApp);
-        setOfflineData("illusory_offline_applications", apps);
-        return newApp;
-      }
-    );
+  apply: async (formData: FormData) => {
+    return apiFetch("/submissions", {
+      method: "POST",
+      body: formData,
+    });
   }
 };
 
@@ -450,24 +439,13 @@ export const packageAPI = {
     );
   },
   submitLead: async (data: any) => {
-    return handleApiFallback(
-      () => apiFetch("/package/lead", { method: "POST", body: JSON.stringify(data) }),
-      () => {
-        const leads = getOfflineData("illusory_offline_leads", mockLeads);
-        const newLead = {
-          _id: `lead_${Date.now()}`,
-          ...data,
-          status: data.status || "New",
-          createdAt: new Date().toISOString()
-        };
-        leads.push(newLead);
-        setOfflineData("illusory_offline_leads", leads);
-        return {
-          message: "Our team will contact you shortly. (Offline Simulation Mode)",
-          lead: newLead,
-        };
-      }
-    );
+    return apiFetch("/submissions", {
+      method: "POST",
+      body: JSON.stringify({
+        ...data,
+        formType: "package",
+      }),
+    });
   },
   employeeLogin: async (data: any) => {
     return handleApiFallback(
