@@ -61,10 +61,6 @@ const Navbar = () => {
                 <Link href="/services">Services</Link>
               </li>
               <li className="navigation-hover">
-                <Link href="/packages">Package</Link>
-              </li>
-
-              <li className="navigation-hover">
                 <Link href="/about">About Us</Link>
               </li>
               <li className="navigation-hover">
@@ -121,14 +117,6 @@ const Navbar = () => {
             >
               Services
             </Link>
-            <Link 
-              href="/packages" 
-              className="text-2xl hover:text-gray-300 transition-colors pointer-events-auto"
-              onClick={() => setIsOpen(false)}
-            >
-              Package
-            </Link>
-
             <Link 
               href="/about" 
               className="text-2xl hover:text-gray-300 transition-colors pointer-events-auto"

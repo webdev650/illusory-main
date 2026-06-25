@@ -6,7 +6,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = 'https://www.illusorydesignstudios.com';
   const routes = [
     '', '/services', '/works', '/team', '/about',
-    '/contact', '/careers', '/packages',
+    '/contact', '/careers',
     '/policies/privacy-policy', '/policies/refund-policy',
     '/policies/terms-service', '/policies/use-policy'
   ];
