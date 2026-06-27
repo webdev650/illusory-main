@@ -3,7 +3,7 @@ export const fallbackProjects = [
     _id: "mco",
     navigation: "mco",
     title: "Sustainable Living in Odisha",
-    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158567/MCO_gldekl.png",
+    image: "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546181/1_g3flru.png",
     description: "My City Odisha (MCO) is a community-driven initiative focusing on sustainable urban development and heritage preservation.",
     tags: "Sustainability | Urban Development | Heritage"
   },
@@ -11,7 +11,7 @@ export const fallbackProjects = [
     _id: "addyfitness",
     navigation: "addyfitness",
     title: "Fitness revolution in Motion",
-    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066170/Copy_of_ADDY_FITNESS_q4vi2a.png",
+    image: "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546194/1_qrf6er.png",
     description: "Addy Fitness is redefining what it means to be fit. Fitness is more than just working out—it’s a mindset, a journey, and a way of life.",
     tags: "Branding | Social Media Growth | Wellness Community"
   },
@@ -19,7 +19,7 @@ export const fallbackProjects = [
     _id: "annapurna",
     navigation: "annapurna",
     title: "The Art of Baking",
-    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158565/Annapurna_bakery_2_fnnped.png",
+    image: "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546191/1_u0cg5w.png",
     description: "Annapurna Bakery is a heritage brand known for its artisanal breads and pastries. We updated their visual identity while preserving their traditional roots.",
     tags: "Food & Beverage | Brand Identity | Packaging"
   },
@@ -27,7 +27,7 @@ export const fallbackProjects = [
     _id: "desifunkaar",
     navigation: "desifunkaar",
     title: "Celebrating Cultural Narratives",
-    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158567/desi_funkaar_wzeloj.png",
+    image: "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546178/1_nkricl.png",
     description: "Desi Funkaar is a platform for independent artists. We created a brand experience that is as vibrant and diverse as the artists it represents.",
     tags: "Culture | Talent Management | Experience Design"
   },
@@ -35,7 +35,7 @@ export const fallbackProjects = [
     _id: "addymeals",
     navigation: "addymeals",
     title: "Nutrition at Your Doorstep",
-    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158558/1_jtnwsz.png",
+    image: "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546186/1_z23spg.png",
     description: "Addy Meals brings healthy, delicious, and customized nutrition plans straight to you, making fitness goals easier to achieve.",
     tags: "Healthy Eating | Meal Prep | Wellness"
   },
@@ -43,7 +43,7 @@ export const fallbackProjects = [
     _id: "styletrends",
     navigation: "styletrends",
     title: "Leading the Fashion Curve",
-    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066089/Copy_of_style_trends_mockup_xkq7sr.png",
+    image: "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546176/1_u1omv0.png",
     description: "Style Trends is your go-to source for the latest in fashion and lifestyle, curated for those who dare to stand out.",
     tags: "Fashion | Lifestyle | Editorial Design"
   },
@@ -51,7 +51,7 @@ export const fallbackProjects = [
     _id: "spectrum",
     navigation: "spectrum",
     title: "A Spectrum of Creativity",
-    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066089/Copy_of_spectrum_windows_kvfufv.png",
+    image: "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546176/2_xy4c3i.png",
     description: "Spectrum is a platform that celebrates diversity in art and design, bringing together different perspectives to create something truly unique.",
     tags: "Art Curation | Creative Community | Diversity"
   },
@@ -59,7 +59,7 @@ export const fallbackProjects = [
     _id: "puraanesikke",
     navigation: "puraanesikke",
     title: "Preserving Numismatic Heritage",
-    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158554/2_ox4slc.png",
+    image: "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546179/2_ngtsi5.png",
     description: "Puraane Sikke is dedicated to collectors and enthusiasts of rare coins and currency, providing a platform to explore and trade history.",
     tags: "Numismatics | Rare Coins | Historical Collection"
   },
@@ -67,7 +67,7 @@ export const fallbackProjects = [
     _id: "odishareality",
     navigation: "odishareality",
     title: "Redefining Real Estate in Odisha",
-    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066097/Copy_of_odisha_realty_mockup_bjkppv.png",
+    image: "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546184/2_brlr5j.png",
     description: "Odisha Realty brings the best property deals and real estate insights to the heart of Odisha, making home buying a seamless experience.",
     tags: "Real Estate | Property Consulting | Home Buying"
   },
@@ -75,7 +75,7 @@ export const fallbackProjects = [
     _id: "salty",
     navigation: "salty",
     title: "Jewellery that Speaks out",
-    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066093/Copy_of_salty_mockup_awmb1y.png",
+    image: "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546188/2_zmzfmi.png",
     description: "Salty isn’t just about jewelry—it’s about making a statement. Through visually stunning content, high-end branding, and an immersive digital experience.",
     tags: "Luxury Jewelry | High-End Accessories | Visual Storytelling"
   },
@@ -83,7 +83,7 @@ export const fallbackProjects = [
     _id: "annscafe",
     navigation: "annscafe",
     title: "Brewing Memories",
-    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158561/1_fspqus.png",
+    image: "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546190/1_lnfenb.png",
     description: "Ann's Cafe is more than just a coffee shop; it's a space where every cup is brewed with love and every visit becomes a cherished memory.",
     tags: "Cafe Culture | Coffee Branding | Community Space"
   }

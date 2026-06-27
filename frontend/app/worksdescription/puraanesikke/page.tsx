@@ -10,9 +10,9 @@ import PuraaneSikkeLogo from "../../components/assets/puraanesikke-01.svg";
 
 // ✅ CLOUDINARY IMAGES
 const images = [
-  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158556/1_kkbuvq.png",
-  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158554/2_ox4slc.png",
-  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158554/3_rizy0s.png",
+  "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546180/1_dwcb5d.png",
+  "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546179/2_ngtsi5.png",
+  "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546179/3_n6ektu.png",
 ];
 
 const PuraaneSikke = () => {

@@ -216,22 +216,14 @@ export const servicesAPI = {
 
 export const projectsAPI = {
   getAll: async () => {
-    try {
-      return await apiFetch("/projects");
-    } catch (error) {
-      console.warn("Using fallback projects data because backend is offline:", error);
-      return fallbackProjects;
-    }
+    // Temporarily using fallback projects for local development to bypass production DB
+    return fallbackProjects;
   },
   getOne: async (navigation: string) => {
-    try {
-      return await apiFetch(`/projects/${navigation}`);
-    } catch (error) {
-      console.warn(`Using fallback project data for ${navigation} because backend is offline:`, error);
-      const found = fallbackProjects.find(p => p.navigation === navigation);
-      if (found) return found;
-      throw error;
-    }
+    // Temporarily using fallback projects for local development to bypass production DB
+    const found = fallbackProjects.find(p => p.navigation === navigation);
+    if (found) return found;
+    throw new Error(`Project ${navigation} not found`);
   },
   create: (data: any) => apiFetch("/projects", { method: "POST", body: JSON.stringify(data) }),
 };

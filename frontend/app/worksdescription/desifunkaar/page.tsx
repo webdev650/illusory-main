@@ -10,9 +10,9 @@ import desifunkaarLogo from "@/app/components/assets/desi-funkaar.svg";
 
 // ✅ CLOUDINARY IMAGES
 const images = [
-  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158555/1_p4uhfe.png",
-  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158554/2_id3ayn.png",
-  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158554/3_daotpd.png",
+  "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546178/1_nkricl.png",
+  "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546177/2_hadjao.png",
+  "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546177/3_fpmkho.png",
 ];
 
 const DesiFunkaar = () => {

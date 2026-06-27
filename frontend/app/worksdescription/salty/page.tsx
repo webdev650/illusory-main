@@ -10,9 +10,9 @@ import saltyLogo from "@/app/components/assets/salty.svg";
 
 // ✅ CLOUDINARY IMAGES
 const images = [
-  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158559/1_tnb3c1.png",
-  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158560/2_oj6nat.png",
-  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158560/3_wh3ac9.png",
+  "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546188/1_gtsrc6.png",
+  "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546188/2_zmzfmi.png",
+  "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546187/3_ai56t7.png",
 ];
 
 const Salty = () => {

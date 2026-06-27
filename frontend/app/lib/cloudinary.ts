@@ -15,7 +15,7 @@ export function cleanCloudinaryUrl(url: any): any {
   // Read configured cloud name (fallback to default)
   let activeCloudName = process.env.NEXT_PUBLIC_CLOUDINARY_NAME;
   if (!activeCloudName || activeCloudName === "undefined" || activeCloudName === "null" || activeCloudName.trim() === "") {
-    activeCloudName = "dqlmblh5i";
+    activeCloudName = "dtmqv7oqq";
   }
   
   // Replace ANY cloud name in res.cloudinary.com/<cloud_name>/ with activeCloudName

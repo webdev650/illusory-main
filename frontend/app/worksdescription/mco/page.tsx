@@ -10,9 +10,9 @@ import MCOLogo from "../../components/assets/mco.svg";
 
 // ✅ CLOUDINARY IMAGES
 const images = [
-  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158556/1_uubpui.png",
-  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158556/2_yh9an1.png",
-  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158555/3_zuiooy.png",
+  "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546181/1_g3flru.png",
+  "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546181/2_r51e09.png",
+  "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546180/3_pguguw.png",
 ];
 
 const MCO = () => {

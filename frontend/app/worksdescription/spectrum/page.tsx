@@ -10,9 +10,9 @@ import spectrumLogo from "@/app/components/assets/spectrum-01.svg";
 
 // ✅ CLOUDINARY IMAGES
 const images = [
-  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158553/1_gh4opq.png",
-  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158553/2_hzocdc.png",
-  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158552/3_y4dytw.png",
+  "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546176/2_xy4c3i.png",
+  "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546176/1_k0y8js.png",
+  "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546175/3_givfat.png",
 ];
 
 const SpectrumWindows = () => {

@@ -11,9 +11,9 @@ import annscafeLogo from "@/app/components/assets/anns-cafe.svg";
 
 // ✅ CLOUDINARY IMAGES
 const images = [
-  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158561/1_fspqus.png",
-  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158560/2_mwtbmb.png",
-  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781158560/3_fua45v.png",
+  "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546190/1_lnfenb.png",
+  "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546189/3_kiks68.png",
+  "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546189/2_m8a1do.png",
 ];
 
 const AnnsCafe = () => {

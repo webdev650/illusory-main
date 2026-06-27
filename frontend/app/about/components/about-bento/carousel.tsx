@@ -5,7 +5,7 @@ const projects = [
   {
     id: 1,
     title: "Pratyush K Rath",
-    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066113/20250307-DSC_6708_sblpc0.jpg",
+    image: "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546295/20250307-DSC_6708_kdfwdl.jpg",
     description:
     "Every brand has a story waiting to be told, and for me, crafting that story is pure magic. Illusory is built on vision, creativity, and a touch of boldness – and we’re here to turn your dreams into realities that captivate.",
     tags:'CEO'
@@ -13,7 +13,7 @@ const projects = [
   {
     id: 2,
     title: "Aparna Tripathy",
-    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066109/Aparna_website-01_agwuid.jpg",
+    image: "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546291/Aparna_website-01_tkt5zd.jpg",
     description:
      "Illusory isn’t just a workplace; it’s a journey we take with every client. I’m here to make sure every detail aligns, every step flows, and every dream becomes something tangible. Together, we’re building more than brands; we’re building connections.",
     tags:'COO'
@@ -21,7 +21,7 @@ const projects = [
   {
     id: 3,
     title: "Biswajit Nayak",
-    image: "https://res.cloudinary.com/dqlmblh5i/image/upload/v1781000990/20250307-DSC_6762.jpg_fyapdu.png",
+    image: "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546295/20250307-DSC_6762_ysuwdz.jpg",
     description:
       "To me, marketing is more than strategy – it’s finding that spark that makes people feel and connect. At Illusory, we don’t just promote; we create stories that linger. Let’s make your brand unforgettable, one bold idea at a time.",
     tags:'CMO'

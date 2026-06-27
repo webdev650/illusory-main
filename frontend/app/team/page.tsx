@@ -15,10 +15,14 @@ export const metadata: Metadata = {
     type: "website",
   }
 };
-const teamOne = "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066114/20250307-DSC_6791_1_m2aip4.jpg";
-const teamTwo = "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066107/team2-01_utxidr.jpg";
-const teamThree = "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066108/20250307-DSC_6796_bfis9v.jpg";
-const teamFour = "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066111/20250307-DSC_6676_fuateg.jpg";
+const teamOne = "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546296/20250307-DSC_6791_1_izqlvg.jpg";
+const teamTwo = "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546286/team2-01_yuxqyr.jpg";
+const teamThree = "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546292/20250307-DSC_6796_rsyadk.jpg";
+const teamFour = "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546293/20250307-DSC_6676_vksrah.jpg";
+const teamFive = "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546293/IMG_2913_uhi8oy.jpg";
+const teamSix = "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546292/20250307-DSC_6640_lg5juc.jpg";
+const teamSeven = "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546294/20250307-DSC_6672_o9agaa.jpg";
+const teamEight = "https://res.cloudinary.com/dtmqv7oqq/image/upload/v1782546294/20250307-DSC_6681_vve3dl.jpg";
 
 import SliderEffect from "./components/left-image";
 import CircleStack from "../components/Circlestack";
@@ -71,6 +75,34 @@ const Team = () => {
             categories="04/"
             title="Chaos? We Own It."
             description="From epic campaigns to jaw-dropping events, we thrive in the storm. We orchestrate with laughs, high-fives, and a dash of madness that turns dreams into reality."
+          />
+          
+          <SliderEffect
+            image={teamFive}
+            categories="05/"
+            title="The Architects of Ambition."
+            description="Building the foundations of wild ideas and scaling them to the moon with unbreakable strategy and bold creativity."
+          />
+
+          <RightImage
+            image={teamSix}
+            categories="06/"
+            title="Pixel Perfect Rebels."
+            description="We break rules, but never the grid. Pushing pixels to their limits to deliver experiences that leave a lasting mark."
+          />
+
+          <SliderEffect
+            image={teamSeven}
+            categories="07/"
+            title="The Quiet Mavericks."
+            description="While the world screams, we listen, calculate, and execute. Silent but deadly precision in every project we touch."
+          />
+
+          <RightImage
+            image={teamEight}
+            categories="08/"
+            title="Unstoppable Momentum."
+            description="Fueling the fire with relentless energy. When the deadline approaches, we don't just meet it, we redefine it."
           />
    
        
