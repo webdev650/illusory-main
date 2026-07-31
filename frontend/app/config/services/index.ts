@@ -42,13 +42,13 @@ export const production =
 // Third Section
 
 export const photography =
-  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066218/Pexels_zfuujg.jpg";
+  "https://images.pexels.com/photos/598917/pexels-photo-598917.jpeg";
 
 export const corporate =
-  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066218/camerarails_hlhpqi.jpg";
+  "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg";
 
 export const cinematic =
-  "https://res.cloudinary.com/dqlmblh5i/image/upload/v1768066219/blueskyboy_inqeff.jpg";
+  "https://images.pexels.com/photos/1983037/pexels-photo-1983037.jpeg";
 
 export const eventPerformance =
   "https://images.pexels.com/photos/236714/pexels-photo-236714.jpeg";
