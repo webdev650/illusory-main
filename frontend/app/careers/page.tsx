@@ -14,6 +14,10 @@ export const dynamic = 'force-dynamic';
 export const metadata: Metadata = {
   title: "Careers",
   description: "Join the Illusory team. We're looking for creative designers, marketers, and developers.",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
   openGraph: {
     title: "Careers",
     description: "Join the Illusory team. We're looking for creative designers, marketers, and developers.",

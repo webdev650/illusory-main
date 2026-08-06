@@ -228,8 +228,8 @@ const IllusoryChat = () => {
                 <div className="flex flex-col gap-1">
                     <p>We are located in Bhubaneswar, Odisha.</p>
                     <p>Email: <a href="mailto:official@illusory.design" className="underline">official@illusory.design</a></p>
-                    <p>Phone (Team 1): <a href="tel:7681842303" className="underline">+91 7681842303</a></p>
-                    <p>Phone (Team 2): <a href="tel:8763923036" className="underline">+91 8763923036</a></p>
+                    <p>Phone (Team 1): <a href="tel:9124633793" className="underline">+91 91246 33793</a></p>
+                    <p>Phone (Team 2): <a href="tel:7681842303" className="underline">+91 76818 42303</a></p>
                 </div>
             );
         } else {
@@ -255,7 +255,7 @@ const IllusoryChat = () => {
                     ease: "easeInOut"
                 }}
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-16 h-16 rounded-full bg-gradient-to-br from-[#5C6BC0] to-[#E91E63] shadow-lg flex items-center justify-center text-white overflow-hidden border-2 border-white/20"
+                className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-[#5C6BC0] to-[#E91E63] shadow-lg flex items-center justify-center text-white overflow-hidden border-2 border-white/20"
             >
                 <AnimatePresence mode="wait">
                     {isOpen ? (
@@ -414,13 +414,13 @@ const IllusoryChat = () => {
                         {/* Quick Actions */}
                         <div className="px-4 py-2 flex gap-2 overflow-x-auto scrollbar-hidden border-t border-white/10">
                             <a
-                                href="tel:7681842303"
+                                href="tel:9124633793"
                                 className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-xs shrink-0 transition-colors"
                             >
                                 <Phone size={12} /> Call Team 1
                             </a>
                             <a
-                                href="tel:8763923036"
+                                href="tel:7681842303"
                                 className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-xs shrink-0 transition-colors"
                             >
                                 <Phone size={12} /> Call Team 2

@@ -8,6 +8,10 @@ import Footer from "../components/Footer";
 export const metadata: Metadata = {
   title: "Our Team",
   description: "Meet the creative experts behind Illusory Design Studios.",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
   openGraph: {
     title: "Our Team",
     description: "Meet the creative experts behind Illusory Design Studios.",

@@ -34,19 +34,23 @@ const Footer = () => {
               the extraordinary!
             </p>
             <button className=" mt-10 group pointer-events-auto flex items-center w-full md:w-fit rounded-[72px] cursor-pointer transition-all duration-300">
-              {/* <div className="relative flex items-center justify-between w-full md:gap-4  bg-[#3B3B3B] rounded-[72px] py-5 pl-7 pr-5 text-[24px] m-[2px] transition-all duration-300 group-hover:bg-[#FF1284] group-hover:text-white pointer-events-auto"> */}
-              <div className="bg-[#3B3B3B]  rounded-[72px]">
+              <div
+                className="rounded-[72px] transition-all duration-500 overflow-hidden"
+                style={{
+                  background: "linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%)",
+                  backdropFilter: "blur(16px)",
+                  WebkitBackdropFilter: "blur(16px)",
+                  border: "1px solid rgba(255, 255, 255, 0.2)",
+                  boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.4), inset 0 1px 1px 0 rgba(255, 255, 255, 0.35), 0 0 25px 4px rgba(59, 130, 246, 0.3)",
+                }}
+              >
                 <ShinyText
                   text="Start a discussion"
                   disabled={false}
                   speed={3}
-                  className="relative flex items-center justify-between w-full md:gap-4  rounded-[72px] py-3.5 md:py-5 pl-5 md:pl-7 pr-4 md:pr-5 text-base md:text-[24px] m-[2px] transition-all duration-300 group-hover:!bg-[#FF1284] group-hover:text-white pointer-events-auto "
+                  className="relative flex items-center justify-between w-full md:gap-4 rounded-[72px] py-3.5 md:py-5 pl-5 md:pl-7 pr-4 md:pr-5 text-base md:text-[24px] m-[2px] transition-all duration-300 group-hover:!bg-[#FF1284] group-hover:text-white pointer-events-auto "
                 />
-
               </div>
-
-
-              {/* </div> */}
             </button>
           </main>
 

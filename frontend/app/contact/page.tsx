@@ -9,6 +9,10 @@ import { Phone, Mail, MessageCircle } from 'lucide-react'
 export const metadata: Metadata = {
   title: "Contact Us",
   description: "Get in touch with Illusory Design Studios. Start a discussion about your next project.",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
   openGraph: {
     title: "Contact Us",
     description: "Get in touch with Illusory Design Studios. Start a discussion about your next project.",

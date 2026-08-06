@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { servicesAPI } from "../../services/api";
-import FlowingMenu from "../components/ui/FlowingMenu";
+import ServicesShowcase from "./ui/ServicesShowcase";
 
 const Services = () => {
   const [items, setItems] = useState<any[]>([]);
@@ -22,18 +22,16 @@ const Services = () => {
   }, []);
 
   return (
-    <section id="services" className="min-h-screen py-[120px] w-full px-6 lg:px-20 flex justify-center">
+    <section id="services" className="min-h-screen py-[60px] md:py-[70px] w-full px-6 lg:px-20 flex justify-center">
       <div className="w-full max-w-7xl">
         <div>
-          <p className="md:w-[400px] font-general">
+          <p className="md:w-[400px] font-general text-white/80">
             What do we offer- As a tight knit team of experts, we create
             memorable and emotional websites, digital experiences and digital
             apps.
           </p>
         </div>
-        <div className="mt-[80px]" style={{ position: "relative" }}>
-          <FlowingMenu items={items} />
-        </div>
+        <ServicesShowcase items={items} />
       </div>
     </section>
   );

@@ -100,9 +100,18 @@ const HeroPage: React.FC<HeroProps> = ({ head1, head2, head3, head4 }) => {
             </p>
             <button
               ref={buttonRef}
-              className="md:fixed bottom-6 right-24 lg:bottom-20 lg:right-20 group pointer-events-auto md:flex items-center gap-4 rounded-[72px] cursor-pointer transition-all duration-300 mt-6 md:mt-0"
+              className="md:fixed bottom-6 right-6 sm:right-[112px] md:right-[120px] z-[90] group pointer-events-auto md:flex items-center gap-4 rounded-[72px] cursor-pointer transition-all duration-300 mt-6 md:mt-0"
             >
-              <div className="bg-[#3B3B3B] rounded-[72px]">
+              <div
+                className="rounded-[72px] transition-all duration-500 overflow-hidden"
+                style={{
+                  background: "linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%)",
+                  backdropFilter: "blur(16px)",
+                  WebkitBackdropFilter: "blur(16px)",
+                  border: "1px solid rgba(255, 255, 255, 0.2)",
+                  boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.4), inset 0 1px 1px 0 rgba(255, 255, 255, 0.35), 0 0 25px 4px rgba(59, 130, 246, 0.3)",
+                }}
+              >
                 <ShinyText
                   text="Start a discussion"
                   disabled={false}

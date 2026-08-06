@@ -3,7 +3,7 @@ import "./globals.css";
 import { IntroProvider } from './contexts/IntroContext';
 import { ModalProvider } from './contexts/ModalContext';
 import IllusoryChat from './components/IllusoryChat';
-import WhatsAppButton from './components/WhatsAppButton';
+import SocialIconsBar from './components/SocialIconsBar';
 import ContactFormModal from './components/ContactFormModal';
 import Script from 'next/script';
 import {
@@ -118,6 +118,11 @@ export const metadata: Metadata = {
   },
   description: "Illusory Design Studios is a premier creative agency specializing in bespoke design, cutting-edge technology, and strategic digital marketing solutions. We craft immersive experiences that inspire imaginations.",
   keywords: ["design studio", "web development", "digital marketing", "branding", "UI/UX design", "tech solutions", "creative agency"],
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
   openGraph: {
     title: "Illusory Design Studios | Bespoke Design & Tech Solutions",
     description: "Expert design, technology, and digital marketing solutions tailored to your vision. Discover the magic of Illusory.",
@@ -150,6 +155,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${hostGrotesk.variable} ${merriweather.variable} ${plusJakartaSans.variable} ${poppins.variable} ${rethinkSans.variable} ${youngSerif.variable}`}>
       <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-icon.png" />
         <Script
           id="schema-org"
           type="application/ld+json"
@@ -162,8 +170,8 @@ export default function RootLayout({
           <IntroProvider>
             <ModalProvider>
               {children}
+              <SocialIconsBar />
               <IllusoryChat />
-              <WhatsAppButton />
               <ContactFormModal />
             </ModalProvider>
           </IntroProvider>

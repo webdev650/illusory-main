@@ -85,7 +85,7 @@ const Works = () => {
     <section
       ref={container}
       id="works"
-      className="min-h-screen py-[120px] w-full px-6 lg:px-20 flex justify-center"
+      className="min-h-screen py-[60px] md:py-[70px] w-full px-6 lg:px-20 flex justify-center"
     >
         
       <div className=" flex flex-col justify-between w-full max-w-7xl">

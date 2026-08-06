@@ -10,6 +10,10 @@ import Footer from '../components/Footer'
 export const metadata: Metadata = {
   title: "Our Work & Portfolio",
   description: "Explore our creative projects, branding, and digital design portfolio by Illusory Design Studios.",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
   openGraph: {
     title: "Our Work & Portfolio",
     description: "Explore our creative projects, branding, and digital design portfolio by Illusory Design Studios.",

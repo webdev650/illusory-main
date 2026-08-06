@@ -56,7 +56,7 @@ const Vision = () => {
     <section
       ref={container}
       id="vision"
-      className="min-h-screen py-[120px] text-white w-full flex justify-center  px-6  lg:px-20"
+      className="min-h-screen py-[60px] md:py-[70px] text-white w-full flex justify-center px-6 lg:px-20"
     >
       <div className="w-full max-w-7xl">
         <div>

@@ -4,6 +4,10 @@ import ServicesClient from './ServicesClient';
 export const metadata: Metadata = {
   title: "Design, Marketing & Production Services",
   description: "Graphic design, UI/UX, video production, photography, event management, and digital marketing services.",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
   openGraph: {
     title: "Design, Marketing & Production Services",
     description: "Graphic design, UI/UX, video production, photography, event management, and digital marketing services.",
