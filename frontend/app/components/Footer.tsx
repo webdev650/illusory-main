@@ -193,11 +193,19 @@ const Footer = () => {
                     © 2026 Illusory Design Studios Pvt. Ltd. • All rights
                     reserved • <a href="mailto:business@illusorydesignstudios.com" className="hover:text-white transition-colors">business@illusorydesignstudios.com</a>
                   </p>
-                  <p>
+                  <p className="text-[#FCFCFD]/70 text-sm">
                     <span className="text-[#FCFCFD] text-opacity-50">
                       Locate us at :{" "}
                     </span>
-                    Bhubaneswar, Odisha • 
+                    <a
+                      href="https://maps.app.goo.gl/yMF8TgPaac4tVdCv6"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-[#FF1284] transition-colors underline decoration-dotted font-medium"
+                    >
+                      1007, Shri Ramnagar Marg, Sriram Nagar, Old Town, Bhubaneswar, Odisha 751002
+                    </a>
+                    {" "}•{" "}
                     <span className="text-[#FCFCFD] text-opacity-50"> Team 1: </span>
                     <a href="tel:7681842303" className="hover:text-white transition-colors">7681842303</a> • 
                     <span className="text-[#FCFCFD] text-opacity-50"> Team 2: </span>
