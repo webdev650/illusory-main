@@ -59,20 +59,20 @@ export const ServiceRail: React.FC = () => {
   return (
     <div
       ref={sectionRef}
-      className="relative w-full min-h-screen bg-black text-white flex flex-col justify-center py-20 overflow-hidden border-t border-white/10"
+      className="relative w-full min-h-screen bg-black text-white flex flex-col justify-center py-20 overflow-hidden border-t border-[#656E8B]/25"
       style={{ perspective: "1000px" }}
     >
       {/* Section Heading */}
       <div className="px-6 lg:px-20 mb-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
         <div>
-          <span className="text-pink-500 font-mono text-sm tracking-widest uppercase">
+          <span className="text-[#FF1284] font-mono text-sm tracking-widest uppercase">
             01 / What We Do
           </span>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-jakartaSans mt-2">
             9 Core Capabilities
           </h2>
         </div>
-        <p className="text-gray-400 max-w-md text-sm sm:text-base">
+        <p className="text-[#DEE1E7] max-w-md text-sm sm:text-base">
           End-to-end creative & technological solutions tailored for industry leaders.
         </p>
       </div>

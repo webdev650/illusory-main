@@ -73,31 +73,31 @@ export const PortfolioHero: React.FC = () => {
       className="relative w-full h-screen flex flex-col justify-between pt-28 pb-12 px-6 lg:px-20 overflow-hidden bg-black text-white"
       style={{ perspective: "1000px" }}
     >
-      {/* Background Subtle Gradient Glow */}
-      <div className="absolute inset-0 pointer-events-none opacity-35 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-fuchsia-600/30 via-indigo-900/20 to-transparent" />
+      {/* Background Subtle Gradient Glow matching Illusory brand */}
+      <div className="absolute inset-0 pointer-events-none opacity-40 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#FF1284]/30 via-[#2407ff]/20 to-transparent" />
 
       {/* Main Hero Headline */}
       <div ref={headlineRef} className="my-auto z-10 font-jakartaSans font-bold tracking-tight">
         <h1 className="hero-text-line hero-head text-white">
           Our Portfolio,
         </h1>
-        <h1 className="hero-text-line hero-head text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-400 to-indigo-500">
+        <h1 className="hero-text-line hero-head text-transparent bg-clip-text bg-gradient-to-r from-[#FF1284] via-[#FF46CE] to-[#2407ff]">
           in motion.
         </h1>
       </div>
 
       {/* Subtext and Scroll Cue */}
-      <div className="z-10 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6 border-t border-white/10 pt-6">
+      <div className="z-10 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6 border-t border-[#656E8B]/25 pt-6">
         <div ref={subtextRef} className="max-w-md">
-          <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
+          <p className="text-[#DEE1E7] text-sm sm:text-base leading-relaxed">
             Explore our curated showcase of digital craft, WebGL experiences, and brand transformation across 20 industries.
           </p>
         </div>
 
-        <div ref={scrollCueRef} className="flex items-center gap-3 text-xs tracking-widest uppercase text-gray-400">
+        <div ref={scrollCueRef} className="flex items-center gap-3 text-xs tracking-widest uppercase text-white/50 font-mono">
           <span>Scroll to explore</span>
-          <div className="w-5 h-8 border-2 border-white/30 rounded-full flex justify-center p-1">
-            <div className="w-1.5 h-2 bg-white rounded-full animate-bounce" />
+          <div className="w-5 h-8 border-2 border-[#656E8B]/40 rounded-full flex justify-center p-1">
+            <div className="w-1.5 h-2 bg-[#FF1284] rounded-full animate-bounce" />
           </div>
         </div>
       </div>
