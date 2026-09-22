@@ -119,8 +119,11 @@ export const metadata: Metadata = {
   description: "Illusory Design Studios is a premier creative agency specializing in bespoke design, cutting-edge technology, and strategic digital marketing solutions. We craft immersive experiences that inspire imaginations.",
   keywords: ["design studio", "web development", "digital marketing", "branding", "UI/UX design", "tech solutions", "creative agency"],
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", type: "image/x-icon" },
+    ],
+    shortcut: "/icon.svg",
     apple: "/apple-icon.png",
   },
   openGraph: {
@@ -130,7 +133,7 @@ export const metadata: Metadata = {
     siteName: "Illusory Design Studios",
     images: [
       {
-        url: "/icon.png",
+        url: "/icon.svg",
         width: 512,
         height: 512,
         alt: "Illusory Design Studios Logo"
@@ -143,7 +146,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Illusory Design Studios | Bespoke Design & Tech Solutions",
     description: "Expert design, technology, and digital marketing solutions tailored to your vision.",
-    images: ["/icon.png"],
+    images: ["/icon.svg"],
   },
 };
 
@@ -155,8 +158,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${hostGrotesk.variable} ${merriweather.variable} ${plusJakartaSans.variable} ${poppins.variable} ${rethinkSans.variable} ${youngSerif.variable}`}>
       <head>
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="shortcut icon" href="/icon.svg" />
         <link rel="apple-touch-icon" href="/apple-icon.png" />
         <Script
           id="schema-org"

@@ -55,6 +55,9 @@ const Navbar = () => {
                 <Link href="/works">Works</Link>
               </li>
               <li className="navigation-hover">
+                <Link href="/portfolio">Portfolio</Link>
+              </li>
+              <li className="navigation-hover">
                 <Link href="/team">Our Team</Link>
               </li>
               <li className="navigation-hover">
@@ -102,6 +105,13 @@ const Navbar = () => {
               onClick={() => setIsOpen(false)}
             >
               Works
+            </Link>
+            <Link 
+              href="/portfolio" 
+              className="text-2xl hover:text-gray-300 transition-colors pointer-events-auto"
+              onClick={() => setIsOpen(false)}
+            >
+              Portfolio
             </Link>
             <Link 
               href="/team" 

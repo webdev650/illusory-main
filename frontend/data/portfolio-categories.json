@@ -1,0 +1,182 @@
+[
+  {
+    "id": "cosmetic",
+    "label": "Cosmetic / Beauty",
+    "videoUrl": "/portfolio/cosmetic.mp4",
+    "poster": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=1600&auto=format&fit=crop",
+    "clientName": "Lumière Botanicals",
+    "projectUrl": "/works/lumiere-botanicals",
+    "description": "Luxurious e-commerce showcase with interactive product 3D view and seamless checkout."
+  },
+  {
+    "id": "electronics",
+    "label": "Electronics",
+    "videoUrl": "/portfolio/electronics.mp4",
+    "poster": "https://images.unsplash.com/photo-1550009158-9ebf69173e03?q=80&w=1600&auto=format&fit=crop",
+    "clientName": "Aura Tech & Audio",
+    "projectUrl": "/works/aura-tech",
+    "description": "Futuristic product launch site with WebGL audio visualizers and spec highlights."
+  },
+  {
+    "id": "jewellery",
+    "label": "Jewellery",
+    "videoUrl": "/portfolio/jewellery.mp4",
+    "poster": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=1600&auto=format&fit=crop",
+    "clientName": "Verve Diamond Co.",
+    "projectUrl": "/works/verve-jewellery",
+    "description": "Elegantly crafted web experience featuring high-resolution gem magnification and custom ring builder."
+  },
+  {
+    "id": "urban-realestate",
+    "label": "Urban / Real Estate",
+    "videoUrl": "/portfolio/urban-realestate.mp4",
+    "poster": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop",
+    "clientName": "Apex Skyline Residences",
+    "projectUrl": "/works/apex-skyline",
+    "description": "Interactive floor plans, virtual drone walkthroughs, and immersive architectural previews."
+  },
+  {
+    "id": "wedding",
+    "label": "Marriage / Wedding",
+    "videoUrl": "/portfolio/wedding.mp4",
+    "poster": "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600&auto=format&fit=crop",
+    "clientName": "Elysian Celebrations",
+    "projectUrl": "/works/elysian-wedding",
+    "description": "Bespoke luxury wedding story site with personalized guest RSVPs and gallery timelines."
+  },
+  {
+    "id": "food-restaurant",
+    "label": "Food & Restaurant",
+    "videoUrl": "/portfolio/food-restaurant.mp4",
+    "poster": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1600&auto=format&fit=crop",
+    "clientName": "Savor Artisanal Kitchen",
+    "projectUrl": "/works/savor-kitchen",
+    "description": "Mouth-watering cinematic menu presentation, live chef reservation system, and spatial audio feel."
+  },
+  {
+    "id": "fashion",
+    "label": "Fashion & Apparel",
+    "videoUrl": "/portfolio/fashion.mp4",
+    "poster": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1600&auto=format&fit=crop",
+    "clientName": "Atelier Noir",
+    "projectUrl": "/works/atelier-noir",
+    "description": "High-fashion editorial lookbook with parallax runway transition scroll effects."
+  },
+  {
+    "id": "fitness",
+    "label": "Fitness & Wellness",
+    "videoUrl": "/portfolio/fitness.mp4",
+    "poster": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1600&auto=format&fit=crop",
+    "clientName": "Kinetix Performance",
+    "projectUrl": "/works/kinetix-fitness",
+    "description": "High-energy workout platform integration with custom training booking & progress tracking."
+  },
+  {
+    "id": "travel",
+    "label": "Travel & Tourism",
+    "videoUrl": "/portfolio/travel.mp4",
+    "poster": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=1600&auto=format&fit=crop",
+    "clientName": "Wanderlust Expeditions",
+    "projectUrl": "/works/wanderlust-travel",
+    "description": "Interactive globe travel destination explorer with immersive video backgrounds."
+  },
+  {
+    "id": "automotive",
+    "label": "Automotive",
+    "videoUrl": "/portfolio/automotive.mp4",
+    "poster": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1600&auto=format&fit=crop",
+    "clientName": "Hyperion Electric Motors",
+    "projectUrl": "/works/hyperion-motors",
+    "description": "360-degree vehicle customizer with dynamic lighting and instant acceleration specs."
+  },
+  {
+    "id": "education",
+    "label": "Education",
+    "videoUrl": "/portfolio/education.mp4",
+    "poster": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1600&auto=format&fit=crop",
+    "clientName": "Nova Learning Academy",
+    "projectUrl": "/works/nova-education",
+    "description": "Modern learning management landing site with dynamic course preview portals."
+  },
+  {
+    "id": "healthcare",
+    "label": "Healthcare",
+    "videoUrl": "/portfolio/healthcare.mp4",
+    "poster": "https://images.unsplash.com/photo-1576091160399-112ba8d25d43?q=80&w=1600&auto=format&fit=crop",
+    "clientName": "Pulse Health Solutions",
+    "projectUrl": "/works/pulse-healthcare",
+    "description": "Clean, empathetic telemedicine platform designed for clarity and patient confidence."
+  },
+  {
+    "id": "ecommerce",
+    "label": "E-commerce / Retail",
+    "videoUrl": "/portfolio/ecommerce.mp4",
+    "poster": "https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=1600&auto=format&fit=crop",
+    "clientName": "Urban Market Co.",
+    "projectUrl": "/works/urban-market",
+    "description": "Fast headless Shopify storefront with micro-animations and lightning-fast quick-view."
+  },
+  {
+    "id": "sports",
+    "label": "Sports & Events",
+    "videoUrl": "/portfolio/sports.mp4",
+    "poster": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=1600&auto=format&fit=crop",
+    "clientName": "Apex Arena Championship",
+    "projectUrl": "/works/apex-arena",
+    "description": "Bold tournament ticketing portal with interactive seating chart and live ticker."
+  },
+  {
+    "id": "finance",
+    "label": "Finance & Fintech",
+    "videoUrl": "/portfolio/finance.mp4",
+    "poster": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=1600&auto=format&fit=crop",
+    "clientName": "Vault Pay",
+    "projectUrl": "/works/vault-pay",
+    "description": "Sleek dark-mode financial dashboard showcasing instant transfer security and card design."
+  },
+  {
+    "id": "hospitality",
+    "label": "Hospitality (Hotels/Resorts)",
+    "videoUrl": "/portfolio/hospitality.mp4",
+    "poster": "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1600&auto=format&fit=crop",
+    "clientName": "Serenity Bay Resort",
+    "projectUrl": "/works/serenity-bay",
+    "description": "Sensory villa reservation portal with ambient soundscapes and room availability dates."
+  },
+  {
+    "id": "technology",
+    "label": "Technology / SaaS",
+    "videoUrl": "/portfolio/technology.mp4",
+    "poster": "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop",
+    "clientName": "Synthetix AI",
+    "projectUrl": "/works/synthetix-ai",
+    "description": "High-converting B2B SaaS landing page with interactive API playground and live demo."
+  },
+  {
+    "id": "ngo",
+    "label": "NGO / Social Impact",
+    "videoUrl": "/portfolio/ngo.mp4",
+    "poster": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1600&auto=format&fit=crop",
+    "clientName": "Terra Earth Foundation",
+    "projectUrl": "/works/terra-earth",
+    "description": "Impact-driven storytelling hub with real-time donation metrics and global initiative maps."
+  },
+  {
+    "id": "agriculture",
+    "label": "Agriculture",
+    "videoUrl": "/portfolio/agriculture.mp4",
+    "poster": "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=1600&auto=format&fit=crop",
+    "clientName": "AgriTech Harvest",
+    "projectUrl": "/works/agritech-harvest",
+    "description": "Sustainable farming intelligence platform highlighting smart sensor analytics and crop yields."
+  },
+  {
+    "id": "entertainment",
+    "label": "Entertainment / Media",
+    "videoUrl": "/portfolio/entertainment.mp4",
+    "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1600&auto=format&fit=crop",
+    "clientName": "Prism Studios Motion",
+    "projectUrl": "/works/prism-studios",
+    "description": "Immersive film showreel website featuring custom audio controls and cinematic video streaming."
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "title": "Creative",
+    "description": "High-impact visual art direction, graphic design, and brand storytelling that captivates audiences."
+  },
+  {
+    "id": 2,
+    "title": "Content Creation",
+    "description": "Engaging editorial, multimedia storytelling, and tailored video production for modern platforms."
+  },
+  {
+    "id": 3,
+    "title": "Social Media",
+    "description": "Strategic channel management, community building, and organic viral growth execution."
+  },
+  {
+    "id": 4,
+    "title": "Digital Marketing",
+    "description": "Data-driven performance campaigns, SEO, SEM, and omnichannel customer acquisition strategies."
+  },
+  {
+    "id": 5,
+    "title": "Website Development",
+    "description": "Next-generation WebGL/3D animated websites, web applications, and immersive digital platforms."
+  },
+  {
+    "id": 6,
+    "title": "Branding",
+    "description": "Comprehensive identity design, logo design, design systems, and brand strategy guidelines."
+  },
+  {
+    "id": 7,
+    "title": "Shoots",
+    "description": "Commercial photo & video production, high-end editorial shoots, and product photography."
+  },
+  {
+    "id": 8,
+    "title": "Brand Strategy & Communication",
+    "description": "Positioning, messaging frameworks, market research, and long-term brand equity building."
+  },
+  {
+    "id": 9,
+    "title": "Meta Ads",
+    "description": "Targeted ad creative, conversion funnel optimization, and scaling paid advertising on Meta platforms."
+  }
+]
