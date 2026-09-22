@@ -5,6 +5,7 @@ import Image from "next/image";
 import Aurora from "../components/ui/Aurora";
 import ShinyText from "./ui/ShinyText";
 import Link from "next/link";
+import LocationMap from "./LocationMap";
 
 const Footer = () => {
   return (
@@ -21,9 +22,12 @@ const Footer = () => {
             speed={0.5}
           />
         </div>
-        <div className="relative font-jakartaSans  text-white w-full max-w-7xl">
+        <div className="relative font-jakartaSans text-white w-full max-w-7xl">
+          {/* Map UI section before footer */}
+          <LocationMap />
+
           {/* Main Content Area */}
-          <main className="container mx-auto">
+          <main className="container mx-auto pt-16">
             <Image src={Logo} alt="" loading="lazy" />
             <h1 className="mt-12 md:mt-20 text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold max-w-xl lg:max-w-2xl tracking-[-1px] md:tracking-[-1.92px] lg:tracking-[-3.2px] leading-[110%] md:leading-[110%]">
               Have a project in mind? Let&apos;s talk!

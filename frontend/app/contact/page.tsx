@@ -6,8 +6,6 @@ import FAQ from '../components/FAQ'
 import Footer from '../components/Footer'
 import { Phone, Mail, MessageCircle } from 'lucide-react'
 
-import LocationMap from '../components/LocationMap'
-
 export const metadata: Metadata = {
   title: "Contact Us",
   description: "Get in touch with Illusory Design Studios. Start a discussion about your next project.",
@@ -92,11 +90,6 @@ const Contact = () => {
           <div className="lg:w-2/3">
             <ContactForm />
           </div>
-        </div>
-
-        {/* Location Map Section */}
-        <div className="mt-28">
-          <LocationMap />
         </div>
       </div>
       <FAQ />
