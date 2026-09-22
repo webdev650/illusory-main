@@ -39,8 +39,8 @@ export const CategoryDropdown: React.FC<CategoryDropdownProps> = ({
     <div className="sticky top-0 z-30 w-full py-4 bg-black/80 backdrop-blur-xl border-y border-white/10 my-8">
       <div className="px-6 lg:px-20 flex flex-col md:flex-row justify-between items-stretch md:items-center gap-4">
         {/* Category Count Info */}
-        <div className="hidden xl:flex items-center gap-2 text-xs font-mono text-gray-400 shrink-0">
-          <span className="w-2 h-2 rounded-full bg-pink-500 animate-pulse" />
+        <div className="hidden xl:flex items-center gap-2 text-xs font-mono text-[#DEE1E7] shrink-0">
+          <span className="w-2 h-2 rounded-full bg-[#FF1284] animate-pulse" />
           <span>{categories.length} INDUSTRIES</span>
         </div>
 
@@ -52,7 +52,7 @@ export const CategoryDropdown: React.FC<CategoryDropdownProps> = ({
               const cat = categories.find((c) => c.id === e.target.value);
               if (cat) onSelectCategory(cat);
             }}
-            className="w-full appearance-none bg-white/5 border border-white/20 text-white font-jakartaSans py-3 px-4 rounded-xl pr-10 focus:outline-none focus:border-pink-500 transition-colors"
+            className="w-full appearance-none bg-white/5 border border-white/20 text-white font-jakartaSans py-3 px-4 rounded-xl pr-10 focus:outline-none focus:border-[#FF1284] transition-colors"
           >
             {categories.map((cat) => (
               <option key={cat.id} value={cat.id} className="bg-neutral-900 text-white">
@@ -74,7 +74,7 @@ export const CategoryDropdown: React.FC<CategoryDropdownProps> = ({
                 onClick={() => onSelectCategory(cat)}
                 className={`shrink-0 px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
                   isSelected
-                    ? "bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-lg shadow-pink-500/25 scale-105"
+                    ? "bg-gradient-to-r from-[#FF1284] to-[#2407ff] text-white shadow-lg shadow-[#FF1284]/25 scale-105"
                     : "bg-white/5 text-gray-300 hover:bg-white/10 hover:text-white border border-white/10"
                 }`}
               >

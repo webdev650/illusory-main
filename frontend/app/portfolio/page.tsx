@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import FAQ from "../components/FAQ";
+import Partners from "../components/Partners";
 import { PortfolioHero } from "@/components/portfolio/PortfolioHero";
 import { ServiceRail } from "@/components/portfolio/ServiceRail";
 import { WebsiteShowcase } from "@/components/portfolio/WebsiteShowcase";
@@ -33,11 +35,13 @@ export default function PortfolioPage() {
         <Navbar />
       </div>
 
-      {/* Main 3D Scroll Acts */}
+      {/* Full Page Flow following site theme */}
       <main className="relative">
         <PortfolioHero />
         <ServiceRail />
         <WebsiteShowcase />
+        <Partners />
+        <FAQ />
       </main>
 
       {/* Footer */}
