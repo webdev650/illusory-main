@@ -2,6 +2,9 @@
   {
     "id": "cosmetic",
     "label": "Cosmetic / Beauty",
+    "tag": "3D Product Showcase",
+    "badgeColor": "from-pink-500 to-rose-500",
+    "glowColor": "rgba(244, 63, 94, 0.35)",
     "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790571147/Cosmetics_fqxffq.mp4",
     "poster": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Lumière Botanicals",
@@ -11,6 +14,9 @@
   {
     "id": "jewellery",
     "label": "Jewellery",
+    "tag": "Gem Magnification & Ring Builder",
+    "badgeColor": "from-amber-400 to-yellow-600",
+    "glowColor": "rgba(245, 158, 11, 0.35)",
     "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790571146/jwellery_axptvv.mp4",
     "poster": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Verve Diamond Co.",
@@ -20,6 +26,9 @@
   {
     "id": "urban-realestate",
     "label": "Urban / Real Estate",
+    "tag": "Interactive 3D Floorplans",
+    "badgeColor": "from-emerald-400 to-teal-600",
+    "glowColor": "rgba(16, 185, 129, 0.35)",
     "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790571144/urban_gbgptz.mp4",
     "poster": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Apex Skyline Residences",
@@ -29,6 +38,9 @@
   {
     "id": "wedding",
     "label": "Marriage / Wedding",
+    "tag": "Cinematic Storytelling",
+    "badgeColor": "from-purple-400 to-pink-600",
+    "glowColor": "rgba(168, 85, 247, 0.35)",
     "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790573635/Weeding_cwn92l.mp4",
     "poster": "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Elysian Celebrations",
@@ -38,6 +50,9 @@
   {
     "id": "food-restaurant",
     "label": "Food & Restaurant",
+    "tag": "Spatial Audio & Live Booking",
+    "badgeColor": "from-orange-500 to-red-600",
+    "glowColor": "rgba(249, 115, 22, 0.35)",
     "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790571146/Bakery_lidecm.mp4",
     "poster": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Savor Artisanal Kitchen",
@@ -47,6 +62,9 @@
   {
     "id": "fitness",
     "label": "Fitness & Wellness",
+    "tag": "High Energy Motion",
+    "badgeColor": "from-cyan-400 to-blue-600",
+    "glowColor": "rgba(6, 182, 212, 0.35)",
     "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790573633/fitnees_food_om9bci.mp4",
     "poster": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Kinetix Performance",
@@ -56,6 +74,9 @@
   {
     "id": "travel",
     "label": "Travel & Tourism",
+    "tag": "Interactive 3D Globe",
+    "badgeColor": "from-sky-400 to-indigo-600",
+    "glowColor": "rgba(14, 165, 233, 0.35)",
     "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790573626/Travel_giyoik.mp4",
     "poster": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Wanderlust Expeditions",
@@ -65,6 +86,9 @@
   {
     "id": "healthcare",
     "label": "Healthcare",
+    "tag": "Empathetic Telemedicine",
+    "badgeColor": "from-teal-400 to-emerald-600",
+    "glowColor": "rgba(20, 184, 166, 0.35)",
     "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790573634/addy_fitness_kp8bgs.mp4",
     "poster": "https://images.unsplash.com/photo-1576091160399-112ba8d25d43?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Pulse Health Solutions",
@@ -74,6 +98,9 @@
   {
     "id": "ecommerce",
     "label": "E-commerce / Retail",
+    "tag": "Headless Fast Storefront",
+    "badgeColor": "from-fuchsia-500 to-purple-600",
+    "glowColor": "rgba(217, 70, 239, 0.35)",
     "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790573633/E-_commerce_e2qp9d.mp4",
     "poster": "https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Urban Market Co.",
@@ -83,6 +110,9 @@
   {
     "id": "finance",
     "label": "Finance & Fintech",
+    "tag": "Sleek Dark Dashboard",
+    "badgeColor": "from-green-400 to-emerald-600",
+    "glowColor": "rgba(34, 197, 94, 0.35)",
     "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790573629/Finance_hvfzbb.mp4",
     "poster": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Vault Pay",
@@ -92,6 +122,9 @@
   {
     "id": "hospitality",
     "label": "Hospitality (Hotels/Resorts)",
+    "tag": "Sensory Villa Booking",
+    "badgeColor": "from-amber-300 to-orange-500",
+    "glowColor": "rgba(251, 191, 36, 0.35)",
     "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790573624/Resorts_jhtoo6.mp4",
     "poster": "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Serenity Bay Resort",
@@ -101,6 +134,9 @@
   {
     "id": "ngo",
     "label": "NGO / Social Impact",
+    "tag": "Real-time Metrics Hub",
+    "badgeColor": "from-lime-400 to-green-600",
+    "glowColor": "rgba(132, 204, 22, 0.35)",
     "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790573626/Travel_giyoik.mp4",
     "poster": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Terra Earth Foundation",
@@ -110,6 +146,9 @@
   {
     "id": "entertainment",
     "label": "Entertainment / Media",
+    "tag": "4K Motion Showreel",
+    "badgeColor": "from-violet-500 to-indigo-600",
+    "glowColor": "rgba(139, 92, 246, 0.35)",
     "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790573627/entertainement_noj6ma.mp4",
     "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Prism Studios Motion",
