@@ -2,7 +2,7 @@
   {
     "id": "cosmetic",
     "label": "Cosmetic / Beauty",
-    "videoUrl": "/portfolio/cosmetic.mp4",
+    "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790571147/Cosmetics_fqxffq.mp4",
     "poster": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Lumière Botanicals",
     "projectUrl": "/works/lumiere-botanicals",
@@ -20,7 +20,7 @@
   {
     "id": "jewellery",
     "label": "Jewellery",
-    "videoUrl": "/portfolio/jewellery.mp4",
+    "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790571146/jwellery_axptvv.mp4",
     "poster": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Verve Diamond Co.",
     "projectUrl": "/works/verve-jewellery",
@@ -29,7 +29,7 @@
   {
     "id": "urban-realestate",
     "label": "Urban / Real Estate",
-    "videoUrl": "/portfolio/urban-realestate.mp4",
+    "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790571144/urban_gbgptz.mp4",
     "poster": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Apex Skyline Residences",
     "projectUrl": "/works/apex-skyline",
@@ -38,7 +38,7 @@
   {
     "id": "wedding",
     "label": "Marriage / Wedding",
-    "videoUrl": "/portfolio/wedding.mp4",
+    "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790573635/Weeding_cwn92l.mp4",
     "poster": "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Elysian Celebrations",
     "projectUrl": "/works/elysian-wedding",
@@ -47,7 +47,7 @@
   {
     "id": "food-restaurant",
     "label": "Food & Restaurant",
-    "videoUrl": "/portfolio/food-restaurant.mp4",
+    "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790571146/Bakery_lidecm.mp4",
     "poster": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Savor Artisanal Kitchen",
     "projectUrl": "/works/savor-kitchen",
@@ -56,7 +56,7 @@
   {
     "id": "fashion",
     "label": "Fashion & Apparel",
-    "videoUrl": "/portfolio/fashion.mp4",
+    "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790573637/fitness_copy_k9jeir.mp4",
     "poster": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Atelier Noir",
     "projectUrl": "/works/atelier-noir",
@@ -65,7 +65,7 @@
   {
     "id": "fitness",
     "label": "Fitness & Wellness",
-    "videoUrl": "/portfolio/fitness.mp4",
+    "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790573633/fitnees_food_om9bci.mp4",
     "poster": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Kinetix Performance",
     "projectUrl": "/works/kinetix-fitness",
@@ -74,7 +74,7 @@
   {
     "id": "travel",
     "label": "Travel & Tourism",
-    "videoUrl": "/portfolio/travel.mp4",
+    "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790573626/Travel_giyoik.mp4",
     "poster": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Wanderlust Expeditions",
     "projectUrl": "/works/wanderlust-travel",
@@ -101,7 +101,7 @@
   {
     "id": "healthcare",
     "label": "Healthcare",
-    "videoUrl": "/portfolio/healthcare.mp4",
+    "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790573634/addy_fitness_kp8bgs.mp4",
     "poster": "https://images.unsplash.com/photo-1576091160399-112ba8d25d43?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Pulse Health Solutions",
     "projectUrl": "/works/pulse-healthcare",
@@ -110,7 +110,7 @@
   {
     "id": "ecommerce",
     "label": "E-commerce / Retail",
-    "videoUrl": "/portfolio/ecommerce.mp4",
+    "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790573633/E-_commerce_e2qp9d.mp4",
     "poster": "https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Urban Market Co.",
     "projectUrl": "/works/urban-market",
@@ -128,7 +128,7 @@
   {
     "id": "finance",
     "label": "Finance & Fintech",
-    "videoUrl": "/portfolio/finance.mp4",
+    "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790573629/Finance_hvfzbb.mp4",
     "poster": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Vault Pay",
     "projectUrl": "/works/vault-pay",
@@ -137,7 +137,7 @@
   {
     "id": "hospitality",
     "label": "Hospitality (Hotels/Resorts)",
-    "videoUrl": "/portfolio/hospitality.mp4",
+    "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790573624/Resorts_jhtoo6.mp4",
     "poster": "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Serenity Bay Resort",
     "projectUrl": "/works/serenity-bay",
@@ -173,7 +173,7 @@
   {
     "id": "entertainment",
     "label": "Entertainment / Media",
-    "videoUrl": "/portfolio/entertainment.mp4",
+    "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790573627/entertainement_noj6ma.mp4",
     "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Prism Studios Motion",
     "projectUrl": "/works/prism-studios",

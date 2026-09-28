@@ -20,8 +20,9 @@ export const VideoPanel: React.FC<VideoPanelProps> = ({ category }) => {
     if (videoRef.current) {
       videoRef.current.pause();
       videoRef.current.currentTime = 0;
+      videoRef.current.load();
     }
-  }, [category.id]);
+  }, [category.id, category.videoUrl]);
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -59,10 +60,11 @@ export const VideoPanel: React.FC<VideoPanelProps> = ({ category }) => {
 
         {/* Video Player element (lazy loaded src) */}
         <video
+          key={category.id}
           ref={videoRef}
           src={category.videoUrl}
           poster={category.poster}
-          preload="none"
+          preload="metadata"
           loop
           muted
           playsInline
