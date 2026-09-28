@@ -11,7 +11,7 @@
   {
     "id": "electronics",
     "label": "Electronics",
-    "videoUrl": "/portfolio/electronics.mp4",
+    "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790573633/E-_commerce_e2qp9d.mp4",
     "poster": "https://images.unsplash.com/photo-1550009158-9ebf69173e03?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Aura Tech & Audio",
     "projectUrl": "/works/aura-tech",
@@ -83,7 +83,7 @@
   {
     "id": "automotive",
     "label": "Automotive",
-    "videoUrl": "/portfolio/automotive.mp4",
+    "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790571144/urban_gbgptz.mp4",
     "poster": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Hyperion Electric Motors",
     "projectUrl": "/works/hyperion-motors",
@@ -92,7 +92,7 @@
   {
     "id": "education",
     "label": "Education",
-    "videoUrl": "/portfolio/education.mp4",
+    "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790573631/Dental_Care_tbj763.mp4",
     "poster": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Nova Learning Academy",
     "projectUrl": "/works/nova-education",
@@ -119,7 +119,7 @@
   {
     "id": "sports",
     "label": "Sports & Events",
-    "videoUrl": "/portfolio/sports.mp4",
+    "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790573637/fitness_copy_k9jeir.mp4",
     "poster": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Apex Arena Championship",
     "projectUrl": "/works/apex-arena",
@@ -146,7 +146,7 @@
   {
     "id": "technology",
     "label": "Technology / SaaS",
-    "videoUrl": "/portfolio/technology.mp4",
+    "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790573629/Finance_hvfzbb.mp4",
     "poster": "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Synthetix AI",
     "projectUrl": "/works/synthetix-ai",
@@ -155,7 +155,7 @@
   {
     "id": "ngo",
     "label": "NGO / Social Impact",
-    "videoUrl": "/portfolio/ngo.mp4",
+    "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790573626/Travel_giyoik.mp4",
     "poster": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1600&auto=format&fit=crop",
     "clientName": "Terra Earth Foundation",
     "projectUrl": "/works/terra-earth",
@@ -164,7 +164,7 @@
   {
     "id": "agriculture",
     "label": "Agriculture",
-    "videoUrl": "/portfolio/agriculture.mp4",
+    "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790571146/Bakery_lidecm.mp4",
     "poster": "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=1600&auto=format&fit=crop",
     "clientName": "AgriTech Harvest",
     "projectUrl": "/works/agritech-harvest",
