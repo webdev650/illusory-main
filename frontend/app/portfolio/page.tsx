@@ -10,7 +10,7 @@ import { WebsiteShowcase } from "@/components/portfolio/WebsiteShowcase";
 
 export const metadata: Metadata = {
   title: "Portfolio Showcase | 3D Interactive Design Experience",
-  description: "Experience Illusory Design Studios' portfolio in motion. 3D scroll showcase of 9 core capabilities and 20 industry website designs.",
+  description: "Experience Illusory Design Studios' portfolio in motion. 3D scroll showcase of 9 core capabilities and 13 industry website designs.",
   icons: {
     icon: [
       { url: "/icon.svg", type: "image/svg+xml" },
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Portfolio Showcase | Illusory Design Studios",
-    description: "3D scroll showcase of 9 core capabilities and 20 industry website designs.",
+    description: "3D scroll showcase of 9 core capabilities and 13 industry website designs.",
     url: "https://www.illusorydesignstudios.com/portfolio",
     type: "website",
   },

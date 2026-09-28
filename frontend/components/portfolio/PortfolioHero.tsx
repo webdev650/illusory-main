@@ -111,7 +111,7 @@ export const PortfolioHero: React.FC = () => {
         <div ref={subtextRef} className="max-w-md">
           <p className="text-white/80 text-sm sm:text-base leading-relaxed">
             Your one-stop creative powerhouse, redefining what’s possible for
-            brands across 20 different industries.
+            brands across 13 different industries.
           </p>
         </div>
 

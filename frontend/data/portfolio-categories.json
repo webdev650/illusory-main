@@ -9,15 +9,6 @@
     "description": "Luxurious e-commerce showcase with interactive product 3D view and seamless checkout."
   },
   {
-    "id": "electronics",
-    "label": "Electronics",
-    "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790573633/E-_commerce_e2qp9d.mp4",
-    "poster": "https://images.unsplash.com/photo-1550009158-9ebf69173e03?q=80&w=1600&auto=format&fit=crop",
-    "clientName": "Aura Tech & Audio",
-    "projectUrl": "/works/aura-tech",
-    "description": "Futuristic product launch site with WebGL audio visualizers and spec highlights."
-  },
-  {
     "id": "jewellery",
     "label": "Jewellery",
     "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790571146/jwellery_axptvv.mp4",
@@ -54,15 +45,6 @@
     "description": "Mouth-watering cinematic menu presentation, live chef reservation system, and spatial audio feel."
   },
   {
-    "id": "fashion",
-    "label": "Fashion & Apparel",
-    "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790573637/fitness_copy_k9jeir.mp4",
-    "poster": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1600&auto=format&fit=crop",
-    "clientName": "Atelier Noir",
-    "projectUrl": "/works/atelier-noir",
-    "description": "High-fashion editorial lookbook with parallax runway transition scroll effects."
-  },
-  {
     "id": "fitness",
     "label": "Fitness & Wellness",
     "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790573633/fitnees_food_om9bci.mp4",
@@ -79,24 +61,6 @@
     "clientName": "Wanderlust Expeditions",
     "projectUrl": "/works/wanderlust-travel",
     "description": "Interactive globe travel destination explorer with immersive video backgrounds."
-  },
-  {
-    "id": "automotive",
-    "label": "Automotive",
-    "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790571144/urban_gbgptz.mp4",
-    "poster": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1600&auto=format&fit=crop",
-    "clientName": "Hyperion Electric Motors",
-    "projectUrl": "/works/hyperion-motors",
-    "description": "360-degree vehicle customizer with dynamic lighting and instant acceleration specs."
-  },
-  {
-    "id": "education",
-    "label": "Education",
-    "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790573631/Dental_Care_tbj763.mp4",
-    "poster": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1600&auto=format&fit=crop",
-    "clientName": "Nova Learning Academy",
-    "projectUrl": "/works/nova-education",
-    "description": "Modern learning management landing site with dynamic course preview portals."
   },
   {
     "id": "healthcare",
@@ -117,15 +81,6 @@
     "description": "Fast headless Shopify storefront with micro-animations and lightning-fast quick-view."
   },
   {
-    "id": "sports",
-    "label": "Sports & Events",
-    "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790573637/fitness_copy_k9jeir.mp4",
-    "poster": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=1600&auto=format&fit=crop",
-    "clientName": "Apex Arena Championship",
-    "projectUrl": "/works/apex-arena",
-    "description": "Bold tournament ticketing portal with interactive seating chart and live ticker."
-  },
-  {
     "id": "finance",
     "label": "Finance & Fintech",
     "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790573629/Finance_hvfzbb.mp4",
@@ -144,15 +99,6 @@
     "description": "Sensory villa reservation portal with ambient soundscapes and room availability dates."
   },
   {
-    "id": "technology",
-    "label": "Technology / SaaS",
-    "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790573629/Finance_hvfzbb.mp4",
-    "poster": "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop",
-    "clientName": "Synthetix AI",
-    "projectUrl": "/works/synthetix-ai",
-    "description": "High-converting B2B SaaS landing page with interactive API playground and live demo."
-  },
-  {
     "id": "ngo",
     "label": "NGO / Social Impact",
     "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790573626/Travel_giyoik.mp4",
@@ -160,15 +106,6 @@
     "clientName": "Terra Earth Foundation",
     "projectUrl": "/works/terra-earth",
     "description": "Impact-driven storytelling hub with real-time donation metrics and global initiative maps."
-  },
-  {
-    "id": "agriculture",
-    "label": "Agriculture",
-    "videoUrl": "https://res.cloudinary.com/dtmqv7oqq/video/upload/v1790571146/Bakery_lidecm.mp4",
-    "poster": "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=1600&auto=format&fit=crop",
-    "clientName": "AgriTech Harvest",
-    "projectUrl": "/works/agritech-harvest",
-    "description": "Sustainable farming intelligence platform highlighting smart sensor analytics and crop yields."
   },
   {
     "id": "entertainment",

@@ -53,7 +53,7 @@ export const WebsiteShowcase: React.FC = () => {
           </h2>
         </div>
         <p className="text-gray-400 max-w-md text-sm sm:text-base">
-          Filter through 20 specialized industries to preview tailored web design & motion reels.
+          Filter through {categories.length} specialized industries to preview tailored web design & motion reels.
         </p>
       </div>
 
