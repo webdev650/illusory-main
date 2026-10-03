@@ -3,8 +3,15 @@
 import React from "react";
 import Marquee from "./Marquee";
 import ClientLogosMarquee from "./ClientLogosMarquee";
+import { useModal } from "../contexts/ModalContext";
 
 const Partners = () => {
+  const { openModal } = useModal();
+
+  const handleStartWithAI = () => {
+    window.dispatchEvent(new CustomEvent("open-illusory-chat"));
+  };
+
   return (
     <>
       <section className="pt-[40px] md:pt-[50px] flex flex-col items-center relative overflow-hidden w-full">
@@ -34,7 +41,8 @@ const Partners = () => {
             {/* Primary White Liquid Glass Button */}
             <button
               type="button"
-              className="relative group px-6 py-3 rounded-full text-xs sm:text-sm font-semibold text-zinc-950 transition-all duration-300 transform hover:scale-105 select-none"
+              onClick={openModal}
+              className="relative group px-6 py-3 rounded-full text-xs sm:text-sm font-semibold text-zinc-950 transition-all duration-300 transform hover:scale-105 active:scale-95 select-none cursor-pointer"
               style={{
                 background: "linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(225, 235, 255, 0.88) 100%)",
                 backdropFilter: "blur(16px)",
@@ -53,7 +61,8 @@ const Partners = () => {
             {/* Dark Translucent Liquid Glass Button */}
             <button
               type="button"
-              className="relative group px-6 py-3 rounded-full text-xs sm:text-sm font-semibold text-white transition-all duration-300 transform hover:scale-105 select-none overflow-hidden"
+              onClick={handleStartWithAI}
+              className="relative group px-6 py-3 rounded-full text-xs sm:text-sm font-semibold text-white transition-all duration-300 transform hover:scale-105 active:scale-95 select-none overflow-hidden cursor-pointer"
               style={{
                 background: "linear-gradient(180deg, rgba(30, 41, 59, 0.65) 0%, rgba(15, 23, 42, 0.85) 100%)",
                 backdropFilter: "blur(16px)",

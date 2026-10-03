@@ -58,6 +58,18 @@ const IllusoryChat = () => {
     }, []);
 
     useEffect(() => {
+        const handleOpenChat = () => {
+            setIsOpen(true);
+        };
+        window.addEventListener('open-illusory-chat', handleOpenChat);
+        window.addEventListener('open-ai-chat', handleOpenChat);
+        return () => {
+            window.removeEventListener('open-illusory-chat', handleOpenChat);
+            window.removeEventListener('open-ai-chat', handleOpenChat);
+        };
+    }, []);
+
+    useEffect(() => {
         if (isOpen && messages.length === 0) {
             addMessage("Hi 👋 I’m KAIRO AI. How can I help you today?", 'ai');
             // Start lead capture flow immediately after greeting if not captured
