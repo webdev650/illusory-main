@@ -51,8 +51,8 @@ const Career = async () => {
       lookingFor: job.lookingFor || [],
       isActivelyHiring: job.isActivelyHiring,
       isRemote: job.isRemote,
-      applyEmail: 'operations@illusorydesignstudios.com',
-      applySubject: `Application – ${job.title} (#${job.referenceId})`,
+      applyEmail: job.applyEmail || 'operations@illusorydesignstudios.com',
+      applySubject: job.applySubject || `Application – ${job.title} (#${job.referenceId})`,
     }));
   } catch (error) {
     console.error("Failed to load jobs from database, falling back to static:", error);
@@ -69,8 +69,8 @@ const Career = async () => {
       lookingFor: job.lookingFor || [],
       isActivelyHiring: job.isActivelyHiring,
       isRemote: job.isRemote,
-      applyEmail: 'operations@illusorydesignstudios.com',
-      applySubject: `Application – ${job.title} (#${String(job.id).padStart(3, '0')})`,
+      applyEmail: job.applyEmail || 'operations@illusorydesignstudios.com',
+      applySubject: job.applySubject || `Application – ${job.title} (#${String(job.id).padStart(3, '0')})`,
     }));
   }
 

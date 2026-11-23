@@ -4,19 +4,14 @@ import { jobs as staticJobs } from '../careers/data/jobs';
 
 export async function seedJobsIfNeeded() {
   await connectToDatabase();
-  
-  const count = await Job.countDocuments();
-  if (count > 0) {
-    return;
-  }
 
-  console.log("Seeding jobs collection because it is empty...");
-
-  const mappedJobs = staticJobs.map((job) => {
+  const mapJob = (job: (typeof staticJobs)[number]) => {
     // 1. Determine department from title
     let department = "Creative & Operations";
     const titleLower = job.title.toLowerCase();
-    if (titleLower.includes("designer") || titleLower.includes("graphic") || titleLower.includes("brand")) {
+    if (titleLower.includes("sales") || titleLower.includes("business development") || titleLower.includes("growth")) {
+      department = "Sales & Business Development";
+    } else if (titleLower.includes("designer") || titleLower.includes("graphic") || titleLower.includes("brand")) {
       department = "Design";
     } else if (titleLower.includes("marketing") || titleLower.includes("marketer") || titleLower.includes("pr") || titleLower.includes("influencer")) {
       department = "Marketing";
@@ -59,9 +54,28 @@ export async function seedJobsIfNeeded() {
       company: job.company || "Illusory",
       isActivelyHiring: job.isActivelyHiring,
       isRemote: workMode === "Remote",
+      applyEmail: job.applyEmail || "operations@illusorydesignstudios.com",
+      applySubject: job.applySubject || `Application – ${job.title} (#${referenceId})`,
     };
-  });
+  };
 
-  await Job.insertMany(mappedJobs);
-  console.log(`Successfully seeded ${mappedJobs.length} jobs into MongoDB!`);
+  const count = await Job.countDocuments();
+  if (count === 0) {
+    console.log("Seeding jobs collection because it is empty...");
+    const mappedJobs = staticJobs.map(mapJob);
+    await Job.insertMany(mappedJobs);
+    console.log(`Successfully seeded ${mappedJobs.length} jobs into MongoDB!`);
+    return;
+  }
+
+  // Ensure any newly added static jobs exist in MongoDB
+  for (const job of staticJobs) {
+    const refId = String(job.id).padStart(3, '0');
+    const existing = await Job.findOne({ referenceId: refId });
+    if (!existing) {
+      const doc = mapJob(job);
+      await Job.create(doc);
+      console.log(`Successfully inserted missing job ${doc.title} (#${refId}) into MongoDB!`);
+    }
+  }
 }

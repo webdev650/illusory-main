@@ -18,6 +18,8 @@ export interface IJob extends Document {
   isRemote: boolean; // default false
   datePosted: Date; // default Date.now()
   validThrough: Date; // default Date.now() + 180 days
+  applyEmail?: string;
+  applySubject?: string;
 }
 
 const JobSchema: Schema = new Schema({
@@ -36,6 +38,8 @@ const JobSchema: Schema = new Schema({
   company: { type: String, default: 'Illusory' },
   isActivelyHiring: { type: Boolean, default: true },
   isRemote: { type: Boolean, default: false },
+  applyEmail: { type: String, default: 'operations@illusorydesignstudios.com' },
+  applySubject: { type: String },
   datePosted: { type: Date, default: Date.now },
   validThrough: {
     type: Date,

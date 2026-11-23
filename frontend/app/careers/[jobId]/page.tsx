@@ -72,6 +72,8 @@ export default async function JobDetailPage({ params }: PageProps) {
         lookingFor: staticJob.lookingFor || [],
         isActivelyHiring: staticJob.isActivelyHiring,
         isRemote: staticJob.isRemote,
+        applyEmail: staticJob.applyEmail,
+        applySubject: staticJob.applySubject,
       };
     }
   }
@@ -94,8 +96,8 @@ export default async function JobDetailPage({ params }: PageProps) {
     lookingFor: jobDoc.lookingFor || [],
     isActivelyHiring: jobDoc.isActivelyHiring,
     isRemote: jobDoc.isRemote,
-    applyEmail: 'operations@illusorydesignstudios.com',
-    applySubject: `Application – ${jobDoc.title} (#${jobDoc.referenceId})`,
+    applyEmail: jobDoc.applyEmail || 'operations@illusorydesignstudios.com',
+    applySubject: jobDoc.applySubject || `Application – ${jobDoc.title} (#${jobDoc.referenceId})`,
   };
 
   // Structured Data Schema for Google for Jobs

@@ -852,5 +852,53 @@ export const jobs: Job[] = [
     applyEmail: 'operations@illusorydesignstudios.com',
     applySubject: 'Application – Operations Associate',
     isActivelyHiring: false
+  },
+  {
+    id: '25',
+    title: 'Head – Sales, Business Development & Growth',
+    company: 'Illusory Design Studios',
+    location: 'Bhubaneswar, Odisha (On-site)',
+    experience: '4–7 Years',
+    qualification: 'Bachelor’s / Master’s Degree in Business, Marketing, or relevant field (MBA preferred)',
+    overview: 'Illusory Design Studios is a 360° Branding, Marketing & Digital Solutions Studio based in Bhubaneswar, Odisha. We work across brand strategy, identity development, digital marketing, performance marketing, website and application development, creative production, commercial shoots, events and influencer management. We are seeking an experienced and entrepreneurial Head of Sales, Business Development & Growth who can combine strategic thinking with hands-on sales execution to develop our sales strategy, build a qualified business pipeline, acquire high-value clients across India and international markets, and lead our business development team. This is a leadership position with direct responsibility for revenue generation, sales operations and business expansion.',
+    responsibilities: [
+      'Sales Strategy & Revenue Planning: Develop and execute comprehensive sales and revenue growth strategies; establish monthly, quarterly, and annual revenue targets.',
+      'Market & Sales Planning: Create actionable sales plans for local, national, and international markets (e.g., UAE, UK, USA, Singapore, Australia).',
+      'Pipeline & Client Acquisition: Personally identify, pitch, and acquire prospective clients through networking, referrals, outbound sales, and corporate relationships.',
+      'Executive Relationship Building: Develop relationships with founders, CEOs, marketing heads, business owners, and corporate decision-makers.',
+      'Deal Closing & Negotiations: Lead client meetings, presentations, contract negotiations, and deal closures for high-value accounts.',
+      'Market Expansion & Research: Conduct competitor analysis, market research, and pricing assessments to develop market-entry and client-acquisition strategies.',
+      'Strategic Partnerships: Build relationships with agencies, consultants, corporates, startups, and channel partners for white-label partnerships, referrals, and retainers.',
+      'Sales Team Leadership: Manage, guide, and supervise existing and future BDEs, set sales targets, train team members in pitching and negotiations, and conduct regular performance reviews.',
+      'Marketing Alignment: Collaborate with internal creative and marketing teams to formulate relevant pitches, proposals, and go-to-market strategies.',
+      'Sales Operations & CRM: Implement and manage CRM-based sales funnels, maintain lead pipelines, monitor conversion metrics, and prepare weekly/monthly performance reports.'
+    ],
+    requirements: [
+      '4–7 years of relevant experience in sales, business development, B2B sales, or business growth.',
+      'Prior experience in a marketing agency, branding studio, advertising company, digital solutions firm, or B2B services business is preferred.',
+      'Proven track record of acquiring clients, closing business, and driving measurable revenue.',
+      'Experience leading, mentoring, or managing a high-performing sales team.',
+      'Strong understanding of business development, marketing, and sales strategy.',
+      'Excellent verbal and written communication skills in English.',
+      'Strong presentation, negotiation, and relationship-building abilities.',
+      'Ability to develop business independently and thrive in a target-driven environment.',
+      'Proficiency in CRM platforms, spreadsheets, presentations, and sales reporting.',
+      'Willingness to travel for business meetings when required.',
+      'Experience acquiring corporate clients and high-value accounts (Preferred).',
+      'Exposure to domestic and international client acquisition (Preferred).',
+      'Existing professional networks and business relationships (Preferred).',
+      'Experience building sales functions in startups or growing businesses (Preferred).'
+    ],
+    lookingFor: [
+      'A leader who does not simply delegate sales activities but takes hands-on ownership of outcomes',
+      'Ability to formulate growth strategy, execute it personally, lead a team, and close important deals',
+      'Proven ability to turn business opportunities into measurable revenue and build a repeatable sales engine',
+      'A mentor who can build a structured, disciplined, and accountable sales department',
+      'Deep understanding of branding, creative services, and modern digital solutions'
+    ],
+    applyEmail: 'hr@illusorydesignstudios.com',
+    applySubject: 'Application – Head – Sales, Business Development & Growth',
+    isActivelyHiring: true,
+    isRemote: false
   }
 ];
