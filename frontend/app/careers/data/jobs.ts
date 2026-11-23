@@ -47,7 +47,7 @@ export const jobs: Job[] = [
     ],
     applyEmail: 'operations@illusorydesignstudios.com',
     applySubject: 'Application – Graphic Designer',
-    isActivelyHiring: false
+    isActivelyHiring: true
   },
   {
     id: '2',
@@ -81,7 +81,7 @@ export const jobs: Job[] = [
     ],
     applyEmail: 'operations@illusorydesignstudios.com',
     applySubject: 'Application – Video Editor',
-    isActivelyHiring: false
+    isActivelyHiring: true
   },
   {
     id: '3',
@@ -115,7 +115,7 @@ export const jobs: Job[] = [
     ],
     applyEmail: 'operations@illusorydesignstudios.com',
     applySubject: 'Application – Brand Designer',
-    isActivelyHiring: true
+    isActivelyHiring: false
   },
   {
     id: '4',
@@ -220,7 +220,7 @@ export const jobs: Job[] = [
     ],
     applyEmail: 'operations@illusorydesignstudios.com',
     applySubject: 'Application – Brand Activation Executive',
-    isActivelyHiring: false
+    isActivelyHiring: true
   },
   {
     id: '7',
@@ -326,7 +326,7 @@ export const jobs: Job[] = [
     ],
     applyEmail: 'operations@illusorydesignstudios.com',
     applySubject: 'Application – Business Development Executive',
-    isActivelyHiring: true
+    isActivelyHiring: false
   },
   {
     id: '10',
@@ -568,7 +568,7 @@ export const jobs: Job[] = [
     ],
     applyEmail: 'operations@illusorydesignstudios.com',
     applySubject: 'Application – Content Creator',
-    isActivelyHiring: true
+    isActivelyHiring: false
   },
   {
     id: '17',
